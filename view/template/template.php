@@ -14,7 +14,7 @@
 
 <body>
     <?php include("view/template/header.php") ?>
-
+    <?= (isset($msg)) ?  $msg : '' ?>
     <?= $content ?>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

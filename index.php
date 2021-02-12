@@ -17,7 +17,11 @@ if (empty($_GET)) { //if GET is empty, $page became home -> index
 $controller = new controller\Controller; //we use the controller on the folder controller for join the model and the view 
 
 if (method_exists($controller, $methode = $page)) { //if method exist, use controller where method name like page 
-    $controller->$methode($_POST); //controller use method where $_POST is use for register or connecte the user for example
+    try {
+        $controller->$methode($_POST); //controller use method where $_POST is use for register or connecte the user for example
+    } catch (Exception $e) {
+        $msg =  "<div class='alert alert-danger' role='alert'>{$e->getMessage()}</div>";
+    }
 }
 
 
