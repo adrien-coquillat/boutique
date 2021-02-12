@@ -1,7 +1,14 @@
 <?php
 
+use controller\Controller;
 
-require("controller/Controller.php"); //require the controller for use function 
+// Auto-loader
+function myautoload($className)
+{
+    require(str_replace('\\', '/', $className) . '.php');
+}
+spl_autoload_register('myautoload');
+
 
 if (empty($_GET)) { //if GET is empty, $page became home -> index
     $page = 'home';
@@ -14,7 +21,7 @@ if (empty($_GET)) { //if GET is empty, $page became home -> index
     }
 }
 
-$controller = new controller\Controller; //we use the controller on the folder controller for join the model and the view 
+$controller = new Controller;
 
 if (method_exists($controller, $methode = $page)) { //if method exist, use controller where method name like page 
     try {
@@ -26,6 +33,6 @@ if (method_exists($controller, $methode = $page)) { //if method exist, use contr
 
 
 ob_start(); //we stock on buffer(tampon) the element of variable
-require("view/$page.php"); //require the view 
+require("view/$page.php");
 $content = ob_get_clean(); //we post the variable
 require("view/template/template.php"); //require the template (header footer + html/css/boostrap)

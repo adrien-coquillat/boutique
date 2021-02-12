@@ -1,0 +1,12 @@
+{
+    "name": "robin/boutique",
+    "authors": [
+        {
+            "name": "Arbona Robin",
+            "email": "71873082+robin-arbona@users.noreply.github.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
