@@ -9,7 +9,10 @@ class Controller
 {
     public function inscription($donnees_u)
     {
-
+        // if form is empty, don't use the function cherUserInscriptionData 
+        if (empty($donnees_u)) {
+            return;
+        }
         // Verifier l'unicité du login, mail, téléphone
 
         // Verifier que l'adresse correct 
@@ -47,11 +50,20 @@ class Controller
         // <input type="text" name="ville_adresse_u" placeholder="Ville">
         // <input type="text" name="postal_adresse_u" placeholder="Code postal">
         if (((int) $donnees_u['numero_rue_adresse_u']) == 0) {
-            $errormsg[] = "Le champ renseigné doit être un chiffre";
+            $errormsg[] = "Le champ renseigné doit être un chiffre.";
         }
 
-        if (strlen($donnees_u['nom_rue_adresse_u']) > 1) {
+        if (strlen($donnees_u['nom_rue_adresse_u']) < 2) {
+            $errormsg[] = "Le nom de la rue doit contenir minimum 2 caractères.";
         }
+        if (strlen($donnees_u['ville_adresse_u']) < 2) {
+            $errormsg[] = "Le nom de la ville doit contenir minimum 2 caractères.";
+        }
+        if ((((int) $donnees_u['postal_adresse_u']) == 0) || (strlen($donnees_u['postal_adresse_u']) != 5)) {
+            $errormsg[] = "Le champ renseigné doit être un nombre de 5 entiers.";
+        }
+
+
         var_dump($errormsg);
     }
 }
