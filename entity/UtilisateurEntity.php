@@ -10,7 +10,7 @@ class UtilisateurEntity
     /** 
      * Check if user data are correct 
      */
-    public function checkUserInscriptionData($donnees_u)
+    public function checkData($donnees_u)
     {
         $errormsg = [];
 
@@ -52,9 +52,7 @@ class UtilisateurEntity
         if (empty($errormsg)) {
             return true;
         } else {
-            $errormsgstring = implode("<br />", $errormsg);
-            throw new Exception($errormsgstring);
-            return false;
+            return $errormsg;
         }
     }
 }

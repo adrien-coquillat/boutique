@@ -3,6 +3,7 @@
 namespace controller;
 
 use entity\UtilisateurEntity;
+use Exception;
 
 class Controller
 {
@@ -15,9 +16,12 @@ class Controller
 
         $user = new UtilisateurEntity();
 
-        if ($user->checkUserInscriptionData($donnees_u)) {
+        if (($msg = $user->checkData($donnees_u)) === TRUE) {
             //$utilisateurModel = new UtilisateurModel($donnees_u);
             // $utilisateurModel->add();
+        } else {
+            throw new Exception(implode('<br />', $msg));
         }
+        var_dump($msg);
     }
 }
