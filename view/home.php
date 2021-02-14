@@ -8,7 +8,9 @@
             <input type="text" name="login_u" placeholder="Login" id="login">
             <input type="password" name="motdepass_u" placeholder="Password" id="password">
             <input type="submit" value="OK">
+            <p>
+                Pas encore inscrit ? Je m'inscrit <a href="index.php?page=inscription">ici</a>.
+            </p>
         </form>
-        Pas encore inscrit ? Je m'inscrit <a href="index.php?page=inscription">ici</a>.
     </div>
 </div>
