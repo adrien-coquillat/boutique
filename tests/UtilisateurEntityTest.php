@@ -64,11 +64,27 @@ final class UtilisateurEntityTest extends TestCase
 
         foreach ($emails as $email) {
             $stack['mail_u'] = $email;
-            $this->assertIsArray($user->checkData($stack), 'Failed when test:' . $email);
+            $this->assertIsArray($user->checkData($stack), 'Failed when tested:' . $email);
         }
 
         $stack['mail_u'] = $tmp;
 
+        return $stack;
+    }
+
+    /**
+     * @depends testCheckDataEmail
+     */
+    public function testCheckDataPasswordsEqual(array $stack): array
+    {
+        $user = new UtilisateurEntity();
+        $tmp = $stack['motdepass_u_conf'];
+
+        $stack['motdepass_u_conf'] = 'lala';
+
+        $this->assertEquals(1, count($user->checkData($stack)), 'Password equality');
+
+        $stack['motdepass_u_conf'] = $tmp;
         return $stack;
     }
 }

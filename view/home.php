@@ -1,9 +1,14 @@
-<div class="container">
-    <h1>Hello, world!</h1>
-    <form action="index.php?page=connexion" method="POST">
-        <input type="text" name="login_u" placeholder="Login" id="login">
-        <input type="password" name="motdepass_u" placeholder="Password" id="password">
-        <input type="submit" value="OK">
-    </form>
-    Si tu n'es pas inscrit c'est <a href="index.php?page=inscription">ICI</a>
+<div class="container-fluid p-0">
+    <div class="welcome-screen">
+
+        <img class="welcome-screen__img" src="public/img/we-vibe-wow-tech-X0-O71AAUDo-unsplash.jpg">
+        <h1 class="welcome-screen__title">Joujou Coquin</h1>
+        <h2 class="welcome-screen__subtitle">Les jouets qui font du bien</h2>
+        <form class="welcome-screen__form" action="index.php?page=connexion" method="POST">
+            <input type="text" name="login_u" placeholder="Login" id="login">
+            <input type="password" name="motdepass_u" placeholder="Password" id="password">
+            <input type="submit" value="OK">
+        </form>
+        Pas encore inscrit ? Je m'inscrit <a href="index.php?page=inscription">ici</a>.
+    </div>
 </div>

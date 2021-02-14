@@ -1,0 +1,26 @@
+
+.logo__img{
+    width: 80px;
+    height: 80px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.logo__text{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FB4D94; 
+}
+
+.navbar-nav--custom{
+    margin-left: auto!important;
+    margin-right: 0!important;
+}
+
+
+.welcome-screen__img{
+    object-fit: cover;
+    height: 100vh;
+    width: 100vw;
+}
