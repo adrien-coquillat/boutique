@@ -144,13 +144,28 @@
 
 /*best sellers*/
 .best-sellers {
-    height: 50vh;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+}
+
+.best-sellers__title{
+    padding-bottom: 5vh;
+    margin: 0;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 5vh;
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-feature-settings: 'cpsp' on;
+
+    color: #E74285;
 }
 
 /*new products*/
 
 .img-custom-fullwidth {
     object-fit: cover;
-    height: 100vh;
+    height: 60vh;
     width: 100vw;
 }
