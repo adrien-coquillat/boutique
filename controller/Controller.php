@@ -17,8 +17,8 @@ class Controller
         $user = new UtilisateurEntity($donnees_u);
 
         if (($msg = $user->checkData()) === TRUE) {
-            //$utilisateurModel = new UtilisateurModel($donnees_u);
-            // $utilisateurModel->add();
+            $utilisateurModel = new UtilisateurModel();
+            $utilisateurModel->add($user);
         } else {
             throw new Exception(implode('<br />', $msg));
         }

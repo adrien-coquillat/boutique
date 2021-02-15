@@ -21,6 +21,7 @@ class Model
         } catch (Exception $e) {
             die($e->getMessage());
         }
+        $this->db = $db;
     }
 
     public function getAll()

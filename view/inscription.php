@@ -11,6 +11,7 @@
         <input type="text" name="postal_adresse_u" placeholder="Code postal" value="<?= isset($_POST['postal_adresse_u']) ? $_POST['postal_adresse_u'] : ''; ?>">
         <input type="email" name="mail_u" placeholder="Email" value="<?= isset($_POST['mail_u']) ? $_POST['mail_u'] : ''; ?>">
         <input type="tel" name="telephone_u" placeholder="Téléphone" value="<?= isset($_POST['telephone_u']) ? $_POST['telephone_u'] : ''; ?>">
+        <input type="date" name="date_naissance_u" placeholder="Date de naissance" value="<?= isset($_POST['date_naissance_u']) ? $_POST['date_naissance_u'] : ''; ?>">
         <input type="password" name="motdepass_u" placeholder="Password" value="<?= isset($_POST['motdepass_u']) ? $_POST['motdepass_u'] : ''; ?>">
         <input type="password" name="motdepass_u_conf" placeholder="Confirmation du password" value="<?= isset($_POST['motdepass_u_conf']) ? $_POST['motdepass_u_conf'] : ''; ?>">
         <input type="submit" value="Inscription" name="inscription">
