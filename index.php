@@ -1,5 +1,6 @@
 <?php
 
+use controller\BackController;
 use controller\Controller;
 
 // Auto-loader
@@ -9,6 +10,8 @@ function myautoload($className)
 }
 spl_autoload_register('myautoload');
 
+var_dump($_GET);
+var_dump($_SERVER['REQUEST_URI']);
 
 if (empty($_GET)) { //if GET is empty, $page became home -> index
     $page = 'home';
@@ -21,9 +24,14 @@ if (empty($_GET)) { //if GET is empty, $page became home -> index
     }
 }
 
-$controller = new Controller;
 
-$method = $page == '404' ?  $_GET['page'] : $page;
+if ($page == 'backoffice') {
+    $controller = new BackController();
+    $method = isset($_GET['action']) ? $_GET['action'] : 'main';
+} else {
+    $controller = new Controller();
+    $method = $page == '404' ?  $_GET['page'] : $page;
+}
 if (method_exists($controller, $method)) { //if method exist, use controller where method name like page 
     try {
         $data = $controller->$method($_POST); //controller use method where $_POST is use for register or connecte the user for example

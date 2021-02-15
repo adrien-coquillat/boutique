@@ -32,6 +32,9 @@ class Controller
         }
 
         $userModel = new UtilisateurModel();
+
+
+
         $users = $userModel->getAll();
 
         return compact('users');
