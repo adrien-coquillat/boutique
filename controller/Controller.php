@@ -4,6 +4,7 @@ namespace controller;
 
 use entity\UtilisateurEntity;
 use Exception;
+use model\UtilisateurModel;
 
 class Controller
 {
@@ -13,15 +14,23 @@ class Controller
         if (empty($donnees_u)) {
             return;
         }
+        $user = new UtilisateurEntity($donnees_u);
 
-        $user = new UtilisateurEntity();
-
-        if (($msg = $user->checkData($donnees_u)) === TRUE) {
+        if (($msg = $user->checkData()) === TRUE) {
             //$utilisateurModel = new UtilisateurModel($donnees_u);
             // $utilisateurModel->add();
         } else {
             throw new Exception(implode('<br />', $msg));
         }
-        var_dump($msg);
+    }
+
+    public function backoffice()
+    {
+        $access = TRUE;
+        if (!$access) {
+            header('Location: index.php?page=home&error=accessdenied');
+        }
+
+        //new UtilisateurModel
     }
 }

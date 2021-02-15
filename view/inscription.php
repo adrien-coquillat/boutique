@@ -1,5 +1,6 @@
 <div class="container-fluid p-5">
     <h1 class="mt-5 pt-5">Inscription</h1>
+    <?= (isset($msg)) ?  $msg : '' ?>
     <form action="index.php?page=inscription" method="post">
         <input type="text" name="login_u" placeholder="Login" value="<?= isset($_POST['login_u']) ? $_POST['login_u'] : ''; ?>">
         <input type="text" name="nom_u" placeholder="Nom" value="<?= isset($_POST['nom_u']) ? $_POST['nom_u'] : ''; ?>">
