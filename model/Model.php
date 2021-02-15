@@ -2,6 +2,7 @@
 
 namespace model;
 
+use Exception;
 use PDO;
 
 class Model
@@ -14,7 +15,12 @@ class Model
 
     public function __construct()
     {
-        //$this->db = new PDO("mysqli:host={$this->host};dbname={$this->dbname}", $this->login, $this->password);
+        try {
+            $db = new PDO('mysql:host=localhost;dbname=boutique', $this->login, $this->password);
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
     }
 
     public function getAll()
