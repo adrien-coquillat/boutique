@@ -14,7 +14,7 @@ class Model
 
     public function __construct()
     {
-        $this->db = new PDO("mysqli:host={$this->host};dbname={$this->dbname}", $this->login, $this->password);
+        //$this->db = new PDO("mysqli:host={$this->host};dbname={$this->dbname}", $this->login, $this->password);
     }
 
     public function getAll()

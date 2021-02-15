@@ -23,9 +23,10 @@ if (empty($_GET)) { //if GET is empty, $page became home -> index
 
 $controller = new Controller;
 
-if (method_exists($controller, $methode = $page)) { //if method exist, use controller where method name like page 
+$method = $page == '404' ?  $_GET['page'] : $page;
+if (method_exists($controller, $method)) { //if method exist, use controller where method name like page 
     try {
-        $controller->$methode($_POST); //controller use method where $_POST is use for register or connecte the user for example
+        $controller->$method($_POST); //controller use method where $_POST is use for register or connecte the user for example
     } catch (Exception $e) {
         $msg =  "<div class='alert alert-danger' role='alert'>{$e->getMessage()}</div>";
     }

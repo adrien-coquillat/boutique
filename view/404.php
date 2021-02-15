@@ -1,1 +1,1 @@
-erreur
+<h1>Je suis la page 404</h1>
