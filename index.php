@@ -26,12 +26,11 @@ $controller = new Controller;
 $method = $page == '404' ?  $_GET['page'] : $page;
 if (method_exists($controller, $method)) { //if method exist, use controller where method name like page 
     try {
-        $controller->$method($_POST); //controller use method where $_POST is use for register or connecte the user for example
+        $data = $controller->$method($_POST); //controller use method where $_POST is use for register or connecte the user for example
     } catch (Exception $e) {
         $msg =  "<div class='alert alert-danger' role='alert'>{$e->getMessage()}</div>";
     }
 }
-
 
 ob_start(); //we stock on buffer(tampon) the element of variable
 require("view/$page.php");

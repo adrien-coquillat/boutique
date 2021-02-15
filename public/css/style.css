@@ -177,3 +177,13 @@
     width: 100vw;
     filter: saturate(30%);
 }
+
+
+/* ------------------ */
+/* Back office page */
+/* ------------------ */
+
+.bo-input {
+    width: 100px;
+}
+

@@ -24,7 +24,7 @@ class Controller
         }
     }
 
-    public function backoffice()
+    public function backoffice($data)
     {
         $access = TRUE;
         if (!$access) {
@@ -32,7 +32,9 @@ class Controller
         }
 
         $userModel = new UtilisateurModel();
-        var_dump($userModel->getAll());
+        $users = $userModel->getAll();
+
+        return compact('users');
     }
 
     public function connexion($donnee_u)
