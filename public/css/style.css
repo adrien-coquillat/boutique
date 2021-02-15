@@ -163,10 +163,17 @@
     color: #E74285;
 }
 
+.img-card-custom {
+    object-fit: cover;
+    width: 100%;
+    height: 50vh;
+    filter: saturate(30%)
+}
 /*new products*/
 
 .img-custom-fullwidth {
     object-fit: cover;
     height: 60vh;
     width: 100vw;
+    filter: saturate(30%);
 }

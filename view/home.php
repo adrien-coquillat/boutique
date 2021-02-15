@@ -16,25 +16,25 @@
         <h1 class="best-sellers__title">Bientôt en rupture de stock</h1>
         <div class="container">
             <div class="row">
-                <div class="col-sm">
-                    <div class="card" style="width: 25vw;">
-                        <img src="..." class="card-img-top" alt="...">
+                <div class="col-sm d-flex justify-content-center">
+                    <div class="card" style="width: 21rem;">
+                        <img class="img-card-custom border-img-top" src="public/img/malvestida-magazine-2uypuJm-53k-unsplash.jpg" alt="...">
                         <div class="card-body">
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm">
-                    <div class="card" style="width: 25vw;">
-                        <img src="..." class="card-img-top" alt="...">
+                <div class="col-sm d-flex justify-content-center">
+                    <div class="card" style="width: 21rem;">
+                        <img class="img-card-custom border-img-top" src="public/img/malvestida-magazine-n87IdOaYZCE-unsplash.jpg" alt="...">
                         <div class="card-body">
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm">
-                    <div class="card" style="width: 25vw;">
-                        <img src="..." class="card-img-top" alt="...">
+                <div class="col-sm d-flex justify-content-center">
+                    <div class="card" style="width: 21rem;">
+                        <img class="img-card-custom border-img-top" src="public/img/malvestida-magazine-NZzoSTY9Ez4-unsplash.jpg" alt="...">
                         <div class="card-body">
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                         </div>
