@@ -21,7 +21,7 @@ class UtilisateurEntity
         }
     }
 
-    public function setDate_naissance_u($value)
+    public function setDatedenaissance_u($value)
     {
         if (empty($value)) {
             $this->errormsg[] = "Le champ {$this->getVariableName(__METHOD__)} doit être renseigné.";
@@ -198,7 +198,7 @@ class UtilisateurEntity
     {
         $this->adresse_u = $this->numero_rue_adresse_u;
         $this->adresse_u .= ' ' . $this->nom_rue_adresse_u;
-        $this->adresse_u .= ' ' . $this->ville_rue_adresse_u;
-        $this->adresse_u .= ' ' . $this->postale_rue_adresse_u;
+        $this->adresse_u .= ' ' . $this->ville_adresse_u;
+        $this->adresse_u .= ' ' . $this->postal_adresse_u;
     }
 }

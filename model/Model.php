@@ -29,9 +29,10 @@ class Model
 
     public function getAll()
     {
-
         $sth = $this->db->query('SELECT * FROM {$this->table}');
         $sth->setFetchMode(PDO::FETCH_CLASS, UtilisateurModel::class);
+        var_dump($sth);
+        echo 'test';
         return $sth->fetchAll();
     }
 
