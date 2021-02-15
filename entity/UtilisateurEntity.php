@@ -21,6 +21,15 @@ class UtilisateurEntity
         }
     }
 
+    public function setDate_naissance_u($value)
+    {
+        if (empty($value)) {
+            $this->errormsg[] = "Le champ {$this->getVariableName(__METHOD__)} doit être renseigné.";
+            return;
+        }
+        $this->setAttribut(__METHOD__, $value);
+    }
+
     public function setMotdepass_u($value)
     {
         if (empty($value)) {
@@ -33,7 +42,6 @@ class UtilisateurEntity
 
     public function setMotdepass_u_conf($value)
     {
-
         if (empty($value)) {
             $this->errormsg[] = "Le champ {$this->getVariableName(__METHOD__)} doit être renseigné.";
             return;
@@ -176,9 +184,21 @@ class UtilisateurEntity
     public function checkData()
     {
         if (empty($this->errormsg)) {
+            $this->concatenateAdress();
             return TRUE;
         } else {
             return $this->errormsg;
         }
+    }
+
+    /**
+     * Concatenate adress fields
+     */
+    public function concatenateAdress()
+    {
+        $this->adresse_u = $this->numero_rue_adresse_u;
+        $this->adresse_u .= ' ' . $this->nom_rue_adresse_u;
+        $this->adresse_u .= ' ' . $this->ville_rue_adresse_u;
+        $this->adresse_u .= ' ' . $this->postale_rue_adresse_u;
     }
 }

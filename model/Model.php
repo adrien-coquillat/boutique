@@ -4,6 +4,7 @@ namespace model;
 
 use Exception;
 use PDO;
+use phpDocumentor\Reflection\Utils;
 
 class Model
 {
@@ -12,6 +13,7 @@ class Model
     protected $login = 'root';
     protected $dbname = 'boutique';
     protected $password = '';
+    protected $table;
 
     public function __construct()
     {
@@ -22,16 +24,25 @@ class Model
             die($e->getMessage());
         }
         $this->db = $db;
+        $this->table = $this->getTableName();
     }
 
     public function getAll()
     {
 
-        $this->db->query('SELECT * FROM ');
+        $sth = $this->db->query('SELECT * FROM {$this->table}');
+        $sth->setFetchMode(PDO::FETCH_CLASS, UtilisateurModel::class);
+        return $sth->fetchAll();
     }
 
     public function getTableName()
     {
-        echo (__METHOD__);
+        $className = get_class($this);
+        $pos = strpos($className, 'model\\') + 6;
+        $table = '';
+        for ($i = $pos; $i < strlen($className); $i++) {
+            $table .= strtolower($className[$i]);
+        }
+        return ucfirst(str_replace('model', '', $table));
     }
 }
