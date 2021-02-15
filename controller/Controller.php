@@ -26,10 +26,13 @@ class Controller
 
     public function backoffice()
     {
-        $access = FALSE;
+        $access = TRUE;
         if (!$access) {
             header('Location: index.php?page=home&error=accessdenied');
         }
+
+        $userModel = new UtilisateurModel();
+        var_dump($userModel->getAll());
     }
 
     public function connexion($donnee_u)

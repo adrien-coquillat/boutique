@@ -8,8 +8,8 @@
             <input type="password" name="motdepass_u" placeholder="Password" id="password">
             <input type="submit" value="OK">
             <p>
-                <?= (isset($msg)) ?  $msg : '' ?>
                 Pas encore inscrit ? Je m'inscrit <a href="index.php?page=inscription">ici</a>.
+                <?= (isset($msg)) ?  $msg : '' ?>
             </p>
         </form>
     </section>
