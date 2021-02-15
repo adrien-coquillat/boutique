@@ -73,12 +73,12 @@
 
 .welcome-screen__title {
     position: absolute;
-    top: 40vh;
+    bottom: 40vh;
     right: 9.1vh;
 
     font-family: 'Montserrat', sans-serif;
     font-style: normal;
-    font-size: 14vh;
+    font-size: 8vw;
     text-align: right;
     white-space: nowrap;
 
@@ -88,11 +88,11 @@
 
 .welcome-screen__subtitle {
     position: absolute;
-    top: 55vh;
+    top: 60vh;
     right: 10vh;
 
     font-family: 'Roboto', sans-serif;
-    font-size: 7vh;
+    font-size: 5vw;
     text-align: right;
 
     color: #FB4D94;
@@ -110,6 +110,7 @@
     background: rgba(255, 255, 255, 0.25);
     border-radius: 8px;
     width: 10vw;
+    min-width: 100px;
     height: 4.8vh;
     border: 0px;
     padding-left: 1vw;
