@@ -24,22 +24,6 @@ class Controller
         }
     }
 
-    public function backoffice($data)
-    {
-        $access = TRUE;
-        if (!$access) {
-            header('Location: index.php?page=home&error=accessdenied');
-        }
-
-        $userModel = new UtilisateurModel();
-
-
-
-        $users = $userModel->getAll();
-
-        return compact('users');
-    }
-
     public function connexion($donnee_u)
     {
         $userModel = new UtilisateurModel();

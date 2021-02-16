@@ -2,6 +2,7 @@
 
 use controller\BackController;
 use controller\Controller;
+use library\Display;
 
 // Auto-loader
 function myautoload($className)
@@ -9,9 +10,6 @@ function myautoload($className)
     require(str_replace('\\', '/', $className) . '.php');
 }
 spl_autoload_register('myautoload');
-
-var_dump($_GET);
-var_dump($_SERVER['REQUEST_URI']);
 
 if (empty($_GET)) { //if GET is empty, $page became home -> index
     $page = 'home';
@@ -24,10 +22,9 @@ if (empty($_GET)) { //if GET is empty, $page became home -> index
     }
 }
 
-
 if ($page == 'backoffice') {
     $controller = new BackController();
-    $method = isset($_GET['action']) ? $_GET['action'] : 'main';
+    $method = isset($_GET['action']) ? $_GET['action'] : 'dashboard';
 } else {
     $controller = new Controller();
     $method = $page == '404' ?  $_GET['page'] : $page;
@@ -40,6 +37,7 @@ if (method_exists($controller, $method)) { //if method exist, use controller whe
     }
 }
 
+$display = new Display();
 ob_start(); //we stock on buffer(tampon) the element of variable
 require("view/$page.php");
 $content = ob_get_clean(); //we post the variable
