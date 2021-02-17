@@ -64,6 +64,23 @@ class Display
             <?php endforeach; ?>
             <input type="submit" value="Add">
         </form>
+    <?php
+    }
+
+    /**
+     * Return Html gallery img according to folder path provided
+     */
+    public function imgGallery(string $path)
+    {
+        $dirContent = scandir($path);
+        $imgList = [];
+        foreach ($dirContent as $file) {
+            if (preg_match('/[jpg|png|gif]$/', $file))
+                $imgList[] = $path . $file;
+        } ?>
+        <?php foreach ($imgList as $imgFileName) : ?>
+            <img src='<?= $imgFileName ?>' width='100px' height='100px'>
+        <?php endforeach; ?>
 <?php
     }
 }
