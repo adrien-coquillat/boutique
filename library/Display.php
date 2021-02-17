@@ -32,7 +32,7 @@ class Display
                                 <td><input type='submit' name='submit' value='del'></td>
                                 <?php foreach ($data as $key => $value) : ?>
                                     <?php if ($key == $id_key) : ?>
-                                        <td><input disabled class='bo-input' type='text' name='<?= $key ?>' value='<?= $value ?>'></td>
+                                        <td><input class='bo-input' type='hidden' name='<?= $key ?>' value='<?= $value ?>'><?= $value ?></td>
                                     <?php else : ?>
                                         <td><input class='bo-input' type='text' name='<?= $key ?>' value='<?= $value ?>'></td>
                                     <?php endif; ?>

@@ -82,24 +82,15 @@ class Model
         $SQL .= "WHERE $id_key = :$id_key;";
 
         $sth = $this->db->prepare($SQL);
-        echo "<pre>";
-        echo '<br/><br/><br/><br/><br/><br/><br/>';
-        var_dump($data);
 
         foreach ($data as $key => &$value) {
             if (preg_match('/^[\\d]{1,}$/', $value)) {
                 $value = intval($value, 10);
             }
-            echo "<br>:$key as $value type: " . gettype($value);
             $sth->bindParam(":$key", $value);
-            echo "<br>:$key as $value type: " . gettype($value);
         }
 
-        echo '<br/>';
-        var_dump($sth);
-        var_dump($sth->execute());
-        var_dump($this->db->errorInfo());
-        echo "</pre>";
+        $sth->execute();
     }
 
     public function del(array $data, $table = NULL)
