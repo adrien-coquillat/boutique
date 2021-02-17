@@ -31,7 +31,11 @@ class Display
                                 <td><input type='submit' name='submit' value='edit'></td>
                                 <td><input type='submit' name='submit' value='del'></td>
                                 <?php foreach ($data as $key => $value) : ?>
-                                    <td><input class='bo-input' type='text' name='<?= $key ?>' value='<?= $value ?>'></td>
+                                    <?php if ($key == $id_key) : ?>
+                                        <td><input disabled class='bo-input' type='text' name='<?= $key ?>' value='<?= $value ?>'></td>
+                                    <?php else : ?>
+                                        <td><input class='bo-input' type='text' name='<?= $key ?>' value='<?= $value ?>'></td>
+                                    <?php endif; ?>
                                 <?php endforeach; ?>
                             </form>
                         </tr>

@@ -1,14 +1,13 @@
 <?php
-
-use PhpParser\Node\Stmt\Continue_;
-
-if (!isset($data)) {
+if (!isset($data)) :
     // GET data in case of Exception has been generated
     $data = $controller->dashboard();
-}
+endif;
 ?>
 <div class="container-fluid p-5">
     <h1 class="mt-5 pt-5">Back office</h1>
+
+
     <?= (isset($msg)) ?  $msg : '' ?>
     <div class="accordion" id="accordionExample">
         <?php

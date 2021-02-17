@@ -58,7 +58,6 @@ class Model
         foreach ($data as $key => $value) {
             $sth->bindParam(":$key", $data[$key]);
         }
-
         $sth->execute();
     }
 
@@ -67,7 +66,40 @@ class Model
         $table = $table != NULL ? $table : $this->table;
 
         reset($data);
-        $id = key($data);
+        $id_key = key($data);
+        $argNb = count($data);
+        $i = 0;
+
+        $SQL = "UPDATE $table SET ";
+        foreach ($data as $key => $value) {
+            $i++;
+
+            $SQL .= "$key = :$key ";
+            if ($argNb != $i) {
+                $SQL .= ',';
+            }
+        }
+        $SQL .= "WHERE $id_key = :$id_key;";
+
+        $sth = $this->db->prepare($SQL);
+        echo "<pre>";
+        echo '<br/><br/><br/><br/><br/><br/><br/>';
+        var_dump($data);
+
+        foreach ($data as $key => &$value) {
+            if (preg_match('/^[\\d]{1,}$/', $value)) {
+                $value = intval($value, 10);
+            }
+            echo "<br>:$key as $value type: " . gettype($value);
+            $sth->bindParam(":$key", $value);
+            echo "<br>:$key as $value type: " . gettype($value);
+        }
+
+        echo '<br/>';
+        var_dump($sth);
+        var_dump($sth->execute());
+        var_dump($this->db->errorInfo());
+        echo "</pre>";
     }
 
     public function del(array $data, $table = NULL)
@@ -76,7 +108,7 @@ class Model
 
         reset($data);
         $id = key($data);
-        $this->db->query("DELETE FROM $table WHERE $id");
+        $this->db->query("DELETE FROM $table WHERE $id = {$data[$id]}");
     }
 
     public function getTableName()
