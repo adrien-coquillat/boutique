@@ -5,7 +5,6 @@ namespace model;
 use entity\Entity;
 use Exception;
 use PDO;
-use phpDocumentor\Reflection\Utils;
 
 class Model
 {
@@ -67,7 +66,6 @@ class Model
     {
         $table = $table != NULL ? $table : $this->table;
 
-        var_dump($data);
         reset($data);
         $id = key($data);
     }
@@ -76,7 +74,6 @@ class Model
     {
         $table = $table != NULL ? $table : $this->table;
 
-        var_dump($data);
         reset($data);
         $id = key($data);
         $this->db->query("DELETE FROM $table WHERE $id");
