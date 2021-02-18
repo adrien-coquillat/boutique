@@ -30,17 +30,6 @@ class Controller
         }
     }
 
-    public function backoffice()
-    {
-        $access = TRUE;
-        if (!$access) {
-            header('Location: index.php?page=home&error=accessdenied');
-        }
-
-        $utilisateurModel = new UtilisateurModel();
-        var_dump($utilisateurModel->getAll());
-    }
-
     public function connexion($donnee_u)
     {
         if (isset($donnee_u['login_u']) && isset($donnee_u['motdepass_u'])) {

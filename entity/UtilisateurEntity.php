@@ -2,7 +2,7 @@
 
 namespace entity;
 
-class UtilisateurEntity
+class UtilisateurEntity extends Entity
 {
     protected $errormsg = [];
 

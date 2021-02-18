@@ -9,7 +9,7 @@ class UtilisateurModel extends Model
 
 {
 
-    public function add($user)
+    public function add($user, $table = NULL)
     {
         foreach ($user as $key => &$value) {
             $value = trim(htmlspecialchars($value));

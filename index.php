@@ -1,8 +1,13 @@
 <?php
 
+<<<<<<< HEAD
 session_start();
 
+=======
+use controller\BackController;
+>>>>>>> origin/main
 use controller\Controller;
+use library\Display;
 
 // Auto-loader
 function myautoload($className)
@@ -10,7 +15,6 @@ function myautoload($className)
     require(str_replace('\\', '/', $className) . '.php');
 }
 spl_autoload_register('myautoload');
-
 
 if (empty($_GET)) { //if GET is empty, $page became home -> index
     $page = 'home';
@@ -23,18 +27,22 @@ if (empty($_GET)) { //if GET is empty, $page became home -> index
     }
 }
 
-$controller = new Controller;
-
-$method = $page == '404' ?  $_GET['page'] : $page;
+if ($page == 'backoffice') {
+    $controller = new BackController();
+    $method = isset($_GET['action']) ? $_GET['action'] : 'dashboard';
+} else {
+    $controller = new Controller();
+    $method = $page == '404' ?  $_GET['page'] : $page;
+}
 if (method_exists($controller, $method)) { //if method exist, use controller where method name like page 
     try {
-        $controller->$method($_POST); //controller use method where $_POST is use for register or connecte the user for example
+        $data = $controller->$method($_POST); //controller use method where $_POST is use for register or connecte the user for example
     } catch (Exception $e) {
         $msg = "<div class='alert alert-danger' role='alert'>{$e->getMessage()}</div>";
     }
 }
 
-
+$display = new Display();
 ob_start(); //we stock on buffer(tampon) the element of variable
 require("view/$page.php");
 $content = ob_get_clean(); //we post the variable

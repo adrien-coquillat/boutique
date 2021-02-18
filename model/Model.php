@@ -2,9 +2,9 @@
 
 namespace model;
 
+use entity\Entity;
 use Exception;
 use PDO;
-use phpDocumentor\Reflection\Utils;
 
 class Model
 {
@@ -27,12 +27,79 @@ class Model
         $this->table = $this->getTableName();
     }
 
-    public function getAll()
+    public function getAll($table = NULL)
     {
-        $sth = $this->db->query('SELECT * FROM {$this->table}');
-        $sth->setFetchMode(PDO::FETCH_CLASS, UtilisateurModel::class);
-        var_dump($sth);
+        $table = $table != NULL ? $table : $this->table;
+        $sth = $this->db->query("SELECT * FROM $table");
+        $sth->setFetchMode(PDO::FETCH_CLASS, Entity::class);
         return $sth->fetchAll();
+    }
+
+    public function add($data, $table = NULL)
+    {
+        $table = $table != NULL ? $table : $this->table;
+        $SQL = "INSERT INTO $table (";
+        $SQL_P2 = '';
+        $argNb = count($data);
+        $i = 0;
+        foreach ($data as $key => $value) {
+            $i++;
+            $SQL .= " $key";
+            $SQL_P2 .= " :$key";
+
+            if ($argNb != $i) {
+                $SQL .= ',';
+                $SQL_P2 .= ',';
+            }
+        }
+        $SQL .= ') VALUES (' . $SQL_P2 . ');';
+        $sth = $this->db->prepare($SQL);
+
+        foreach ($data as $key => $value) {
+            $sth->bindParam(":$key", $data[$key]);
+        }
+        $sth->execute();
+    }
+
+    public function edit(array $data, $table = NULL)
+    {
+        $table = $table != NULL ? $table : $this->table;
+
+        reset($data);
+        $id_key = key($data);
+        $argNb = count($data);
+        $i = 0;
+
+        $SQL = "UPDATE $table SET ";
+        foreach ($data as $key => $value) {
+            $i++;
+
+            $SQL .= "$key = :$key ";
+            if ($argNb != $i) {
+                $SQL .= ',';
+            }
+        }
+        $SQL .= "WHERE $id_key = :$id_key;";
+
+        $sth = $this->db->prepare($SQL);
+
+        foreach ($data as $key => &$value) {
+            if (preg_match('/^[\\d]{1,}$/', $value)) {
+                $value = intval($value, 10);
+            }
+            $sth->bindParam(":$key", $value);
+        }
+
+        $sth->execute();
+    }
+
+    public function delete(array $data, $table = NULL)
+    {
+        $table = $table != NULL ? $table : $this->table;
+
+        reset($data);
+        $id = key($data);
+        $this->db->query("DELETE FROM $table WHERE $id = {$data[$id]}");
     }
 
     public function getTableName()
