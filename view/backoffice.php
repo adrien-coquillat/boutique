@@ -98,10 +98,33 @@ endif;
                     </form>
                 </div>
             </div>
-            <!-- Upload img -->
+            <!-- Upload img & gallery-->
         </div>
         <div class="tab-pane fade <?= isset($_GET['pane']) && ($_GET['pane'] == 'password') ? 'show active' : '' ?>" id="pills-passwordtools" role="tabpanel" aria-labelledby="pills-passwordtools-tab">
             <!-- Password tools -->
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-encrypt-tab" data-bs-toggle="tab" data-bs-target="#nav-encrypt" type="button" role="tab" aria-controls="nav-encrypt" aria-selected="true">Encrypt</button>
+                    <button class="nav-link" id="nav-verify-tab" data-bs-toggle="tab" data-bs-target="#nav-verify" type="button" role="tab" aria-controls="nav-verify" aria-selected="false">Verify</button>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-encrypt" role="tabpanel" aria-labelledby="nav-encrypt-tab">
+                    <form action="" method="POST">
+                        <input type="text" name="" id="">
+                        <input type="submit" value="">
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="nav-verify" role="tabpanel" aria-labelledby="nav-verify-tab">
+                    <form action="" method="POST">
+                        <input type="text" name="" id="">
+                        <input type="text" name="" id="">
+                        <input type="submit" value="">
+                    </form>
+                </div>
+            </div>
+
+
             <!-- Password tools -->
         </div>
     </div>
