@@ -109,18 +109,24 @@ endif;
                 </div>
             </nav>
             <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="nav-encrypt" role="tabpanel" aria-labelledby="nav-encrypt-tab">
-                    <form action="" method="POST">
-                        <input type="text" name="" id="">
-                        <input type="submit" value="">
+                <div class="tab-pane fade <?= isset($_POST['crypt']) ? 'show active' : ''; ?>" id="nav-encrypt" role="tabpanel" aria-labelledby="nav-encrypt-tab">
+                    <form action="index.php?page=backoffice&pane=password" method="POST">
+                        <input type="text" name="mdp" value=<?= isset($_POST['mdp']) ? $_POST['mdp'] : '' ?>>
+                        <input type="submit" name="crypt" value="Crypt">
                     </form>
+                    <?= (isset($_POST['mdp']) && isset($_POST['crypt'])) ? password_hash($_POST['mdp'], PASSWORD_DEFAULT) : '' ?>
                 </div>
-                <div class="tab-pane fade" id="nav-verify" role="tabpanel" aria-labelledby="nav-verify-tab">
-                    <form action="" method="POST">
-                        <input type="text" name="" id="">
-                        <input type="text" name="" id="">
-                        <input type="submit" value="">
+                <div class="tab-pane fade <?= isset($_POST['verify']) ? 'show active' : ''; ?>" id="nav-verify" role="tabpanel" aria-labelledby="nav-verify-tab">
+                    <form action="index.php?page=backoffice&pane=password" method="POST">
+                        <input type="text" name="mdp_clear" placeholder='Clear password' value=<?= isset($_POST['mdp_clear']) ? $_POST['mdp_clear'] : '' ?>>
+                        <input type="text" name="mdp_hash" placeholder='Encrypt password' value=<?= isset($_POST['mdp_hash']) ? $_POST['mdp_hash'] : '' ?>>
+                        <input type="submit" name="verify" value="Verify">
                     </form>
+                    <?php
+                    if (isset($_POST['verify'])) {
+                        echo password_verify($_POST['mdp_clear'], $_POST['mdp_hash']) ? 'Passwords are equals.' : 'Passwords are differents.';
+                    }
+                    ?>
                 </div>
             </div>
 
