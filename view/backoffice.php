@@ -10,26 +10,25 @@ endif;
     <!-- Tag used to display exception -->
     <?= (isset($msg)) ?  $msg : '' ?>
 
-
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="btn border nav-link active" id="pills-dashboard-tab" data-bs-toggle="pill" data-bs-target="#pills-dashboard" type="button" role="tab" aria-controls="pills-dashboard" aria-selected="true">
+            <button class="btn border nav-link <?= isset($_GET['pane']) && ($_GET['pane'] == 'image' || $_GET['pane'] == 'password') ? '' : 'active' ?>" id="pills-dashboard-tab" data-bs-toggle="pill" data-bs-target="#pills-dashboard" type="button" role="tab" aria-controls="pills-dashboard" aria-selected="true">
                 Dashboard
             </button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="btn border nav-link" id="pills-upload-tab" data-bs-toggle="pill" data-bs-target="#pills-upload" type="button" role="tab" aria-controls="pills-upload" aria-selected="false">
+            <button class="btn border nav-link <?= isset($_GET['pane']) && ($_GET['pane'] == 'image') ? 'active' : '' ?>" id="pills-upload-tab" data-bs-toggle="pill" data-bs-target="#pills-upload" type="button" role="tab" aria-controls="pills-upload" aria-selected="false">
                 Image handeler
             </button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="btn border nav-link" id="pills-passwordtools-tab" data-bs-toggle="pill" data-bs-target="#pills-passwordtools" type="button" role="tab" aria-controls="pills-passwordtools" aria-selected="false">
+            <button class="btn border nav-link <?= isset($_GET['pane']) && ($_GET['pane'] == 'password') ? 'active' : '' ?>" id="pills-passwordtools-tab" data-bs-toggle="pill" data-bs-target="#pills-passwordtools" type="button" role="tab" aria-controls="pills-passwordtools" aria-selected="false">
                 Passwords tools
             </button>
         </li>
     </ul>
     <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-dashboard" role="tabpanel" aria-labelledby="pills-dashboard-tab">
+        <div class="tab-pane fade <?= isset($_GET['pane']) && ($_GET['pane'] == 'image' || $_GET['pane'] == 'password') ? '' : 'show active' ?>" id="pills-dashboard" role="tabpanel" aria-labelledby="pills-dashboard-tab">
             <!-- Dashboard -->
             <div class="accordion" id="accordionExample">
                 <?php
@@ -57,7 +56,7 @@ endif;
                                 </nav>
                                 <div class="tab-content" id="nav-tabContent">
                                     <div class="tab-pane fade show active" id="nav-show<?= $i ?>" role="tabpanel" aria-labelledby="nav-show-tab">
-                                        <?= $display->htmlTableForm($value, "index.php?page=backoffice&action=edit_del&table=$key") ?>
+                                        <?= $display->htmlTableForm($value, "index.php?page=backoffice&action=editDelete&table=$key") ?>
                                     </div>
                                     <div class="tab-pane fade" id="nav-add<?= $i ?>" role="tabpanel" aria-labelledby="nav-add-tab">
                                         <?= $display->addForm($value[0], "index.php?page=backoffice&action=add&table=$key") ?>
@@ -74,13 +73,34 @@ endif;
             <?= $info != '' ? "<div class='alert alert-info' role='alert'>$info</div>" : ''; ?>
             <!-- Dashboard -->
         </div>
-        <div class="tab-pane fade" id="pills-upload" role="tabpanel" aria-labelledby="pills-upload-tab">
-            <!-- Upload img -->
+        <div class="tab-pane fade <?= isset($_GET['pane']) && ($_GET['pane'] == 'image') ? 'show active' : '' ?>" id="pills-upload" role="tabpanel" aria-labelledby="pills-upload-tab">
+            <!-- Upload img & gallery-->
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-gallery-tab" data-bs-toggle="tab" data-bs-target="#nav-gallery" type="button" role="tab" aria-controls="nav-gallery" aria-selected="true">Gallery</button>
+                    <button class="nav-link" id="nav-newpic-tab" data-bs-toggle="tab" data-bs-target="#nav-newpic" type="button" role="tab" aria-controls="nav-newpic" aria-selected="false">New pic</button>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-gallery" role="tabpanel" aria-labelledby="nav-gallery-tab">
+                    <?= $display->imgGalleryForm('public/img/', 'index.php?page=backoffice&action=editDeleteFile') ?>
+                </div>
+                <div class="tab-pane fade" id="nav-newpic" role="tabpanel" aria-labelledby="nav-newpic-tab">
+                    <form action="index.php?page=backoffice&action=uploadFile" method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Upolad a new image</label>
+                            <div class="input-group mb-3">
+                                <input required class="form-control" type="file" name="fileToUpload" id="formFile">
+                                <input class="btn btn-outline-primary" type="submit" name="submit" value="upload">
+                            </div>
 
-            <?= $display->imgGallery('public/img/') ?>
+                        </div>
+                    </form>
+                </div>
+            </div>
             <!-- Upload img -->
         </div>
-        <div class="tab-pane fade" id="pills-passwordtools" role="tabpanel" aria-labelledby="pills-passwordtools-tab">
+        <div class="tab-pane fade <?= isset($_GET['pane']) && ($_GET['pane'] == 'password') ? 'show active' : '' ?>" id="pills-passwordtools" role="tabpanel" aria-labelledby="pills-passwordtools-tab">
             <!-- Password tools -->
             <!-- Password tools -->
         </div>

@@ -29,7 +29,7 @@ class Display
                         <tr>
                             <form action="<?= $actionURL ?>" method="POST">
                                 <td><input type='submit' name='submit' value='edit'></td>
-                                <td><input type='submit' name='submit' value='del'></td>
+                                <td><input type='submit' name='submit' value='delete'></td>
                                 <?php foreach ($data as $key => $value) : ?>
                                     <?php if ($key == $id_key) : ?>
                                         <td><input class='bo-input' type='hidden' name='<?= $key ?>' value='<?= $value ?>'><?= $value ?></td>
@@ -70,17 +70,28 @@ class Display
     /**
      * Return Html gallery img according to folder path provided
      */
-    public function imgGallery(string $path)
+    public function imgGalleryForm(string $path, string $actionURL = '')
     {
-        $dirContent = scandir($path);
-        $imgList = [];
-        foreach ($dirContent as $file) {
-            if (preg_match('/[jpg|png|gif]$/', $file))
-                $imgList[] = $path . $file;
-        } ?>
-        <?php foreach ($imgList as $imgFileName) : ?>
-            <img src='<?= $imgFileName ?>' width='100px' height='100px'>
-        <?php endforeach; ?>
+        $dirContent = scandir($path); ?>
+        <div class="row">
+            <?php foreach ($dirContent as $file) :
+                if (!preg_match('/[jpg|jpeg|png|gif]$/', $file)) :
+                    continue;
+                endif; ?>
+                <form method="POST" action="<?= $actionURL ?>" class="col-2 border m-3">
+                    <img class="vignette" src='<?= $path . $file ?>'>
+                    <div class="row">
+                        <input type="hidden" name="path" value="<?= $path ?>">
+                        <input type="hidden" name="oldFile" value="<?= $file ?>">
+                        <input class="form-control form-control-sm type=" text" name="file" value="<?= $file ?>">
+                        <input type="submit" name="submit" value="edit" class="form-control col-3 btn btn-warning">
+                    </div>
+                    <div class="row">
+                        <input type="submit" name="submit" value="delete" class="form-control col-12 btn btn-danger">
+                    </div>
+                </form>
+            <?php endforeach; ?>
+        </div>
 <?php
     }
 }

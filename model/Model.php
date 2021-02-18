@@ -93,7 +93,7 @@ class Model
         $sth->execute();
     }
 
-    public function del(array $data, $table = NULL)
+    public function delete(array $data, $table = NULL)
     {
         $table = $table != NULL ? $table : $this->table;
 
