@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 use controller\Controller;
 
 // Auto-loader
@@ -28,7 +30,7 @@ if (method_exists($controller, $method)) { //if method exist, use controller whe
     try {
         $controller->$method($_POST); //controller use method where $_POST is use for register or connecte the user for example
     } catch (Exception $e) {
-        $msg =  "<div class='alert alert-danger' role='alert'>{$e->getMessage()}</div>";
+        $msg = "<div class='alert alert-danger' role='alert'>{$e->getMessage()}</div>";
     }
 }
 

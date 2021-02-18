@@ -197,8 +197,8 @@ class UtilisateurEntity
     public function concatenateAdress()
     {
         $this->adresse_u = $this->numero_rue_adresse_u;
-        $this->adresse_u .= ' ' . $this->nom_rue_adresse_u;
-        $this->adresse_u .= ' ' . $this->ville_adresse_u;
-        $this->adresse_u .= ' ' . $this->postal_adresse_u;
+        $this->adresse_u .= ', ' . $this->nom_rue_adresse_u;
+        $this->adresse_u .= ', ' . $this->ville_adresse_u;
+        $this->adresse_u .= ', ' . $this->postal_adresse_u;
     }
 }
