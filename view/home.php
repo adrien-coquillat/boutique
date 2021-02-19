@@ -3,15 +3,29 @@
         <img class="welcome-screen__img" src="public/img/we-vibe-wow-tech-X0-O71AAUDo-unsplash.jpg">
         <h1 class="welcome-screen__title">Joujou Coquin</h1>
         <h2 class="welcome-screen__subtitle">Les jouets qui font du bien</h2>
-        <form class="welcome-screen__form" action="index.php?page=connexion" method="POST">
-            <input type="text" name="login_u" placeholder="Login" id="login">
-            <input type="password" name="motdepass_u" placeholder="Password" id="password">
-            <input type="submit" value="OK">
-            <p>
-                Pas encore inscrit ? Je m'inscrit <a href="index.php?page=inscription">ici</a>.
-                <?= (isset($msg)) ?  $msg : '' ?>
-            </p>
-        </form>
+
+
+        <?php
+        if (isset($_POST['deconnexion'])) {
+            unset($_SESSION['user']);
+        }
+        if (isset($_SESSION['user'])) : ?>
+            <form class="welcome-screen__form" action="index.php" method="POST">
+                <?= $_SESSION['user']['login_u'] ?>
+                <input type="submit" value="DECONNEXION" name="deconnexion">
+            </form>
+        <?php else : ?>
+            <form class="welcome-screen__form" action="index.php?page=connexion" method="POST">
+                <input type="text" name="login_u" placeholder="Login" id="login" required>
+                <input type="password" name="motdepass_u" placeholder="Password" id="password" required>
+                <input type="submit" value="OK">
+                <p>
+                    Pas encore inscrit ? Je m'inscrit <a href="index.php?page=inscription">ici</a>.
+                    <?= (isset($msg)) ?  $msg : '' ?>
+                </p>
+
+            <?php endif; ?>
+
     </section>
     <section class="best-sellers">
         <h1 class="best-sellers__title">Bientôt en rupture de stock</h1>
