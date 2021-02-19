@@ -13,7 +13,9 @@ extract($data);
                 <div class="card" style="width: 21rem;">
                     <img class="img-card-custom border-img-top" src="public/img/<?= $produit->nom_image_p ?>" alt="...">
                     <div class="card-body">
+                        <h5 class="card-title"><?= $produit->nom_p ?></h5>
                         <p class="card-text"><?= $produit->description_p ?></p>
+                        <input type="submit" class="btn btn-primary">Ajouter au panier</input>
                     </div>
                 </div>
             </div>
