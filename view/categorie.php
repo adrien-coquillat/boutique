@@ -14,7 +14,7 @@ extract($data);
                     <img class="img-card-custom border-img-top" src="public/img/<?= $produit->nom_image_p ?>" alt="...">
                     <form class="card-body" method="POST">
                         <h5 class="card-title"><?= $produit->nom_p ?></h5>
-                        <p class="card-text"><?= $produit->troncateText($produit->description_p, 20) ?></p>
+                        <p class="card-text"><?= $produit->troncateText($produit->description_p, 200) ?></p>
                         <input type="hidden" name="id_p" value="<?= $produit->id_p ?>">
                         <input type="submit" class="btn btn-primary" value="Ajouter au panier">
                     </form>

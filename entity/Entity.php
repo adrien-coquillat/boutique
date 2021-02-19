@@ -12,6 +12,9 @@ class Entity
             $output .= $text[$i];
             $i++;
         }
-        return $output . ' ...';
+        if ($i < strlen($text)) {
+            $output .= ' ...';
+        }
+        return $output;
     }
 }
