@@ -12,11 +12,12 @@ extract($data);
             <div class="col-sm d-flex justify-content-center">
                 <div class="card" style="width: 21rem;">
                     <img class="img-card-custom border-img-top" src="public/img/<?= $produit->nom_image_p ?>" alt="...">
-                    <div class="card-body">
+                    <form class="card-body" method="POST">
                         <h5 class="card-title"><?= $produit->nom_p ?></h5>
-                        <p class="card-text"><?= $produit->description_p ?></p>
-                        <input type="submit" class="btn btn-primary">Ajouter au panier</input>
-                    </div>
+                        <p class="card-text"><?= $produit->troncateText($produit->description_p, 20) ?></p>
+                        <input type="hidden" name="id_p" value="<?= $produit->id_p ?>">
+                        <input type="submit" class="btn btn-primary" value="Ajouter au panier">
+                    </form>
                 </div>
             </div>
         <?php endforeach; ?>
