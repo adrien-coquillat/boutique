@@ -3,6 +3,7 @@
 use controller\BackController;
 use controller\Controller;
 use library\Display;
+use model\Model;
 
 // Auto-loader
 function myautoload($className)
@@ -38,6 +39,8 @@ if (method_exists($controller, $method)) { //if method exist, use controller whe
 }
 
 $display = new Display();
+$model = new Model();
+$categories = $model->getAll('Categorie');
 ob_start(); //we stock on buffer(tampon) the element of variable
 require("view/$page.php");
 $content = ob_get_clean(); //we post the variable

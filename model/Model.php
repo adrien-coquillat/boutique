@@ -30,7 +30,13 @@ class Model
     public function getAll($table = NULL)
     {
         $table = $table != NULL ? $table : $this->table;
-        $sth = $this->db->query("SELECT * FROM $table");
+        $SQL = "SELECT * FROM $table";
+        return $this->fetchAll($SQL);
+    }
+
+    public function fetchAll(string $SQL)
+    {
+        $sth = $this->db->query($SQL);
         $sth->setFetchMode(PDO::FETCH_CLASS, Entity::class);
         return $sth->fetchAll();
     }

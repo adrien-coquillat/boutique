@@ -4,6 +4,7 @@ namespace controller;
 
 use entity\UtilisateurEntity;
 use Exception;
+use model\ProduitModel;
 use model\UtilisateurModel;
 
 class Controller
@@ -45,5 +46,18 @@ class Controller
             }
             throw new Exception($msg);
         }
+    }
+
+    public function categorie()
+    {
+        $produitModel = new ProduitModel();
+        if (isset($_GET['id_sc'])) {
+            $id_sc = (int) $_GET['id_sc'];
+            $produits = $produitModel->BySous_categorie($id_sc);
+        } else {
+            $id_c = isset($_GET['id_c']) ? (int) $_GET['id_c'] : 1;
+            $produits = $produitModel->ByCategorie($id_c);
+        }
+        return compact('produits');
     }
 }

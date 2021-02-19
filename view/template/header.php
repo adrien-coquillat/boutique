@@ -16,9 +16,9 @@
                             </svg>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="index.php?page=categorie&id_c=1">jouet connecté</a></li>
-                            <li><a class="dropdown-item" href="index.php?page=categorie&id_c=2">Consommable</a></li>
-                            <li><a class="dropdown-item" href="index.php?page=categorie&id_c=3">Accessoire</a></li>
+                            <?php foreach ($categories as $categorie) : ?>
+                                <li><a class="dropdown-item" href="index.php?page=categorie&id_c=<?= $categorie->id_c ?>"><?= $categorie->nom_c ?></a></li>
+                            <?php endforeach; ?>
 
                         </ul>
                     </li>
