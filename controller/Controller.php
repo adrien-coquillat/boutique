@@ -83,14 +83,13 @@ class Controller
             header("Location: index.php?{$input['fromPage']}");
             exit();
         }
-        if (isset($_GET['id_p'])) {
-            $id_p = $_GET['id_p'];
-        }
+        $id_p = isset($_GET['id_p']) ? $_GET['id_p'] : 0;
         $model = new Model();
         if ($produit = $model->getByID($id_p, 'id_p', 'Produit')) {
             return compact('produit');
         } else {
             header("Location: index.php");
+            exit();
         }
     }
 

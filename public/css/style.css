@@ -129,7 +129,7 @@
     font-size: 1.8vh;
 }
 
-.welcome-screen__form>input[type=submit] {
+.welcome-screen__form>input[type=submit]{
     background: rgba(231, 66, 133, 0.21);
     border: 2px solid #FB4D94;
     box-sizing: border-box;
@@ -194,4 +194,13 @@
     object-fit: cover;
     width: 100%;
     height: 100px;
+}
+
+/* ------------------ */
+/* Product Page */
+/* ------------------ */
+.btn-custom{
+    background: transparent;
+    box-sizing: border-box;
+    border: 4px solid #FB4D94 !important;
 }

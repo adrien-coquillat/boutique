@@ -38,7 +38,14 @@ class Model
     {
         $table = $table != NULL ? $table : $this->table;
         $SQL = "SELECT * FROM $table WHERE $idKey = $idValue";
-        return $this->fetchAll($SQL);
+        return $this->fetch($SQL);
+    }
+
+    public function fetch(string $SQL)
+    {
+        $sth = $this->db->query($SQL);
+        $sth->setFetchMode(PDO::FETCH_CLASS, Entity::class);
+        return $sth->fetch();
     }
 
     public function fetchAll(string $SQL)
