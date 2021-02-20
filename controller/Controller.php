@@ -4,6 +4,7 @@ namespace controller;
 
 use entity\UtilisateurEntity;
 use Exception;
+use model\Model;
 use model\ProduitModel;
 use model\UtilisateurModel;
 
@@ -73,6 +74,24 @@ class Controller
             $produits = $produitModel->ByCategorie($id_c);
         }
         return compact('produits');
+    }
+
+    public function produit($input)
+    {
+        if (isset($input['add'])) {
+            // Function to add product in user bag
+            header("Location: index.php?{$input['fromPage']}");
+            exit();
+        }
+        if (isset($_GET['id_p'])) {
+            $id_p = $_GET['id_p'];
+        }
+        $model = new Model();
+        if ($produit = $model->getByID($id_p, 'id_p', 'Produit')) {
+            return compact('produit');
+        } else {
+            header("Location: index.php");
+        }
     }
 
     public function profil($donnee_u)

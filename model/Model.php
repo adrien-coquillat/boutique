@@ -34,6 +34,13 @@ class Model
         return $this->fetchAll($SQL);
     }
 
+    public function getByID(int $idValue, string $idKey, $table = NULL)
+    {
+        $table = $table != NULL ? $table : $this->table;
+        $SQL = "SELECT * FROM $table WHERE $idKey = $idValue";
+        return $this->fetchAll($SQL);
+    }
+
     public function fetchAll(string $SQL)
     {
         $sth = $this->db->query($SQL);
