@@ -7,16 +7,18 @@
     <div class="row">
         <?php foreach ($produits as $produit) : ?>
             <div class="col-sm d-flex justify-content-center">
-                <div class="card" style="width: 21rem;">
+                <a href="index.php?page=produit&id_p=<?= $produit->id_p ?>" class="card text-decoration-none text-body" style="width: 21rem;">
                     <img class="img-card-custom border-img-top" src="public/img/<?= $produit->nom_image_p ?>" alt="...">
-                    <form class="card-body" method="POST" action="index.php?page=produit&id_p=<?= $produit->id_p ?>">
+                    <div class="card-body" method="POST" action="index.php?page=produit&id_p=<?= $produit->id_p ?>">
                         <h5 class="card-title"><?= $produit->nom_p ?></h5>
                         <p class="card-text"><?= $produit->troncateText($produit->description_p, 200) ?></p>
-                        <input type="hidden" name="fromPage" value="<?= $_SERVER["QUERY_STRING"] ?>">
-                        <input class="btn btn-primary" type="submit" name="add" value="Ajouter Panier">
-                        <input class="btn btn-primary" type="submit" name="show" value="Voir +">
-                    </form>
-                </div>
+                        <form method="POST" action="index.php?page=produit&id_p=<?= $produit->id_p ?>">
+                            <input type="hidden" name="fromPage" value="<?= $_SERVER["QUERY_STRING"] ?>">
+                            <input class="btn btn-primary" type="submit" name="add" value="Ajouter Panier">
+                            <input class="btn btn-primary" type="submit" name="show" value="Voir +">
+                        </form>
+                    </div>
+                </a>
             </div>
         <?php endforeach; ?>
     </div>
