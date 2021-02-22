@@ -16,7 +16,7 @@
                 <input class="col-1" type="text" name="quantity" id="" value="1">
             </p>
             <div class="row">
-                <input class="btn btn-custom p-3 col-4 offset-4" type="submit" value="Ajouter au panier">
+                <input class="btn btn-custom p-3 col-4 offset-4" type="submit" name="add" value="Ajouter au panier">
             </div>
         </form>
 

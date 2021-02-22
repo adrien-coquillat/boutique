@@ -4,6 +4,8 @@ namespace controller;
 
 use entity\UtilisateurEntity;
 use Exception;
+use model\CommandeModel;
+use model\ComposerModel;
 use model\Model;
 use model\ProduitModel;
 use model\UtilisateurModel;
@@ -80,17 +82,48 @@ class Controller
     {
         if (isset($input['add'])) {
             // Function to add product in user bag
-            header("Location: index.php?{$input['fromPage']}");
+
+            //check if user is connected and in all case return ID (temp or final)
+            $utilisateurModel = new UtilisateurModel();
+            $id_u = $utilisateurModel->isConnected();
+
+            //Get current order id o create one
+            $commandeModel = new CommandeModel;
+            $id_com = $commande->getCurrent($id_u);
+
+            //Add a ligne in composer
+            $composerModel = new ComposerModel();
+            $commandeModel->add($id_com, $id_p, $qt);
+
+            header("Location: index.php?page=panier");
             exit();
         }
-        $id_p = isset($_GET['id_p']) ? $_GET['id_p'] : 0;
         $model = new Model();
+        $id_p = isset($_GET['id_p']) ? $_GET['id_p'] : 0;
         if ($produit = $model->getByID($id_p, 'id_p', 'Produit')) {
             return compact('produit');
         } else {
             header("Location: index.php");
             exit();
         }
+    }
+
+    public function panier()
+    {
+
+        //check if user is connected and in all case return ID (temp or final)
+        $utilisateurModel = new UtilisateurModel();
+        $id_u = $utilisateurModel->isConnected();
+
+        //Get current order id o create one
+        $commandeModel = new CommandeModel();
+        $id_com = $commande->getCurrent($id_u);
+
+        //Add a ligne in composer
+        $composerModel = new ComposerModel();
+        $lignes = $commandeModel->getByID($id_com);
+
+        return compact('lignes');
     }
 
     public function profil($donnee_u)
