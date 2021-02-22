@@ -56,7 +56,7 @@ endif;
                                 </nav>
                                 <div class="tab-content" id="nav-tabContent">
                                     <div class="tab-pane fade show active" id="nav-show<?= $i ?>" role="tabpanel" aria-labelledby="nav-show-tab">
-                                        <?= $display->htmlTableForm($value, "index.php?page=backoffice&action=editDelete&table=$key") ?>
+                                        <?= $display->htmlTableForm($value, "index.php?page=backoffice&action=editDeleteDb&table=$key") ?>
                                     </div>
                                     <div class="tab-pane fade" id="nav-add<?= $i ?>" role="tabpanel" aria-labelledby="nav-add-tab">
                                         <?= $display->addForm($value[0], "index.php?page=backoffice&action=add&table=$key") ?>
