@@ -109,7 +109,7 @@ endif;
                 </div>
             </nav>
             <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade <?= isset($_POST['crypt']) ? 'show active' : ''; ?>" id="nav-encrypt" role="tabpanel" aria-labelledby="nav-encrypt-tab">
+                <div class="tab-pane fade show active<?= isset($_POST['crypt']) ? 'show active' : ''; ?>" id="nav-encrypt" role="tabpanel" aria-labelledby="nav-encrypt-tab">
                     <form action="index.php?page=backoffice&pane=password" method="POST">
                         <input type="text" name="mdp" value=<?= isset($_POST['mdp']) ? $_POST['mdp'] : '' ?>>
                         <input type="submit" name="crypt" value="Crypt">
