@@ -55,8 +55,15 @@ class UtilisateurModel extends Model
             ":motdepass_u" => $motdepass_u,
             ":datedenaissance_u" => $datedenaissance_u,
             ":id_u" => $id_u
-
-
         ]);
+    }
+
+    public function getId()
+    {
+        if (isset($_SESSION['user'])) {
+            return $_SESSION['user']['id_u'];
+        } else {
+            return session_id();
+        }
     }
 }

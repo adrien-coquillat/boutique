@@ -34,11 +34,18 @@ class Model
         return $this->fetchAll($SQL);
     }
 
-    public function getByID(int $idValue, string $idKey, $table = NULL)
+    public function getBy(int $idValue, string $idKey, $table = NULL)
     {
         $table = $table != NULL ? $table : $this->table;
         $SQL = "SELECT * FROM $table WHERE $idKey = $idValue";
         return $this->fetch($SQL);
+    }
+
+    public function getAllBy(int $idValue, string $idKey, $table = NULL)
+    {
+        $table = $table != NULL ? $table : $this->table;
+        $SQL = "SELECT * FROM $table WHERE $idKey = $idValue";
+        return $this->fetchAll($SQL);
     }
 
     public function fetch(string $SQL)
@@ -79,6 +86,7 @@ class Model
             $sth->bindParam(":$key", $data[$key]);
         }
         $sth->execute();
+        return $this->db->lastInsertId();
     }
 
     public function edit(array $data, $table = NULL)

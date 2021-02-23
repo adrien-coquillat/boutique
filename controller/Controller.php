@@ -80,48 +80,62 @@ class Controller
 
     public function produit($input)
     {
+        $model = new Model();
+        $id_p = isset($_GET['id_p']) ? $_GET['id_p'] : 0;
+        $qt_article = isset($_GET['qt_article']) ? $_GET['qt_article'] : 1;
+        if (!($produit = $model->getBy($id_p, 'id_p', 'Produit'))) {
+            header("Location: index.php?page=404&error=productunfind");
+            exit();
+        }
         if (isset($input['add'])) {
             // Function to add product in user bag
 
             //check if user is connected and in all case return ID (temp or final)
             $utilisateurModel = new UtilisateurModel();
-            $id_u = $utilisateurModel->isConnected();
+            $id_u = $utilisateurModel->getId();
 
             //Get current order id o create one
             $commandeModel = new CommandeModel;
-            $id_com = $commande->getCurrent($id_u);
+            if (!($commande = $commandeModel->getBy($id_u, 'id_u'))) {
+                $id_com = $commandeModel->add([
+                    'id_u' => $id_u,
+                    'prix_ttc_com' => 0,
+                    'date_com' => date('Y-m-d')
+                ]);
+                $commande = $commandeModel->getBy($id_com, 'id_com');
+            }
 
             //Add a ligne in composer
             $composerModel = new ComposerModel();
-            $commandeModel->add($id_com, $id_p, $qt);
+            $composerModel->add([
+                'id_com' => $commande->id_com,
+                'id_p' => $id_p,
+                'qt_article' => $qt_article
+            ]);
 
             header("Location: index.php?page=panier");
             exit();
         }
-        $model = new Model();
-        $id_p = isset($_GET['id_p']) ? $_GET['id_p'] : 0;
-        if ($produit = $model->getByID($id_p, 'id_p', 'Produit')) {
-            return compact('produit');
-        } else {
-            header("Location: index.php");
-            exit();
-        }
+        return compact('produit');
     }
 
     public function panier()
     {
 
-        //check if user is connected and in all case return ID (temp or final)
+        //check if user is connected and in all case return Id (temp or final)
         $utilisateurModel = new UtilisateurModel();
-        $id_u = $utilisateurModel->isConnected();
+        $id_u = $utilisateurModel->getId();
 
-        //Get current order id o create one
-        $commandeModel = new CommandeModel();
-        $id_com = $commande->getCurrent($id_u);
+        //Get current order id 
+        $commandeModel = new CommandeModel();;
 
-        //Add a ligne in composer
-        $composerModel = new ComposerModel();
-        $lignes = $commandeModel->getByID($id_com);
+        //get lignes in composer
+        if ($commande = $commandeModel->getBy($id_u, 'id_u')) {
+            $composerModel = new ComposerModel();
+            $lignes = $composerModel->getAllBy($commande->id_com, 'id_com');
+        } else {
+            $lignes = NULL;
+        }
 
         return compact('lignes');
     }
