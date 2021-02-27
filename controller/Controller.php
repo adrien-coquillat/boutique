@@ -143,7 +143,7 @@ class Controller
         $commandeModel = new CommandeModel();;
 
         //get lignes in composer
-        if ($commande = $commandeModel->getBy($id_u, 'id_u')) {
+        if (is_int($id_u) && $commande = $commandeModel->getBy($id_u, 'id_u')) {
             $composerModel = new ComposerModel();
             $lignes = $composerModel->getAllBy($commande->id_com, 'id_com');
         } else {
