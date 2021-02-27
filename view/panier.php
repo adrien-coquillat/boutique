@@ -5,7 +5,7 @@
     <?= (isset($msg)) ?  $msg : '' ?>
 
     <div class="row">
-        <?php $display->htmlTableForm($lignes) ?>
+        <?= $lignes == NULL ? 'Rien dans le panier' : $display->htmlTableForm($lignes) ?>
     </div>
 
 </div>

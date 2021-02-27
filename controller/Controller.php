@@ -105,14 +105,27 @@ class Controller
                 $commande = $commandeModel->getBy($id_com, 'id_com');
             }
 
-            //Add a ligne in composer
+            //Add a new ligne in composer is product isnt already
             $composerModel = new ComposerModel();
-            $composerModel->add([
-                'id_com' => $commande->id_com,
-                'id_p' => $id_p,
-                'qt_article' => $qt_article
-            ]);
-
+            $nothingToAdd = FALSE;
+            if ($lignes = $composerModel->getAllBy($commande->id_com, 'id_com')) {
+                foreach ($lignes as $ligne) {
+                    if ($ligne->id_p == $id_p) {
+                        $composerModel->edit([
+                            'id_comp' => $ligne->id_comp,
+                            'qt_article' => ((int) $qt_article + (int) $ligne->qt_article)
+                        ]);
+                        $nothingToAdd = TRUE;
+                    }
+                }
+            }
+            if (!$nothingToAdd) {
+                $composerModel->add([
+                    'id_com' => $commande->id_com,
+                    'id_p' => $id_p,
+                    'qt_article' => $qt_article
+                ]);
+            }
             header("Location: index.php?page=panier");
             exit();
         }
