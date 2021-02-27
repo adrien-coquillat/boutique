@@ -60,10 +60,23 @@ class UtilisateurModel extends Model
 
     public function getId()
     {
-        if (isset($_SESSION['user'])) {
-            return $_SESSION['user']['id_u'];
-        } else {
-            return session_id();
+        if (!isset($_SESSION['user'])) {
+            $temp_user = [
+                'login_u' => session_id(),
+                'nom_u' => 'temp',
+                'prenom_u' => 'temp',
+                'datedenaissance_u' => '2000-01-01',
+                'adresse_u' => ' ',
+                'mail_u' => ' ',
+                'telephone_u' => 0,
+                'motdepass_u' => ' '
+            ];
+            if (!($user_data = $this->isInDb($temp_user))) {
+                parent::add($temp_user);
+                $user_data = $this->isInDb($temp_user);
+            }
+            $_SESSION['user'] = $user_data;
         }
+        return $_SESSION['user']['id_u'];
     }
 }
