@@ -4,9 +4,8 @@
     <!-- Tag used to display exception -->
     <?= (isset($msg)) ?  $msg : '' ?>
 
-
     <div class="row">
-        <?= $lignes == NULL ? 'Rien dans le panier' : $display->htmlTableForm($lignes) ?>
+        <?= $lignes == NULL ? 'Rien dans le panier' : $display->cart($lignes, $produits) ?>
     </div>
 
 </div>

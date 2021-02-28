@@ -95,6 +95,9 @@ class Display
     <?php
     }
 
+    /**
+     * Return Html code for displaying a product card
+     */
     public function productCard(object $produit, $width = 21, $textlength = 200)
     { ?>
         <div class="col-sm d-flex justify-content-center">
@@ -114,11 +117,46 @@ class Display
         <?php
     }
 
+    /**
+     * Return HTML code <a href></a> for sub categorie navigation
+     */
     public function subCategorieNavbar(array $sous_categories)
     {
         foreach ($sous_categories as $sous_categorie) : ?>
             <a class="btn btn-custom p-3 " href="index.php?page=categorie&id_sc=<?= $sous_categorie->id_sc ?>"><?= $sous_categorie->nom_sc ?></a>
 
-<?php endforeach;
+            <?php endforeach;
+    }
+
+    /**
+     * Return HTML code displaying user cart
+     */
+    public function cart($lignes, $produits)
+    {
+        $total = 0;
+        foreach ($lignes as $ligne) {
+            foreach ($produits as $produit) {
+                if ($produit->id_p == $ligne->id_p) :
+                    $stotal = (int) $ligne->qt_article * (int) $produit->prix_ht_p;
+                    $total += $stotal; ?>
+                    <div class="row">
+                        <div class="col-4"><img class="img-thumbnail" src="public/img/<?= $produit->nom_image_p ?>" alt="..."></div>
+                        <div class="col-8 row">
+                            <div class="col-8"><?= $produit->nom_p ?></div>
+                            <div class="col-4 text-end">Prix: <?= $produit->prix_ht_p ?>,00€</div>
+                            <div class="col-4">Quantité: <?= $ligne->qt_article ?></div>
+                            <div class="col-12 text-end">
+                                Sous total: <?= $stotal ?>,00€
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr>
+        <?php endif;
+            }
+        }
+        ?>
+
+<?php
     }
 }

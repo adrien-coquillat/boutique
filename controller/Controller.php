@@ -164,18 +164,22 @@ class Controller
         $utilisateurModel = new UtilisateurModel();
         $id_u = $utilisateurModel->getId();
 
-        //Get current order id 
-        $commandeModel = new CommandeModel();;
+        $model = new Model();;
 
-        //get lignes in composer
-        if ($commande = $commandeModel->getBy($id_u, 'id_u')) {
-            $composerModel = new ComposerModel();
-            $lignes = $composerModel->getAllBy($commande->id_com, 'id_com');
+        //Get current order id  and if exist matching line lignes in composer
+        $produits = [];
+        if ($commande = $model->getBy($id_u, 'id_u', 'Commande')) {
+            $lignes = $model->getAllBy($commande->id_com, 'id_com', 'Composer');
+
+            //Get matching products to display them
+            foreach ($lignes as $ligne) {
+                $produits[] = $model->getBy($ligne->id_p, 'id_p', 'Produit');
+            }
         } else {
             $lignes = NULL;
         }
 
-        return compact('lignes');
+        return compact('lignes', 'produits');
     }
 
     public function profil($donnee_u)
