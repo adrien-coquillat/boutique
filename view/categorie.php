@@ -4,6 +4,8 @@
     <!-- Tag used to display exception -->
     <?= (isset($msg)) ?  $msg : '' ?>
 
+    <?= $display->subCategorieNavbar($sous_categories) ?>
+
     <div class="row">
         <?php foreach ($produits as $produit) : ?>
             <?= $display->productCard($produit) ?>

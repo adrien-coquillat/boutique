@@ -2,7 +2,6 @@
 
 namespace model;
 
-use entity\UtilisateurEntity;
 use PDO;
 
 class UtilisateurModel extends Model
@@ -36,6 +35,7 @@ class UtilisateurModel extends Model
         $result = $sth->fetch();
         return $result;
     }
+
     public function editProfil($user)
     {
         extract($user);

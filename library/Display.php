@@ -111,6 +111,14 @@ class Display
                 </div>
             </a>
         </div>
-<?php
+        <?php
+    }
+
+    public function subCategorieNavbar(array $sous_categories)
+    {
+        foreach ($sous_categories as $sous_categorie) : ?>
+            <a class="btn btn-custom p-3 " href="index.php?page=categorie&id_sc=<?= $sous_categorie->id_sc ?>"><?= $sous_categorie->nom_sc ?></a>
+
+<?php endforeach;
     }
 }

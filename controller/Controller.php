@@ -88,14 +88,19 @@ class Controller
     public function categorie()
     {
         $produitModel = new ProduitModel();
+        $model = new Model();
         if (isset($_GET['id_sc'])) {
             $id_sc = (int) $_GET['id_sc'];
             $produits = $produitModel->BySous_categorie($id_sc);
+            $sous_categorie = $model->getBy($id_sc, 'id_sc', 'Sous_categorie');
+            $sous_categories = $model->getAllBy($sous_categorie->id_c, 'id_c', 'Sous_categorie');
         } else {
             $id_c = isset($_GET['id_c']) ? (int) $_GET['id_c'] : 1;
             $produits = $produitModel->ByCategorie($id_c);
+            $sous_categories = $model->getAllBy($id_c, 'id_c', 'Sous_categorie');
         }
-        return compact('produits');
+
+        return compact('produits', 'sous_categories');
     }
 
     public function produit($input)
