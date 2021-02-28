@@ -42,8 +42,28 @@ class Controller
             $checkpassword = password_verify($donnee_u['motdepass_u'], $userData['motdepass_u']);
             if ($userData !== false) {
                 if ($checkpassword === true) {
+                    // Check if a anonyme session has been launched (user has added something to buy)
+                    if (isset($_SESSION['user']) && $_SESSION['user']['login_u'] == session_id()) {
+
+                        //If session has been launched 
+                        $id_u_temp = $_SESSION['user']['id_u'];
+                        $model = new Model();;
+
+                        // , id_u order is changed from temp to real id_u
+                        if ($commande = $model->getBy($id_u_temp, 'id_u', 'Commande')) {
+                            $commande = [
+                                "id_com" => $commande->id_com,
+                                "id_u" => $userData['id_u']
+                            ];
+                            $model->edit($commande, 'Commande');
+                        }
+                        // , and temp user deleted
+                        $model->delete(["id_u" => $id_u_temp], 'Utilisateur');
+                        unset($_SESSION['user']);
+                    }
+
                     $_SESSION['user'] = $userData;
-                    header('Location: index.php?page=profil');
+                    header('Location: index.php?page=panier');
                 } else {
                     header('Location: index.php?page=home&error=connexion');
                 }
