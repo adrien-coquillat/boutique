@@ -209,4 +209,8 @@ class Controller
             }
         }
     }
+
+    public function acheter()
+    {
+    }
 }

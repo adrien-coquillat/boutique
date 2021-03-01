@@ -156,7 +156,14 @@ class Display
             }
         }
         ?>
-
+        <div class="row">
+            <div class="col-6 text-center">
+                Prix total: <?= $total ?>,00€
+            </div>
+            <div class="col-6 text-center">
+                <a class="btn btn-custom p-3 " href="index.php?page=acheter">Acheter</a>
+            </div>
+        </div>
 <?php
     }
 }
