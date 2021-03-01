@@ -122,7 +122,7 @@ class Controller
 
             //Get current order id o create one
             $commandeModel = new CommandeModel;
-            if (!($commande = $commandeModel->getBy($id_u, 'id_u'))) {
+            if (!($commande = $commandeModel->getCurrentOrder($id_u))) {
                 $id_com = $commandeModel->add([
                     'id_u' => $id_u,
                     'prix_ttc_com' => 0,
@@ -166,10 +166,12 @@ class Controller
         $id_u = $utilisateurModel->getId();
 
         $model = new Model();;
+        $commandeModel = new CommandeModel();;
+
 
         //Get current order id  and if exist matching line lignes in composer
         $produits = [];
-        if (($commande = $model->getBy($id_u, 'id_u', 'Commande')) && ($model->getBy($id_u, 'id_u', 'Commande')->prix_ttc_com == 0)) {
+        if ($commande = $commandeModel->getCurrentOrder($id_u)) {
             $lignes = $model->getAllBy($commande->id_com, 'id_com', 'Composer');
 
             //Get matching products to display them

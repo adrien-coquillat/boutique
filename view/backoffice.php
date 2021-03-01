@@ -129,8 +129,6 @@ endif;
                     ?>
                 </div>
             </div>
-
-
             <!-- Password tools -->
         </div>
     </div>

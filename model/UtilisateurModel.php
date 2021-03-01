@@ -77,6 +77,6 @@ class UtilisateurModel extends Model
             }
             $_SESSION['user'] = $user_data;
         }
-        return $_SESSION['user']['id_u'];
+        return (int) $_SESSION['user']['id_u'];
     }
 }
