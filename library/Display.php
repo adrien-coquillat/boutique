@@ -161,7 +161,10 @@ class Display
                 Prix total: <?= $total ?>,00€
             </div>
             <div class="col-6 text-center">
-                <a class="btn btn-custom p-3 " href="index.php?page=acheter">Acheter</a>
+                <form action="index.php?page=paiement" method="post">
+                    <input type="hidden" value="<?= $total ?>" name="price">
+                    <input class="btn btn-custom" type="submit" value="Acheter">
+                </form>
             </div>
         </div>
 <?php

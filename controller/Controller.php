@@ -9,6 +9,7 @@ use model\ComposerModel;
 use model\Model;
 use model\ProduitModel;
 use model\UtilisateurModel;
+use Stripe\StripeClient;
 
 class Controller
 {
@@ -47,10 +48,10 @@ class Controller
 
                         //If session has been launched 
                         $id_u_temp = $_SESSION['user']['id_u'];
-                        $model = new Model();;
+                        $model = new Model();
 
                         // , id_u order is changed from temp to real id_u
-                        if ($commande = $model->getBy($id_u_temp, 'id_u', 'Commande')) {
+                        if (($commande = $model->getBy($id_u_temp, 'id_u', 'Commande')) && ($model->getBy($id_u_temp, 'id_u', 'Commande')->prix_ttc_com == 0)) {
                             $commande = [
                                 "id_com" => $commande->id_com,
                                 "id_u" => $userData['id_u']
@@ -168,7 +169,7 @@ class Controller
 
         //Get current order id  and if exist matching line lignes in composer
         $produits = [];
-        if ($commande = $model->getBy($id_u, 'id_u', 'Commande')) {
+        if (($commande = $model->getBy($id_u, 'id_u', 'Commande')) && ($model->getBy($id_u, 'id_u', 'Commande')->prix_ttc_com == 0)) {
             $lignes = $model->getAllBy($commande->id_com, 'id_com', 'Composer');
 
             //Get matching products to display them
@@ -210,7 +211,50 @@ class Controller
         }
     }
 
-    public function acheter()
+    public function charge($dataOrder)
     {
+
+
+        // Set your secret key. Remember to switch to your live secret key in production.
+        // See your keys here: https://dashboard.stripe.com/account/apikeys
+        \Stripe\Stripe::setApiKey('sk_test_51IQ8goHUJcyL6Whzt27aM6cbzstkkHEn6M9i8ClTozQ6lCiHiEvvfl7pqNes3xuNNkoZmQ4Q8qxTpSVVKF8zuSY500ukea1prg');
+
+        // Token is created using Stripe Checkout or Elements!
+        // Get the payment token ID submitted by the form:
+        $token = $dataOrder['stripeToken'];
+        $price = $dataOrder['price'];
+
+        //check if user is connected and in all case return Id (temp or final)
+        $utilisateurModel = new UtilisateurModel();
+        $id_u = $utilisateurModel->getId();
+
+        try {
+            // Use Stripe's library to make requests...
+            $charge = \Stripe\Charge::create([
+                'amount' => $price,
+                'currency' => 'eur',
+                'description' => 'Joujou coquin',
+                'source' => $token,
+                'receipt_email' => $_SESSION['user']['mail_u']
+            ]);
+        } catch (\Stripe\Exception\CardException $e) {
+            // Since it's a decline, \Stripe\Exception\CardException will be caught
+            $msg = 'Erreur status ' . $e->getHttpStatus() . '<br />';
+            $msg .= 'Type ' . $e->getError()->type . '<br />';
+            $msg .= 'Code ' . $e->getError()->code . '<br />';
+            // param is '' in this case
+            $msg .= $e->getError()->param . '<br />';
+            $msg .= $e->getError()->message . '<br />';
+            throw new Exception($msg);
+        }
+
+        $model = new Model();
+        $commande = $model->getBy($id_u, 'id_u', 'Commande');
+        $commande->prix_ttc_com = $price;
+        $commande = [
+            "id_com" => $commande->id_com,
+            "prix_ttc_com" => $price,
+        ];
+        $model->edit($commande, 'Commande');
     }
 }

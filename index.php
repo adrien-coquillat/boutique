@@ -8,6 +8,7 @@ use library\Display;
 use model\Model;
 
 // Auto-loader
+require_once('vendor/autoload.php');
 function myautoload($className)
 {
     require(str_replace('\\', '/', $className) . '.php');
