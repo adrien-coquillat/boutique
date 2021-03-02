@@ -98,11 +98,11 @@ class Display
     /**
      * Return Html code for displaying a product card
      */
-    public function productCard(object $produit, $width = 21, $textlength = 200)
+    public function productCard(object $produit, $width = 21, $height = 55, $textlength = 200)
     { ?>
         <div class="col-sm d-flex justify-content-center">
             <a href="index.php?page=produit&id_p=<?= $produit->id_p ?>" class="card text-decoration-none text-body" style="width: <?= $width ?>rem;">
-                <img class="img-card-custom border-img-top" src="public/img/<?= $produit->nom_image_p ?>" alt="...">
+                <img style="height: <?= $height ?>vh;" class="img-card-custom border-img-top" src="public/img/<?= $produit->nom_image_p ?>" alt="...">
                 <div class="card-body" method="POST" action="index.php?page=produit&id_p=<?= $produit->id_p ?>">
                     <h5 class="card-title"><?= $produit->nom_p ?></h5>
                     <p class="card-text"><?= $produit->troncateText($produit->description_p, $textlength) ?></p>

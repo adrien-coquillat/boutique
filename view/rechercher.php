@@ -5,7 +5,9 @@
     <?= (isset($msg)) ?  $msg : '' ?>
 
     <div class="row">
-        <?php var_dump($results) ?>
+        <?php foreach ($results as $produit) {
+            $display->productCard($produit, 15, 20, 50);
+        } ?>
     </div>
 
 </div>
