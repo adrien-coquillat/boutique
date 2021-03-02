@@ -51,7 +51,7 @@ class Controller
                         $model = new Model();
 
                         // , id_u order is changed from temp to real id_u
-                        if (($commande = $model->getBy($id_u_temp, 'id_u', 'Commande')) && ($model->getBy($id_u_temp, 'id_u', 'Commande')->prix_ttc_com == 0)) {
+                        if (($commande = $model->getBy($id_u_temp, 'id_u', 'Commande'))) {
                             $commande = [
                                 "id_com" => $commande->id_com,
                                 "id_u" => $userData['id_u']
@@ -213,6 +213,10 @@ class Controller
         }
     }
 
+    public function paiement()
+    {
+    }
+
     public function charge($dataOrder)
     {
 
@@ -242,21 +246,17 @@ class Controller
         } catch (\Stripe\Exception\CardException $e) {
             // Since it's a decline, \Stripe\Exception\CardException will be caught
             $msg = 'Erreur status ' . $e->getHttpStatus() . '<br />';
-            $msg .= 'Type ' . $e->getError()->type . '<br />';
-            $msg .= 'Code ' . $e->getError()->code . '<br />';
-            // param is '' in this case
-            $msg .= $e->getError()->param . '<br />';
             $msg .= $e->getError()->message . '<br />';
             throw new Exception($msg);
         }
 
-        $model = new Model();
-        $commande = $model->getBy($id_u, 'id_u', 'Commande');
+        $commandeModel = new CommandeModel();
+        $commande = $commandeModel->getCurrentOrder($id_u);
         $commande->prix_ttc_com = $price;
         $commande = [
             "id_com" => $commande->id_com,
             "prix_ttc_com" => $price,
         ];
-        $model->edit($commande, 'Commande');
+        $commandeModel->edit($commande);
     }
 }

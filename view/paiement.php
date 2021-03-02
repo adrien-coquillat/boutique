@@ -10,11 +10,13 @@
 
     <?php $price = isset($_POST['price']) ? (int) $_POST['price'] : 0 ?>
 
-    <form action="index.php?page=charge" method="post" id="payment-form">
-        <div class="form-row">
+    <form class="row" action="index.php?page=charge" method="post" id="payment-form">
+        <div class="col-12 col-md-6 form-row">
             <div class="mb-3">
                 <label class="form-label" for="card-element">
-                    Realiser un paiment de <?= $price ?>,00€ pour votre commande.
+                    Realiser un paiement de <?= $price ?>,00€ pour votre commande.<br />
+                    ex: 4000002500000003 --> Valid card<br />
+                    ex: 4000000000009979 --> Stolend card<br />
                 </label>
                 <div class="form-control" id="card-element">
                     <!-- A Stripe Element will be inserted here. -->
@@ -24,10 +26,8 @@
             <!-- Used to display Element errors. -->
             <div id="card-errors" role="alert"></div>
         </div>
-        <div class="row text-center">
-            <div class="col-12">
-                <button class="btn btn-custom">Payer</button>
-            </div>
+        <div class="col-2 offset-5">
+            <button class="btn btn-custom">Payer</button>
         </div>
     </form>
 </div>
