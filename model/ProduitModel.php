@@ -19,4 +19,10 @@ class ProduitModel extends Model
                 WHERE id_sc = ' . $id_sc;
         return $this->fetchAll($SQL);
     }
+
+    public function searchKeyWord(string $keyword)
+    {
+        $SQL = "SELECT * FROM Produit WHERE LOCATE('$keyword', `description_p`) OR LOCATE('$keyword', `nom_p`)";
+        return $this->fetchAll($SQL);
+    }
 }

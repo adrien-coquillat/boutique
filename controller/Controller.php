@@ -88,6 +88,30 @@ class Controller
         }
     }
 
+    public function rechercher()
+    {
+        $keywords = htmlspecialchars($_POST['keywords']);
+        $keywords = explode(' ', $keywords);
+
+        $produitModel = new ProduitModel();
+
+        $results = [];
+        $productIdList = [];
+
+        foreach ($keywords as $word) {
+            foreach ($produits = $produitModel->searchKeyWord($word) as $produit) {
+                if (!in_array($produit->id_p, $productIdList)) {
+                    $results[] = $produit;
+                    $productIdList[] = $produit->id_p;
+                }
+            }
+        }
+
+        $keywords = implode(' ', $keywords);
+
+        return compact('keywords', 'results');
+    }
+
     public function categorie()
     {
         $produitModel = new ProduitModel();
