@@ -5,9 +5,15 @@
     <?= (isset($msg)) ?  $msg : '' ?>
 
     <div class="row">
-        <?php foreach ($results as $produit) {
+        <?php
+        $html = '';
+        ob_start();
+        foreach ($results as $produit) {
             $display->productCard($produit, 15, 20, 50);
-        } ?>
+        }
+        $html .= ob_get_clean();
+        echo $html = $html == '' ? 'Désolé, aucun résultat pour votre recherche, il va falloir fouiller à la main.' : $html;
+        ?>
     </div>
 
 </div>
