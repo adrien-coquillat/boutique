@@ -81,6 +81,8 @@ class Controller
                 $msg = 'Les identifiants sont incorrects.';
             } elseif ($_GET['error'] == 'accessdenied') {
                 $msg = 'Accés refusé.';
+            } elseif ($_GET['error'] == 'connexionrequired') {
+                $msg = 'Merci de vous identifier ou de vous inscrire afin de poursuivre vos achats.';
             }
             throw new Exception($msg);
         }
@@ -215,6 +217,10 @@ class Controller
 
     public function paiement()
     {
+        if ($_SESSION['user']['login_u'] == session_id()) {
+            header('Location: index.php?page=home&error=connexionrequired');
+            exit();
+        }
     }
 
     public function charge($dataOrder)

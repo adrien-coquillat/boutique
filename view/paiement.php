@@ -15,8 +15,8 @@
             <div class="mb-3">
                 <label class="form-label" for="card-element">
                     Realiser un paiement de <?= $price ?>,00€ pour votre commande.<br />
-                    ex: 4000002500000003 --> Valid card<br />
-                    ex: 4000000000009979 --> Stolend card<br />
+                    <input type="text" value="4000002500000003"> --> Valid card<br />
+                    <input type="text" value="4000000000009979"> --> Stolen card<br />
                 </label>
                 <div class="form-control" id="card-element">
                     <!-- A Stripe Element will be inserted here. -->
