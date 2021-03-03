@@ -171,6 +171,13 @@
     filter: saturate(30%)
 }
 
+.img-thumbnail--custom{
+    object-fit: cover;
+    height: 15vh;
+    width: 100%;
+    filter: saturate(45%)
+}
+
 /*new products*/
 
 .img-custom-fullwidth {

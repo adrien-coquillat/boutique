@@ -4,7 +4,7 @@
     <!-- Tag used to display exception -->
     <?= (isset($msg)) ?  $msg : '' ?>
 
-    <div class="row">
+    <div>
         <?= $lignes == NULL ? 'Rien dans le panier' : $display->cart($lignes, $produits) ?>
     </div>
 

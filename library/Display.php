@@ -139,22 +139,28 @@ class Display
                 if ($produit->id_p == $ligne->id_p) :
                     $stotal = (int) $ligne->qt_article * (int) $produit->prix_ht_p;
                     $total += $stotal; ?>
-                    <div class="row">
-                        <div class="col-4"><img class="img-thumbnail" src="public/img/<?= $produit->nom_image_p ?>" alt="..."></div>
-                        <div class="col-8 row">
-                            <div class="col-8"><?= $produit->nom_p ?></div>
-                            <div class="col-4 text-end">Prix: <?= $produit->prix_ht_p ?>,00€</div>
-                            <div class="col-4">Quantité: <?= $ligne->qt_article ?></div>
-                            <div class="col-12 text-end">
-                                Sous total: <?= $stotal ?>,00€
+                    <form action='index.php?page=panier' method='post' class="row border rounded pb-3 mb-4">
+                        <input type="hidden" name="">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-center"><?= $produit->nom_p ?></h5>
+                            <input class="btn-close" type="submit" name="del" value="">
+                        </div>
+                        <div class="modal-body row">
+                            <div class="col-3"><img class="img-thumbnail--custom" src="public/img/<?= $produit->nom_image_p ?>" alt="..."></div>
+                            <div class="col-9 row align-items-center">
+                                <div class="col-3">Prix: <?= $produit->prix_ht_p ?>,00€</div>
+                                <div class="col-6 text-center align-content-center">quantité: <input style="display:inline ; width : 3rem" type="text" name="qt_article" value="<?= $ligne->qt_article ?>"> <input class="btn btn-primary" type="submit" name="edit" value="Editer"></div>
+                                <div class="col-3">
+                                    Total: <?= $stotal ?>,00€
+                                </div>
                             </div>
                         </div>
-
-                    </div>
-                    <hr>
+                    </form>
         <?php endif;
             }
         }
+
+
         ?>
         <div class="row">
             <div class="col-6 text-center">

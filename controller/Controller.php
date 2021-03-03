@@ -184,7 +184,7 @@ class Controller
         return compact('produit');
     }
 
-    public function panier()
+    public function panier($input)
     {
 
         //check if user is connected and in all case return Id (temp or final)
@@ -192,7 +192,11 @@ class Controller
         $id_u = $utilisateurModel->getId();
 
         $model = new Model();;
-        $commandeModel = new CommandeModel();;
+        $commandeModel = new CommandeModel();
+
+        if (!empty($input)) {
+            var_dump($input);
+        }
 
 
         //Get current order id  and if exist matching line lignes in composer
