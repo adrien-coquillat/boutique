@@ -134,7 +134,7 @@ class Controller
     {
         $model = new Model();
         $id_p = isset($_GET['id_p']) ? $_GET['id_p'] : 0;
-        $qt_article = isset($_GET['qt_article']) ? $_GET['qt_article'] : 1;
+        $qt_article = isset($input['qt_article']) ? $input['qt_article'] : 1;
         if (!($produit = $model->getBy($id_p, 'id_p', 'Produit'))) {
             header("Location: index.php?page=404&error=productunfind");
             exit();

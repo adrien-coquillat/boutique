@@ -182,7 +182,7 @@ class Display
                 </div>
                 <div class="card-body">
 
-                    <p class="card-text">Your total price order is <?= ((int)$order->prix_ttc_com) / 100 ?>,00€ .<br /> Details of your order:</p>
+                    <p class="card-text">Details of your order:</p>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
