@@ -303,6 +303,10 @@ class Controller
         $commandeModel = new CommandeModel();
 
         if ($commandes = $commandeModel->getPayedOrder($id_u)) {
+            $composerModel = new ComposerModel();
+            foreach ($commandes as &$commande) {
+                $commande->lignes = $composerModel->getLignesWithProductDetails($commande->id_com);
+            }
             return compact('commandes');
         }
     }

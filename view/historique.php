@@ -4,8 +4,9 @@
     <!-- Tag used to display exception -->
     <?= (isset($msg)) ?  $msg : '' ?>
 
-    <div class="row">
-        <?php $display->htmlTableForm($commandes) ?>
+    <div>
+
+        <?php $display->orders($commandes) ?>
     </div>
 
 </div>

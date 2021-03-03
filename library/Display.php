@@ -167,6 +167,52 @@ class Display
                 </form>
             </div>
         </div>
-<?php
+        <?php
+    }
+
+    /**
+     * Return HTML code for displaying order with lignes details
+     */
+    public function orders($orders)
+    {
+        foreach ($orders as $order) : ?>
+            <div class="card m-3">
+                <div class="card-header">
+                    <h5 class="card-title text-center">Order n° <?= $order->id_com ?> from <?= $order->date_com ?></h5>
+                </div>
+                <div class="card-body">
+
+                    <p class="card-text">Your total price order is <?= ((int)$order->prix_ttc_com) / 100 ?>,00€ .<br /> Details of your order:</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-2 ">Réf</div>
+                            <div class="col-4">Nom</div>
+                            <div class="col-2">Quantité</div>
+                            <div class="col-2">Prix</div>
+                            <div class="col-2">Total</div>
+
+                        </div>
+                    </li>
+                    <?php foreach ($order->lignes as $ligne) : ?>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-2 "><?= $ligne->id_p ?></div>
+                                <div class="col-4"><?= $ligne->nom_p ?></div>
+                                <div class="col-2"><?= $ligne->qt_article ?> </div>
+                                <div class="col-2"><?= $ligne->prix_ht_p ?>,00€</div>
+                                <div class="col-2"><?= ((int)$ligne->prix_ht_p * (int)$ligne->qt_article)  ?>,00€</div>
+                            </div>
+                        </li>
+                    <?php endforeach; ?>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-2 offset-10"><?= ((int)$order->prix_ttc_com) / 100 ?>,00€</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+<?php endforeach;
     }
 }
