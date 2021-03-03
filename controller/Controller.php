@@ -289,4 +289,21 @@ class Controller
         ];
         $commandeModel->edit($commande);
     }
+
+    public function historique()
+    {
+        $utilisateurModel = new UtilisateurModel();
+        $id_u = $utilisateurModel->getId();
+
+        if ($_SESSION['user']['login_u'] == session_id()) {
+            header('Location: index.php?page=home&error=connexionrequired');
+            exit();
+        }
+
+        $commandeModel = new CommandeModel();
+
+        if ($commandes = $commandeModel->getPayedOrder($id_u)) {
+            return compact('commandes');
+        }
+    }
 }
