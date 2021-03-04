@@ -12,7 +12,7 @@ endif;
 
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="btn border nav-link <?= isset($_GET['pane']) && ($_GET['pane'] == 'image' || $_GET['pane'] == 'password' || $_GET['pane'] == 'producteditor') ? '' : 'active' ?>" id="pills-dashboard-tab" data-bs-toggle="pill" data-bs-target="#pills-dashboard" type="button" role="tab" aria-controls="pills-dashboard" aria-selected="true">
+            <button class="btn border nav-link <?= isset($_GET['pane']) && ($_GET['pane'] == 'image' || $_GET['pane'] == 'password' || $_GET['pane'] == 'producteditor' || $_GET['pane'] == 'homepageeditor') ? '' : 'active' ?>" id="pills-dashboard-tab" data-bs-toggle="pill" data-bs-target="#pills-dashboard" type="button" role="tab" aria-controls="pills-dashboard" aria-selected="true">
                 Dashboard
             </button>
         </li>
@@ -31,9 +31,14 @@ endif;
                 Product editor
             </button>
         </li>
+        <li class="nav-item" role="presentation">
+            <button class="btn border nav-link <?= isset($_GET['pane']) && ($_GET['pane'] == 'homepageeditor') ? 'active' : '' ?>" id="pills-homepageeditor-tab" data-bs-toggle="pill" data-bs-target="#pills-homepageeditor" type="button" role="tab" aria-controls="pills-homepageeditor" aria-selected="false">
+                Home page editor
+            </button>
+        </li>
     </ul>
     <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade <?= isset($_GET['pane']) && ($_GET['pane'] == 'image' || $_GET['pane'] == 'password' || $_GET['pane'] == 'producteditor') ? '' : 'show active' ?>" id="pills-dashboard" role="tabpanel" aria-labelledby="pills-dashboard-tab">
+        <div class="tab-pane fade <?= isset($_GET['pane']) && ($_GET['pane'] == 'image' || $_GET['pane'] == 'password' || $_GET['pane'] == 'producteditor' || $_GET['pane'] == 'homepageeditor') ? '' : 'show active' ?>" id="pills-dashboard" role="tabpanel" aria-labelledby="pills-dashboard-tab">
             <!-- Dashboard -->
             <div class="accordion" id="accordionExample">
                 <?php
@@ -161,6 +166,119 @@ endif;
                 });
             </script>
             <!-- Product editor -->
+        </div>
+        <div class="tab-pane fade <?= isset($_GET['pane']) && ($_GET['pane'] == 'homepageeditor') ? 'show active' : '' ?>" id="pills-homepageeditor" role="tabpanel" aria-labelledby="pills-homepageeditor-tab">
+            <!-- Homepage editor -->
+            <form method="POST" action="index.php?page=backoffice&action=homepageeditor">
+                <div class="card">
+                    <img src="public/img/welcome-pic.jpg" style="height : 25vh;" class="card-img-top welcome-screen__img" alt="...">
+                    <div class="card-img-overlay">
+                        <h1 class="card-title" style="color: white;">Title <input type="text" name="<?= $conf['title']->id ?>" id="" value="<?= $conf['title']->value ?>"> </h1>
+                        <h2 class="card-text" style="color: white;">Subtitle <input type="text" name="<?= $conf['subtitle']->id ?>" id="" value="<?= $conf['subtitle']->value  ?>"> </h2>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Best sellers products catch phrase <input type="text" name="<?= $conf['best_sellers_catch_phrase']->id ?>" id="" value="<?= $conf['best_sellers_catch_phrase']->value ?>"> </h5>
+                    </div>
+                    <ul class=" list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="card-group">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Best sellers product n°1</h5>
+                                        <p class="card-text">
+                                            <select name="<?= $conf['best_sellers_first_id_p']->id ?>">
+                                                <?php foreach ($data["produit"] as $produit) : ?>
+                                                    <option <?= $conf['best_sellers_first_id_p']->value  == $produit->id_p ? 'selected' : '' ?> value="<?= $produit->id_p ?>"><?= $produit->nom_p ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Best sellers product n°2</h5>
+                                        <p class="card-text">
+                                            <select name="<?= $conf['best_sellers_second_id_p']->id ?>">
+                                                <?php foreach ($data["produit"] as $produit) : ?>
+                                                    <option <?= $conf['best_sellers_second_id_p']->value  == $produit->id_p ? 'selected' : '' ?> value="<?= $produit->id_p ?>"><?= $produit->nom_p ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Best sellers product n°3</h5>
+                                        <p class="card-text">
+                                            <select name="<?= $conf['best_sellers_third_id_p']->id ?>">
+                                                <?php foreach ($data["produit"] as $produit) : ?>
+                                                    <option <?= $conf['best_sellers_third_id_p']->value  == $produit->id_p ? 'selected' : '' ?> value="<?= $produit->id_p ?>"><?= $produit->nom_p ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>
+                    <div class="card-body">
+                        <h5 class="card-title">Carousel products</h5>
+                    </div>
+                    <ul class=" list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="card-group">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Carousel product n°1</h5>
+                                        <p class="card-text">
+                                            <select name="<?= $conf['carousel_first_id_p']->id ?>">
+                                                <?php foreach ($data["produit"] as $produit) : ?>
+                                                    <option <?= $conf['carousel_first_id_p']->value  == $produit->id_p ? 'selected' : '' ?> value="<?= $produit->id_p ?>"><?= $produit->nom_p ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Carousel product n°2</h5>
+                                        <p class="card-text">
+                                            <select name="<?= $conf['carousel_second_id_p']->id ?>">
+                                                <?php foreach ($data["produit"] as $produit) : ?>
+                                                    <option <?= $conf['carousel_second_id_p']->value  == $produit->id_p ? 'selected' : '' ?> value="<?= $produit->id_p ?>"><?= $produit->nom_p ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Carousel product n°3</h5>
+                                        <p class="card-text">
+                                            <select name="<?= $conf['carousel_third_id_p']->id ?>">
+                                                <?php foreach ($data["produit"] as $produit) : ?>
+                                                    <option <?= $conf['carousel_third_id_p']->value  == $produit->id_p ? 'selected' : '' ?> value="<?= $produit->id_p ?>"><?= $produit->nom_p ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </li>
+
+                    </ul>
+                    <div class="card-body text-center">
+                    </div>
+
+                </div>
+                <div class="row">
+                    <input type="submit" class="btn btn-primary" value="Enregistrer les modifications">
+                </div>
+            </form>
+
+            <!-- Homepage editor -->
         </div>
     </div>
 

@@ -46,6 +46,7 @@ if (method_exists($controller, $method)) { //if method exist, use controller whe
 
 $display = new Display();
 $model = new Model();
+$conf = $model->getConfArray();
 $categories = $model->getAll('Categorie');
 ob_start(); //we stock on buffer(tampon) the element of variable
 require("view/$page.php");

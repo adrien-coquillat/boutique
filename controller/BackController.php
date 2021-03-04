@@ -23,8 +23,10 @@ class BackController
         $composer = $model->getAll('Composer');
         $produit = $model->getAll('Produit');
         $commande = $model->getAll('Commande');
+        $configuration = $model->getAll('Configuration');
 
-        return compact('utilisateur', 'categorie', 'sous_categorie', 'composer', 'produit', 'commande');
+
+        return compact('utilisateur', 'categorie', 'sous_categorie', 'composer', 'produit', 'commande', 'configuration');
     }
 
     public function add($data)
@@ -94,5 +96,18 @@ class BackController
             "description_p" => $data["description_p"]
         ], 'Produit');
         header('Location: index.php?page=backoffice&pane=producteditor');
+    }
+
+    public function homepageeditor($data)
+    {
+        $model = new Model();
+        var_dump($data);
+        foreach ($data as $key => $value) {
+            $model->edit([
+                "id" => $key,
+                "value" => $value
+            ], 'Configuration');
+        }
+        header('Location: index.php?page=backoffice&pane=homepageeditor');
     }
 }

@@ -3,14 +3,21 @@
     height: 80px;
 }
 
-.logo__text {
+.logo__text, .dropdown-menu--custom {
     font-family: 'Montserrat', sans-serif;
     font-size: 3.7vh;
     padding-left: 1vw;
     color: #FB4D94;
 }
 
-.navbar--custom {
+.dropdown-menu--custom>li>a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.7vh;
+    padding-left: 1vw;
+    color: #FB4D94;
+}
+
+.navbar--custom, .dropdown-menu--custom {
     background: rgba(0, 0, 0, 0.75) !important;
 }
 
@@ -168,6 +175,14 @@
 .img-card-custom {
     object-fit: cover;
     width: 100%;
+    max-height: 25vh;
+    filter: saturate(30%)
+}
+
+.img-custom-carousel{
+    object-fit: cover;
+    width: 100%;
+    max-height: 50vh;
     filter: saturate(30%)
 }
 

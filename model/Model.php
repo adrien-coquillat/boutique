@@ -140,4 +140,15 @@ class Model
         }
         return ucfirst(str_replace('model', '', $table));
     }
+
+    public function getConfArray($table = 'Configuration')
+    {
+        $SQL = "SELECT * FROM $table";
+        $results = $this->fetchAll($SQL);
+        $confArray = [];
+        foreach ($results as $result) {
+            $confArray[$result->name] = $result;
+        }
+        return $confArray;
+    }
 }

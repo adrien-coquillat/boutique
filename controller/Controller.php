@@ -85,6 +85,8 @@ class Controller
             }
             throw new Exception($msg);
         }
+
+        return $this->categorie();
     }
 
     public function rechercher()
