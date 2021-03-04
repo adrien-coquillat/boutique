@@ -193,6 +193,32 @@
     filter: saturate(45%)
 }
 
+/*Title screen*/
+.title-screen {
+    position: relative;
+}
+
+.title-screen__img {
+    object-fit: cover;
+    height: 50vh;
+    width: 100%;
+    filter: saturate(10%) contrast(100%) brightness(40%);
+}
+
+.title-screen__title {
+    position: absolute;
+    bottom: 17vh;
+    right: 9.1vh;
+
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-size: 8vw;
+    text-align: right;
+    white-space: nowrap;
+
+    color: #FFFFFF;
+}
+
 /*new products*/
 
 .img-custom-fullwidth {

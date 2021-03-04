@@ -176,6 +176,8 @@ endif;
                         <h1 class="card-title" style="color: white;">Title <input type="text" name="<?= $conf['title']->id ?>" id="" value="<?= $conf['title']->value ?>"> </h1>
                         <h2 class="card-text" style="color: white;">Subtitle <input type="text" name="<?= $conf['subtitle']->id ?>" id="" value="<?= $conf['subtitle']->value  ?>"> </h2>
                     </div>
+                </div>
+                <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Best sellers products catch phrase <input type="text" name="<?= $conf['best_sellers_catch_phrase']->id ?>" id="" value="<?= $conf['best_sellers_catch_phrase']->value ?>"> </h5>
                     </div>
@@ -224,8 +226,10 @@ endif;
                     </ul>
                     <div class="card-body">
                         <h5 class="card-title">Carousel products</h5>
+                        <p class="card-text"> interval <input type="text" name="<?= $conf['carousel_interval']->id ?>" value="<?= $conf['carousel_interval']->value ?>"> ms</p>
+
                     </div>
-                    <ul class=" list-group list-group-flush">
+                    <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <div class="card-group">
                                 <div class="card">

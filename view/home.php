@@ -70,21 +70,21 @@
                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
-                <div class="carousel-item active" data-bs-interval="5000">
+                <div class="carousel-item active" data-bs-interval="<?= $conf['carousel_interval']->value ?>">
                     <img src="public/img/<?= $produits[$conf['carousel_first_id_p']->value  - 1]->nom_image_p ?>" class="d-block img-custom-carousel" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5 style="font-family: 'Robotto', sans-serif; font-size: 2.7rem; color: #FB4D94;"><?= $produits[$conf['carousel_first_id_p']->value  - 1]->nom_p ?></h5>
                         <p style="font-family: 'Robotto', sans-serif; font-size: 1.5rem; color: #FB4D94;"><?= $produits[0]->troncateText($produits[$conf['carousel_first_id_p']->value  - 1]->description_p, 70) ?></p>
                     </div>
                 </div>
-                <div class="carousel-item" data-bs-interval="5000">
+                <div class="carousel-item" data-bs-interval="<?= $conf['carousel_interval']->value ?>">
                     <img src="public/img/<?= $produits[$conf['carousel_second_id_p']->value  - 1]->nom_image_p ?>" class="d-block img-custom-carousel" alt=" ...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5 style="font-family: 'Robotto', sans-serif; font-size: 2.7rem; color: #FB4D94;"><?= $produits[$conf['carousel_second_id_p']->value  - 1]->nom_p ?></h5>
                         <p style="font-family: 'Robotto', sans-serif; font-size: 1.5rem; color: #FB4D94;"><?= $produits[0]->troncateText($produits[$conf['carousel_second_id_p']->value  - 1]->description_p, 70) ?></p>
                     </div>
                 </div>
-                <div class="carousel-item" data-bs-interval="5000">
+                <div class="carousel-item" data-bs-interval="<?= $conf['carousel_interval']->value ?>">
                     <img src="public/img/<?= $produits[$conf['carousel_third_id_p']->value  - 1]->nom_image_p ?>" class="d-block img-custom-carousel" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5 style="font-family: 'Robotto', sans-serif; font-size: 2.7rem; color: #FB4D94;"><?= $produits[$conf['carousel_third_id_p']->value  - 1]->nom_p ?></h5>

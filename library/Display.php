@@ -100,7 +100,7 @@ class Display
      */
     public function productCard(object $produit, $width = 21, $height = 55, $textlength = 200)
     { ?>
-        <div class="col-sm d-flex justify-content-center">
+        <div class="col-sm d-flex justify-content-center mb-4">
             <a href="index.php?page=produit&id_p=<?= $produit->id_p ?>" class="card text-decoration-none text-body" style="width: <?= $width ?>rem;">
                 <img style="height: <?= $height ?>vh;" class="img-card-custom border-img-top" src="public/img/<?= $produit->nom_image_p ?>" alt="...">
                 <div class="card-body" method="POST" action="index.php?page=produit&id_p=<?= $produit->id_p ?>">
@@ -123,7 +123,7 @@ class Display
     public function subCategorieNavbar(array $sous_categories)
     {
         foreach ($sous_categories as $sous_categorie) : ?>
-            <a class="btn btn-custom p-3 " href="index.php?page=categorie&id_sc=<?= $sous_categorie->id_sc ?>"><?= $sous_categorie->nom_sc ?></a>
+            <a class="btn btn-custom p-3 col-3 m-2" href="index.php?page=categorie&id_sc=<?= $sous_categorie->id_sc ?>"><?= $sous_categorie->nom_sc ?></a>
 
             <?php endforeach;
     }
