@@ -12,4 +12,18 @@ class ComposerModel extends Model
                 WHERE id_com = $id_com";
         return $this->fetchAll($SQL);
     }
+
+    public function isOwnerComposer(int $id_u, int $id_comp)
+    {
+        $SQL = "SELECT Commande.id_u 
+                FROM {$this->table} 
+                INNER JOIN Commande ON Composer.id_com = Commande.id_com
+                WHERE Composer.id_comp = $id_comp AND Commande.prix_ttc_com = 0";
+        $result = $this->fetch($SQL);
+        if (!is_object($result) || !((int) $result->id_u == $id_u)) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
 }

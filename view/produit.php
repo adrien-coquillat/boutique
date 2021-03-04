@@ -14,12 +14,12 @@
                 <h3 class="col-6 text-end"><?= $produit->prix_ht_p ?>€</h3>
             </div>
             <p class="lead"><?= $produit->description_p ?></p>
-            <p class="row mt-5 mb-5">
-                <label class="col-2 offset-4">Quantité:</label>
-                <input class="col-1" type="text" name="qt_article" id="" value="1">
+            <p class="row mt-5 mb-5 justify-content-center">
+                Quantité:
+                <input style="display:inline ; width : 3rem" class="col-1" type="text" name="qt_article" id="" value="1">
             </p>
-            <div class="row">
-                <input class="btn btn-custom p-3 col-4 offset-4" type="submit" name="add" value="Ajouter au panier">
+            <div class="row justify-content-center">
+                <input class="btn btn-custom p-3 " type="submit" name="add" value="Ajouter au panier">
             </div>
         </form>
 

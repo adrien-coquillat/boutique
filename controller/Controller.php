@@ -193,9 +193,17 @@ class Controller
 
         $model = new Model();;
         $commandeModel = new CommandeModel();
+        $composerModel = new ComposerModel();
 
-        if (!empty($input)) {
-            var_dump($input);
+        if (!empty($input) && $composerModel->isOwnerComposer($id_u, $input['id_comp'])) {
+            if (isset($input["edit"])) {
+                $composerModel->edit([
+                    "id_comp" => (int)$input["id_comp"],
+                    "qt_article" => (int)$input["qt_article"]
+                ]);
+            } elseif (isset($input["delete"])) {
+                $composerModel->delete(["id_comp" => (int)$input["id_comp"]]);
+            }
         }
 
 

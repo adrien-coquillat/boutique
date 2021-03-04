@@ -140,10 +140,10 @@ class Display
                     $stotal = (int) $ligne->qt_article * (int) $produit->prix_ht_p;
                     $total += $stotal; ?>
                     <form action='index.php?page=panier' method='post' class="row border rounded pb-3 mb-4">
-                        <input type="hidden" name="">
+                        <input type="hidden" name="id_comp" value="<?= $ligne->id_comp ?>">
                         <div class="modal-header">
                             <h5 class="modal-title text-center"><?= $produit->nom_p ?></h5>
-                            <input class="btn-close" type="submit" name="del" value="">
+                            <input class="btn-close" type="submit" name="delete" value="">
                         </div>
                         <div class="modal-body row">
                             <div class="col-3"><img class="img-thumbnail--custom" src="public/img/<?= $produit->nom_image_p ?>" alt="..."></div>
