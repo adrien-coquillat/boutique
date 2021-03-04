@@ -12,7 +12,7 @@ endif;
 
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="btn border nav-link <?= isset($_GET['pane']) && ($_GET['pane'] == 'image' || $_GET['pane'] == 'password') ? '' : 'active' ?>" id="pills-dashboard-tab" data-bs-toggle="pill" data-bs-target="#pills-dashboard" type="button" role="tab" aria-controls="pills-dashboard" aria-selected="true">
+            <button class="btn border nav-link <?= isset($_GET['pane']) && ($_GET['pane'] == 'image' || $_GET['pane'] == 'password' || $_GET['pane'] == 'producteditor') ? '' : 'active' ?>" id="pills-dashboard-tab" data-bs-toggle="pill" data-bs-target="#pills-dashboard" type="button" role="tab" aria-controls="pills-dashboard" aria-selected="true">
                 Dashboard
             </button>
         </li>
@@ -24,6 +24,11 @@ endif;
         <li class="nav-item" role="presentation">
             <button class="btn border nav-link <?= isset($_GET['pane']) && ($_GET['pane'] == 'password') ? 'active' : '' ?>" id="pills-passwordtools-tab" data-bs-toggle="pill" data-bs-target="#pills-passwordtools" type="button" role="tab" aria-controls="pills-passwordtools" aria-selected="false">
                 Passwords tools
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="btn border nav-link <?= isset($_GET['pane']) && ($_GET['pane'] == 'producteditor') ? 'active' : '' ?>" id="pills-producteditor-tab" data-bs-toggle="pill" data-bs-target="#pills-producteditor" type="button" role="tab" aria-controls="pills-producteditor" aria-selected="false">
+                Product editor
             </button>
         </li>
     </ul>
@@ -130,6 +135,28 @@ endif;
                 </div>
             </div>
             <!-- Password tools -->
+        </div>
+        <div class="tab-pane fade <?= isset($_GET['pane']) && ($_GET['pane'] == 'producteditor') ? 'show active' : '' ?>" id="pills-producteditor" role="tabpanel" aria-labelledby="pills-producteditor-tab">
+            <!-- Product editor -->
+            <select>
+                <?php foreach ($data["produit"] as $produit) : ?>
+                    <option><?= $produit->nom_p ?></option>
+                <?php endforeach; ?>
+            </select>
+            <textarea>
+                <?= $data["produit"][1]->description_p ?>
+            </textarea>
+            <script>
+                tinymce.init({
+                    selector: 'textarea',
+                    plugins: 'a11ychecker advcode casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
+                    toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',
+                    toolbar_mode: 'floating',
+                    tinycomments_mode: 'embedded',
+                    tinycomments_author: 'Author name',
+                });
+            </script>
+            <!-- Product editor -->
         </div>
     </div>
 

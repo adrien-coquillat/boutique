@@ -9,7 +9,6 @@ use model\ComposerModel;
 use model\Model;
 use model\ProduitModel;
 use model\UtilisateurModel;
-use Stripe\StripeClient;
 
 class Controller
 {
@@ -261,8 +260,6 @@ class Controller
 
     public function charge($dataOrder)
     {
-
-
         // Set your secret key. Remember to switch to your live secret key in production.
         // See your keys here: https://dashboard.stripe.com/account/apikeys
         \Stripe\Stripe::setApiKey('sk_test_51IQ8goHUJcyL6Whzt27aM6cbzstkkHEn6M9i8ClTozQ6lCiHiEvvfl7pqNes3xuNNkoZmQ4Q8qxTpSVVKF8zuSY500ukea1prg');
