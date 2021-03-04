@@ -183,7 +183,7 @@
     object-fit: cover;
     width: 100%;
     max-height: 50vh;
-    filter: saturate(30%)
+    filter: saturate(30%) blur(2px);
 }
 
 .img-thumbnail--custom{
