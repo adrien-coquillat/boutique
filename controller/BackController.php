@@ -85,4 +85,14 @@ class BackController
             throw new Exception($msg);
         }
     }
+
+    public function producteditor($data)
+    {
+        $model = new Model();
+        $model->edit([
+            "id_p" => $data["id_p"],
+            "description_p" => $data["description_p"]
+        ], 'Produit');
+        header('Location: index.php?page=backoffice&pane=producteditor');
+    }
 }

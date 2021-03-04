@@ -33,7 +33,7 @@ endif;
         </li>
     </ul>
     <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade <?= isset($_GET['pane']) && ($_GET['pane'] == 'image' || $_GET['pane'] == 'password') ? '' : 'show active' ?>" id="pills-dashboard" role="tabpanel" aria-labelledby="pills-dashboard-tab">
+        <div class="tab-pane fade <?= isset($_GET['pane']) && ($_GET['pane'] == 'image' || $_GET['pane'] == 'password' || $_GET['pane'] == 'producteditor') ? '' : 'show active' ?>" id="pills-dashboard" role="tabpanel" aria-labelledby="pills-dashboard-tab">
             <!-- Dashboard -->
             <div class="accordion" id="accordionExample">
                 <?php
@@ -138,22 +138,26 @@ endif;
         </div>
         <div class="tab-pane fade <?= isset($_GET['pane']) && ($_GET['pane'] == 'producteditor') ? 'show active' : '' ?>" id="pills-producteditor" role="tabpanel" aria-labelledby="pills-producteditor-tab">
             <!-- Product editor -->
-            <select>
-                <?php foreach ($data["produit"] as $produit) : ?>
-                    <option><?= $produit->nom_p ?></option>
-                <?php endforeach; ?>
-            </select>
-            <textarea>
-                <?= $data["produit"][1]->description_p ?>
-            </textarea>
+            <form action="index.php?page=backoffice&pane=producteditor" method="POST">
+                <select name="id_p">
+                    <?php foreach ($data["produit"] as $produit) : ?>
+                        <option <?= isset($_POST['id_p']) && $_POST['id_p'] == $produit->id_p ? 'selected' : '' ?> value="<?= $produit->id_p ?>"><?= $produit->nom_p ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <input class="btn btn-secondary" type="submit" value="Editer">
+            </form>
+            <form action="index.php?page=backoffice&action=producteditor" method="POST">
+                <textarea name="description_p">
+                <?= isset($_POST['id_p']) ? $data["produit"][((int) $_POST['id_p']) - 1]->description_p : 'Select one product to edit description' ?>
+                </textarea>
+                <input type="hidden" name="id_p" value="<?= isset($_POST['id_p']) ? $_POST['id_p'] : '' ?>">
+                <input class="btn btn-primary" type="submit" value="Enregistrer">
+            </form>
             <script>
                 tinymce.init({
                     selector: 'textarea',
-                    plugins: 'a11ychecker advcode casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
-                    toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',
-                    toolbar_mode: 'floating',
-                    tinycomments_mode: 'embedded',
-                    tinycomments_author: 'Author name',
+                    menubar: 'edit format',
+                    height: 400,
                 });
             </script>
             <!-- Product editor -->
