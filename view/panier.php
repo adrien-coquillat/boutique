@@ -9,8 +9,8 @@
     <!-- Tag used to display exception -->
     <?= (isset($msg)) ?  $msg : '' ?>
 
-    <div>
-        <?= $lignes == NULL ? 'Rien dans le panier' : $display->cart($lignes, $produits) ?>
-    </div>
+
+    <?= $lignes == NULL ? 'Rien dans le panier' : $display->cart($lignes, $produits) ?>
+
 
 </div>

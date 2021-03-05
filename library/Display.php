@@ -182,7 +182,7 @@ class Display
     public function orders($orders)
     {
         foreach ($orders as $order) : ?>
-            <div class="card m-3">
+            <div class="card w-80">
                 <div class="card-header">
                     <h5 class="card-title text-center">Order n° <?= $order->id_com ?> from <?= $order->date_com ?></h5>
                 </div>

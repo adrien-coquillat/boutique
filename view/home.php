@@ -62,7 +62,7 @@
         </div>
     </section>
 
-    <section class="new-products">
+    <section class="new-products mb-5">
         <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
 
             <div class="carousel-inner">
@@ -70,8 +70,8 @@
                     <a href="index.php?page=produit&id_p=<?= $produits[$conf['carousel_first_id_p']->value  - 1]->id_p ?>">
                         <img src="public/img/<?= $produits[$conf['carousel_first_id_p']->value  - 1]->nom_image_p ?>" class="d-block img-custom-carousel" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5 style="font-family: 'Robotto', sans-serif; font-size: 2.7rem; color: #FB4D94;"><?= $produits[$conf['carousel_first_id_p']->value  - 1]->nom_p ?></h5>
-                            <p style="font-family: 'Robotto', sans-serif; font-size: 1.5rem; color: #FB4D94;"><?= $produits[0]->troncateText($produits[$conf['carousel_first_id_p']->value  - 1]->description_p, 70) ?></p>
+                            <h5 style="font-family: 'Robotto', sans-serif; font-size: 2.7rem; color: #FB4D94; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);"><?= $produits[$conf['carousel_first_id_p']->value  - 1]->nom_p ?></h5>
+                            <p style="font-family: 'Robotto', sans-serif; font-size: 1.5rem; color: #FB4D94; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);"><?= $produits[0]->troncateText($produits[$conf['carousel_first_id_p']->value  - 1]->description_p, 70) ?></p>
                         </div>
                     </a>
                 </div>
@@ -80,8 +80,8 @@
 
                         <img src="public/img/<?= $produits[$conf['carousel_second_id_p']->value  - 1]->nom_image_p ?>" class="d-block img-custom-carousel" alt=" ...">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5 style="font-family: 'Robotto', sans-serif; font-size: 2.7rem; color: #FB4D94;"><?= $produits[$conf['carousel_second_id_p']->value  - 1]->nom_p ?></h5>
-                            <p style="font-family: 'Robotto', sans-serif; font-size: 1.5rem; color: #FB4D94;"><?= $produits[0]->troncateText($produits[$conf['carousel_second_id_p']->value  - 1]->description_p, 70) ?></p>
+                            <h5 style="font-family: 'Robotto', sans-serif; font-size: 2.7rem; color: #FB4D94; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);"><?= $produits[$conf['carousel_second_id_p']->value  - 1]->nom_p ?></h5>
+                            <p style="font-family: 'Robotto', sans-serif; font-size: 1.5rem; color: #FB4D94; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);"><?= $produits[0]->troncateText($produits[$conf['carousel_second_id_p']->value  - 1]->description_p, 70) ?></p>
                         </div>
                     </a>
                 </div>
@@ -90,17 +90,17 @@
 
                         <img src="public/img/<?= $produits[$conf['carousel_third_id_p']->value  - 1]->nom_image_p ?>" class="d-block img-custom-carousel" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5 style="font-family: 'Robotto', sans-serif; font-size: 2.7rem; color: #FB4D94;"><?= $produits[$conf['carousel_third_id_p']->value  - 1]->nom_p ?></h5>
-                            <p style="font-family: 'Robotto', sans-serif; font-size: 1.5rem; color: #FB4D94;"><?= $produits[0]->troncateText($produits[$conf['carousel_third_id_p']->value  - 1]->description_p, 70) ?></p>
+                            <h5 style="font-family: 'Robotto', sans-serif; font-size: 2.7rem; color: #FB4D94; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);"><?= $produits[$conf['carousel_third_id_p']->value  - 1]->nom_p ?></h5>
+                            <p style="font-family: 'Robotto', sans-serif; font-size: 1.5rem; color: #FB4D94; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);"><?= $produits[0]->troncateText($produits[$conf['carousel_third_id_p']->value  - 1]->description_p, 70) ?></p>
                         </div>
                     </a>
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+            <button style="background: transparent; border : 0px ; " class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+            <button style="background: transparent; border : 0px" class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>

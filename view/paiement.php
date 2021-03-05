@@ -9,7 +9,7 @@
         <h1 class="title-screen__title">Paiement</h1>
     </section>
 </div>
-<div class="container-fluid">
+<div class="container-fluid m-3">
     <!-- Tag used to display exception -->
     <?= (isset($msg)) ?  $msg : '' ?>
 
