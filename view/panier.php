@@ -4,7 +4,7 @@
         <h1 class="title-screen__title">Panier</h1>
     </section>
 </div>
-<div class="container-fluid m-3">
+<div class="container-fluid mt-3 mb-3">
 
     <!-- Tag used to display exception -->
     <?= (isset($msg)) ?  $msg : '' ?>
