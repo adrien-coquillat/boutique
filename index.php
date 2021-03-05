@@ -5,8 +5,10 @@ session_start();
 use controller\BackController;
 use controller\Controller;
 use library\Display;
+use model\Model;
 
 // Auto-loader
+require_once('vendor/autoload.php');
 function myautoload($className)
 {
     require(str_replace('\\', '/', $className) . '.php');
@@ -34,12 +36,17 @@ if ($page == 'backoffice') {
 if (method_exists($controller, $method)) { //if method exist, use controller where method name like page 
     try {
         $data = $controller->$method($_POST); //controller use method where $_POST is use for register or connecte the user for example
+        if (is_array($data)) {
+            extract($data);
+        }
     } catch (Exception $e) {
         $msg = "<div class='alert alert-danger' role='alert'>{$e->getMessage()}</div>";
     }
 }
 
 $display = new Display();
+$model = new Model();
+$categories = $model->getAll('Categorie');
 ob_start(); //we stock on buffer(tampon) the element of variable
 require("view/$page.php");
 $content = ob_get_clean(); //we post the variable

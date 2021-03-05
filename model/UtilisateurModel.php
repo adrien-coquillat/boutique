@@ -2,7 +2,6 @@
 
 namespace model;
 
-use entity\UtilisateurEntity;
 use PDO;
 
 class UtilisateurModel extends Model
@@ -36,6 +35,7 @@ class UtilisateurModel extends Model
         $result = $sth->fetch();
         return $result;
     }
+
     public function editProfil($user)
     {
         extract($user);
@@ -55,8 +55,28 @@ class UtilisateurModel extends Model
             ":motdepass_u" => $motdepass_u,
             ":datedenaissance_u" => $datedenaissance_u,
             ":id_u" => $id_u
-
-
         ]);
+    }
+
+    public function getId()
+    {
+        if (!isset($_SESSION['user'])) {
+            $temp_user = [
+                'login_u' => session_id(),
+                'nom_u' => 'temp',
+                'prenom_u' => 'temp',
+                'datedenaissance_u' => '2000-01-01',
+                'adresse_u' => ' ',
+                'mail_u' => ' ',
+                'telephone_u' => 0,
+                'motdepass_u' => ' '
+            ];
+            if (!($user_data = $this->isInDb($temp_user))) {
+                parent::add($temp_user);
+                $user_data = $this->isInDb($temp_user);
+            }
+            $_SESSION['user'] = $user_data;
+        }
+        return (int) $_SESSION['user']['id_u'];
     }
 }

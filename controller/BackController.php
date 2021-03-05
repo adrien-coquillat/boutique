@@ -36,7 +36,7 @@ class BackController
         }
     }
 
-    public function editDelete($data)
+    public function editDeleteDb($data)
     {
         if (isset($_GET['table'])) {
             $model = new Model();
@@ -48,6 +48,7 @@ class BackController
             } elseif ($action == 'delete') {
                 $model->delete($data, $table);
             }
+            header('Location: index.php?page=backoffice&pane=dashboard');
         }
     }
 

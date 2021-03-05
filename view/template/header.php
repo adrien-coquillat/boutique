@@ -16,9 +16,9 @@
                             </svg>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="index.php?page=categorie&id_c=1">jouet connecté</a></li>
-                            <li><a class="dropdown-item" href="index.php?page=categorie&id_c=2">Consommable</a></li>
-                            <li><a class="dropdown-item" href="index.php?page=categorie&id_c=3">Accessoire</a></li>
+                            <?php foreach ($categories as $categorie) : ?>
+                                <li><a class="dropdown-item" href="index.php?page=categorie&id_c=<?= $categorie->id_c ?>"><?= $categorie->nom_c ?></a></li>
+                            <?php endforeach; ?>
 
                         </ul>
                     </li>
@@ -33,10 +33,9 @@
                         </a>
                     </li>
                 </ul>
-                <form class="d-flex">
-
+                <form action="index.php?page=rechercher" method="POST" class="d-flex">
                     <div class="input-group">
-                        <input class="search-bar-custom__input" type="text" class="form-control" type="search" placeholder="Rechercher un joujou" aria-label="Search">
+                        <input class="search-bar-custom__input" name="keywords" type="text" class="form-control" type="search" placeholder="Rechercher un joujou" aria-label="Search">
                         <div class="input-group-append">
                             <button class="search-bar-custom__button" type="submit">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

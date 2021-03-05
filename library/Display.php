@@ -92,6 +92,81 @@ class Display
                 </form>
             <?php endforeach; ?>
         </div>
+    <?php
+    }
+
+    /**
+     * Return Html code for displaying a product card
+     */
+    public function productCard(object $produit, $width = 21, $height = 55, $textlength = 200)
+    { ?>
+        <div class="col-sm d-flex justify-content-center">
+            <a href="index.php?page=produit&id_p=<?= $produit->id_p ?>" class="card text-decoration-none text-body" style="width: <?= $width ?>rem;">
+                <img style="height: <?= $height ?>vh;" class="img-card-custom border-img-top" src="public/img/<?= $produit->nom_image_p ?>" alt="...">
+                <div class="card-body" method="POST" action="index.php?page=produit&id_p=<?= $produit->id_p ?>">
+                    <h5 class="card-title"><?= $produit->nom_p ?></h5>
+                    <p class="card-text"><?= $produit->troncateText($produit->description_p, $textlength) ?></p>
+                    <form method="POST" action="index.php?page=produit&id_p=<?= $produit->id_p ?>">
+                        <input type="hidden" name="fromPage" value="<?= $_SERVER["QUERY_STRING"] ?>">
+                        <input class="btn btn-primary" type="submit" name="add" value="Ajouter Panier">
+                        <input class="btn btn-primary" type="submit" name="show" value="Voir +">
+                    </form>
+                </div>
+            </a>
+        </div>
+        <?php
+    }
+
+    /**
+     * Return HTML code <a href></a> for sub categorie navigation
+     */
+    public function subCategorieNavbar(array $sous_categories)
+    {
+        foreach ($sous_categories as $sous_categorie) : ?>
+            <a class="btn btn-custom p-3 " href="index.php?page=categorie&id_sc=<?= $sous_categorie->id_sc ?>"><?= $sous_categorie->nom_sc ?></a>
+
+            <?php endforeach;
+    }
+
+    /**
+     * Return HTML code displaying user cart
+     */
+    public function cart($lignes, $produits)
+    {
+        $total = 0;
+        foreach ($lignes as $ligne) {
+            foreach ($produits as $produit) {
+                if ($produit->id_p == $ligne->id_p) :
+                    $stotal = (int) $ligne->qt_article * (int) $produit->prix_ht_p;
+                    $total += $stotal; ?>
+                    <div class="row">
+                        <div class="col-4"><img class="img-thumbnail" src="public/img/<?= $produit->nom_image_p ?>" alt="..."></div>
+                        <div class="col-8 row">
+                            <div class="col-8"><?= $produit->nom_p ?></div>
+                            <div class="col-4 text-end">Prix: <?= $produit->prix_ht_p ?>,00€</div>
+                            <div class="col-4">Quantité: <?= $ligne->qt_article ?></div>
+                            <div class="col-12 text-end">
+                                Sous total: <?= $stotal ?>,00€
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr>
+        <?php endif;
+            }
+        }
+        ?>
+        <div class="row">
+            <div class="col-6 text-center">
+                Prix total: <?= $total ?>,00€
+            </div>
+            <div class="col-6 text-center">
+                <form action="index.php?page=paiement" method="post">
+                    <input type="hidden" value="<?= $total ?>" name="price">
+                    <input class="btn btn-custom" type="submit" value="Acheter">
+                </form>
+            </div>
+        </div>
 <?php
     }
 }

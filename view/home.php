@@ -9,7 +9,7 @@
         if (isset($_POST['deconnexion'])) {
             unset($_SESSION['user']);
         }
-        if (isset($_SESSION['user'])) : ?>
+        if (isset($_SESSION['user']) && $_SESSION['user']['login_u'] != session_id()) : ?>
             <form class="welcome-screen__form" action="index.php" method="POST">
                 <?= $_SESSION['user']['login_u'] ?>
                 <input type="submit" value="DECONNEXION" name="deconnexion">
@@ -23,8 +23,8 @@
                     Pas encore inscrit ? Je m'inscrit <a href="index.php?page=inscription">ici</a>.
                     <?= (isset($msg)) ?  $msg : '' ?>
                 </p>
-
-            <?php endif; ?>
+            </form>
+        <?php endif; ?>
 
     </section>
     <section class="best-sellers">
