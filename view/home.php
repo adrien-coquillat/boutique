@@ -31,7 +31,7 @@
         <h1 class="best-sellers__title"><?= $conf['best_sellers_catch_phrase']->value  ?></h1>
         <div class="container">
             <div class="row">
-                <div class="col-sm d-flex justify-content-center">
+                <div class="col-sm d-flex justify-content-center mb-3">
                     <div class="card" style="width: 21rem;">
                         <img class="img-card-custom border-img-top" src="public/img/<?= $produits[$conf['best_sellers_first_id_p']->value - 1]->nom_image_p ?>" alt="...">
                         <div class="card-body">
@@ -40,7 +40,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm d-flex justify-content-center">
+                <div class="col-sm d-flex justify-content-center  mb-3">
                     <div class="card" style="width: 21rem;">
                         <img class="img-card-custom border-img-top" src="public/img/<?= $produits[$conf['best_sellers_second_id_p']->value  - 1]->nom_image_p ?>" alt="...">
                         <div class="card-body">
@@ -49,7 +49,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm d-flex justify-content-center">
+                <div class="col-sm d-flex justify-content-center  mb-3">
                     <div class="card" style="width: 21rem;">
                         <img class="img-card-custom border-img-top" src="public/img/<?= $produits[$conf['best_sellers_third_id_p']->value  - 1]->nom_image_p ?>" alt="...">
                         <div class="card-body">

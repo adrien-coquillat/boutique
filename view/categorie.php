@@ -2,6 +2,7 @@
     <section class="title-screen">
         <img class="title-screen__img" src="public/img/Categorie.jpg">
         <h1 class="title-screen__title">Categorie</h1>
+    </section>
 </div>
 <div class="container-fluid p-5">
 

@@ -3,33 +3,48 @@
     var stripe = Stripe('pk_test_51IQ8goHUJcyL6Whz7QEL7QxO3rb5MNmdpI4OK3MYpKMMptkhNPEb5lEHmiiiJqcje2lyrPvAMghiHimiEApub4zv00thI9K1yB');
     var elements = stripe.elements();
 </script>
-<div class="container-fluid p-5">
-    <h1 class="mt-5 pt-5">Validation de commande</h1>
+<div class="container-fluid p-0">
+    <section class="title-screen">
+        <img class="title-screen__img" src="public/img/paiement.jpg">
+        <h1 class="title-screen__title">Paiement</h1>
+    </section>
+</div>
+<div class="container-fluid">
     <!-- Tag used to display exception -->
     <?= (isset($msg)) ?  $msg : '' ?>
 
-    <?php $price = isset($_POST['price']) ? (int) $_POST['price'] : 0 ?>
 
-    <form class="row" action="index.php?page=charge" method="post" id="payment-form">
-        <div class="col-12 col-md-6 form-row">
+    <?php $price = isset($_POST['price']) ? (int) $_POST['price'] : 0 ?>
+    <form class=" row justify-content-center" action="index.php?page=charge" method="post" id="payment-form">
+        <fieldset class="col-md-8">
+            <h2>Validation de votre commande</h2>
             <div class="mb-3">
-                <label class="form-label" for="card-element">
-                    Realiser un paiement de <?= $price ?>,00€ pour votre commande.<br />
-                    <input type="text" value="4000002500000003"> --> Valid card<br />
-                    <input type="text" value="4000000000009979"> --> Stolen card<br />
-                </label>
-                <div class="form-control" id="card-element">
-                    <!-- A Stripe Element will be inserted here. -->
-                </div>
+                <label for="disabledTextInput" class="form-label">Adresse de livraison: </label>
+                <input type="text" name="adresse_u" class="form-control" value="">
             </div>
 
-            <!-- Used to display Element errors. -->
-            <div id="card-errors" role="alert"></div>
-        </div>
-        <div class="col-2 offset-5">
-            <button class="btn btn-custom">Payer</button>
-        </div>
+            <div class="col-12  form-row">
+                <div class="mb-3">
+                    <label class="form-label" for="card-element">
+                        Realiser un paiement de <?= $price ?>,00€ pour votre commande (4000002500000003).<br />
+                    </label>
+                    <div class="form-control" id="card-element">
+                        <!-- A Stripe Element will be inserted here. -->
+                    </div>
+                </div>
+
+                <!-- Used to display Element errors. -->
+                <div id="card-errors" role="alert"></div>
+            </div>
+
+
+            <div class="row justify-content-center">
+                <button class="col-6 btn btn-light btn-custom">Payer</button>
+            </div>
+        </fieldset>
     </form>
+
+
 </div>
 <script>
     // Custom styling can be passed to options when creating an Element.

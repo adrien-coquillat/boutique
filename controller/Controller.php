@@ -192,7 +192,7 @@ class Controller
         $utilisateurModel = new UtilisateurModel();
         $id_u = $utilisateurModel->getId();
 
-        $model = new Model();;
+        $model = new Model();
         $commandeModel = new CommandeModel();
         $composerModel = new ComposerModel();
 
@@ -258,6 +258,14 @@ class Controller
             header('Location: index.php?page=home&error=connexionrequired');
             exit();
         }
+
+        $utilisateurModel = new UtilisateurModel();
+        $id_u = $utilisateurModel->getId();
+
+        $model = new Model();
+        $utilisateur = $model->getBy((int) $id_u, 'id_u', 'Utilisateur');
+
+        return compact('utilisateur');
     }
 
     public function charge($dataOrder)
@@ -293,12 +301,46 @@ class Controller
 
         $commandeModel = new CommandeModel();
         $commande = $commandeModel->getCurrentOrder($id_u);
+
+        $composerModel = new ComposerModel();
+        $lignesCommande = $composerModel->getLignesWithProductDetails($commande->id_com);
+
         $commande->prix_ttc_com = $price;
         $commande = [
             "id_com" => $commande->id_com,
             "prix_ttc_com" => $price,
         ];
         $commandeModel->edit($commande);
+
+        $to      = $_SESSION['user']['mail_u'];
+        $subject = 'Commande Joujou Coquin';
+
+        $message = "<html><head><title>Commande Joujou coquin</title></head><body>
+        <h1>Bonjour {$_SESSION['user']['prenom_u']} !</h1>
+        <p>Vos joujous sont en chemin, ils vous seront livrés à cette adresse: {$dataOrder['adresse_u']}</p>
+        <table><tr><th>Ref</th><th>Quantité</th><th>Prix</th><th>Total</th></tr>";
+
+        foreach ($lignesCommande as $ligne) {
+            $message .= "<tr>";
+            $message .= "<td>$ligne->id_p</td>";
+            $message .= "<td>$ligne->qt_article</td>";
+            $message .= "<td>$ligne->prix_ht_p,00€</td>";
+            $message .= "<td>" . ((int)$ligne->prix_ht_p * (int)$ligne->qt_article) . ",00€</td>";
+            $message .= "</tr>";
+        }
+
+        $message .= "</table><p>Merci pour votre commande de " . ($price / 100) . ",00€ </p><p>A très bientôt bisous.</p></body></html>";
+
+        // Pour envoyer un mail HTML, l'en-tête Content-type doit être défini
+        $headers[] = 'MIME-Version: 1.0';
+        $headers[] = 'Content-type: text/html; charset=UTF-8';
+
+        // En-têtes additionnels
+        $headers[] = 'From: Joujou coquin <coquinou@joujou-coquin.com>';
+        $headers[] = 'Reply-To: coquinou@joujou-coquin.com';
+        $headers[] = 'X-Mailer: PHP/' . phpversion();
+
+        mail($to, $subject, $message, implode("\r\n", $headers));
     }
 
     public function historique()

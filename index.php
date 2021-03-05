@@ -36,11 +36,13 @@ if ($page == 'backoffice') {
 if (method_exists($controller, $method)) { //if method exist, use controller where method name like page 
     try {
         $data = $controller->$method($_POST); //controller use method where $_POST is use for register or connecte the user for example
-        if (is_array($data)) {
-            extract($data);
-        }
+
     } catch (Exception $e) {
         $msg = "<div class='alert alert-danger' role='alert'>{$e->getMessage()}</div>";
+        $data = $controller->categorie();
+    }
+    if (is_array($data)) {
+        extract($data);
     }
 }
 
