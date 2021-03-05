@@ -1,8 +1,8 @@
 <header>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark navbar--custom">
         <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center" href="index.php?page=home"><img class='logo__img' src='public/img/logo.png'>
-                <p class='logo__text m-3'>Joujou coquin</p>
+            <a class="navbar-brand d-flex align-items-center" href="index.php?page=home"><img class='logo__img' src='public/img/logofooter.png'>
+
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
