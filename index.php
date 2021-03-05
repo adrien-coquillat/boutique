@@ -1,11 +1,8 @@
 <?php
 
-<<<<<<< HEAD
 session_start();
 
-=======
 use controller\BackController;
->>>>>>> origin/main
 use controller\Controller;
 use library\Display;
 

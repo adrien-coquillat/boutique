@@ -39,7 +39,7 @@ class Controller
             if ($userData !== false) {
                 if ($checkpassword === true) {
                     $_SESSION['user'] = $userData;
-                    header('Location: index.php?page=profil');
+                    header('Location: index.php?page=inscription');
                 } else {
                     header('Location: index.php?page=home&error=connexion');
                 }
