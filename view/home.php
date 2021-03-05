@@ -31,7 +31,7 @@
         <h1 class="best-sellers__title"><?= $conf['best_sellers_catch_phrase']->value  ?></h1>
         <div class="container">
             <div class="row">
-                <div class="col-sm d-flex justify-content-center mb-3">
+                <a style="text-decoration: none; color: black;" class="col-sm d-flex justify-content-center mb-3" href="index.php?page=produit&id_p=<?= $produits[$conf['best_sellers_first_id_p']->value  - 1]->id_p ?>">
                     <div class="card" style="width: 21rem;">
                         <img class="img-card-custom border-img-top" src="public/img/<?= $produits[$conf['best_sellers_first_id_p']->value - 1]->nom_image_p ?>" alt="...">
                         <div class="card-body">
@@ -39,8 +39,8 @@
                             <p class="card-text"><?= $produits[0]->troncateText($produits[$conf['best_sellers_first_id_p']->value  - 1]->description_p, 200) ?></p>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm d-flex justify-content-center  mb-3">
+                </a>
+                <a style="text-decoration: none; color: black;" class="col-sm d-flex justify-content-center mb-3" href="index.php?page=produit&id_p=<?= $produits[$conf['best_sellers_second_id_p']->value  - 1]->id_p ?>">
                     <div class="card" style="width: 21rem;">
                         <img class="img-card-custom border-img-top" src="public/img/<?= $produits[$conf['best_sellers_second_id_p']->value  - 1]->nom_image_p ?>" alt="...">
                         <div class="card-body">
@@ -48,8 +48,8 @@
                             <p class="card-text"><?= $produits[0]->troncateText($produits[$conf['best_sellers_second_id_p']->value  - 1]->description_p, 200) ?></p>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm d-flex justify-content-center  mb-3">
+                </a>
+                <a style="text-decoration: none; color: black;" class="col-sm d-flex justify-content-center mb-3" href="index.php?page=produit&id_p=<?= $produits[$conf['best_sellers_third_id_p']->value  - 1]->id_p ?>">
                     <div class="card" style="width: 21rem;">
                         <img class="img-card-custom border-img-top" src="public/img/<?= $produits[$conf['best_sellers_third_id_p']->value  - 1]->nom_image_p ?>" alt="...">
                         <div class="card-body">
@@ -57,39 +57,43 @@
                             <p class="card-text"><?= $produits[0]->troncateText($produits[$conf['best_sellers_third_id_p']->value  - 1]->description_p, 200) ?></p>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
 
     <section class="new-products">
         <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
+
             <div class="carousel-inner">
                 <div class="carousel-item active" data-bs-interval="<?= $conf['carousel_interval']->value ?>">
-                    <img src="public/img/<?= $produits[$conf['carousel_first_id_p']->value  - 1]->nom_image_p ?>" class="d-block img-custom-carousel" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5 style="font-family: 'Robotto', sans-serif; font-size: 2.7rem; color: #FB4D94;"><?= $produits[$conf['carousel_first_id_p']->value  - 1]->nom_p ?></h5>
-                        <p style="font-family: 'Robotto', sans-serif; font-size: 1.5rem; color: #FB4D94;"><?= $produits[0]->troncateText($produits[$conf['carousel_first_id_p']->value  - 1]->description_p, 70) ?></p>
-                    </div>
+                    <a href="index.php?page=produit&id_p=<?= $produits[$conf['carousel_first_id_p']->value  - 1]->id_p ?>">
+                        <img src="public/img/<?= $produits[$conf['carousel_first_id_p']->value  - 1]->nom_image_p ?>" class="d-block img-custom-carousel" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5 style="font-family: 'Robotto', sans-serif; font-size: 2.7rem; color: #FB4D94;"><?= $produits[$conf['carousel_first_id_p']->value  - 1]->nom_p ?></h5>
+                            <p style="font-family: 'Robotto', sans-serif; font-size: 1.5rem; color: #FB4D94;"><?= $produits[0]->troncateText($produits[$conf['carousel_first_id_p']->value  - 1]->description_p, 70) ?></p>
+                        </div>
+                    </a>
                 </div>
                 <div class="carousel-item" data-bs-interval="<?= $conf['carousel_interval']->value ?>">
-                    <img src="public/img/<?= $produits[$conf['carousel_second_id_p']->value  - 1]->nom_image_p ?>" class="d-block img-custom-carousel" alt=" ...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5 style="font-family: 'Robotto', sans-serif; font-size: 2.7rem; color: #FB4D94;"><?= $produits[$conf['carousel_second_id_p']->value  - 1]->nom_p ?></h5>
-                        <p style="font-family: 'Robotto', sans-serif; font-size: 1.5rem; color: #FB4D94;"><?= $produits[0]->troncateText($produits[$conf['carousel_second_id_p']->value  - 1]->description_p, 70) ?></p>
-                    </div>
+                    <a href="index.php?page=produit&id_p=<?= $produits[$conf['carousel_second_id_p']->value  - 1]->id_p ?>">
+
+                        <img src="public/img/<?= $produits[$conf['carousel_second_id_p']->value  - 1]->nom_image_p ?>" class="d-block img-custom-carousel" alt=" ...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5 style="font-family: 'Robotto', sans-serif; font-size: 2.7rem; color: #FB4D94;"><?= $produits[$conf['carousel_second_id_p']->value  - 1]->nom_p ?></h5>
+                            <p style="font-family: 'Robotto', sans-serif; font-size: 1.5rem; color: #FB4D94;"><?= $produits[0]->troncateText($produits[$conf['carousel_second_id_p']->value  - 1]->description_p, 70) ?></p>
+                        </div>
+                    </a>
                 </div>
                 <div class="carousel-item" data-bs-interval="<?= $conf['carousel_interval']->value ?>">
-                    <img src="public/img/<?= $produits[$conf['carousel_third_id_p']->value  - 1]->nom_image_p ?>" class="d-block img-custom-carousel" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5 style="font-family: 'Robotto', sans-serif; font-size: 2.7rem; color: #FB4D94;"><?= $produits[$conf['carousel_third_id_p']->value  - 1]->nom_p ?></h5>
-                        <p style="font-family: 'Robotto', sans-serif; font-size: 1.5rem; color: #FB4D94;"><?= $produits[0]->troncateText($produits[$conf['carousel_third_id_p']->value  - 1]->description_p, 70) ?></p>
-                    </div>
+                    <a href="index.php?page=produit&id_p=<?= $produits[$conf['carousel_third_id_p']->value  - 1]->id_p ?>">
+
+                        <img src="public/img/<?= $produits[$conf['carousel_third_id_p']->value  - 1]->nom_image_p ?>" class="d-block img-custom-carousel" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5 style="font-family: 'Robotto', sans-serif; font-size: 2.7rem; color: #FB4D94;"><?= $produits[$conf['carousel_third_id_p']->value  - 1]->nom_p ?></h5>
+                            <p style="font-family: 'Robotto', sans-serif; font-size: 1.5rem; color: #FB4D94;"><?= $produits[0]->troncateText($produits[$conf['carousel_third_id_p']->value  - 1]->description_p, 70) ?></p>
+                        </div>
+                    </a>
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">

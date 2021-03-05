@@ -10,7 +10,7 @@ use model\Model;
 use model\ProduitModel;
 use model\UtilisateurModel;
 
-class Controller
+class FrontController
 {
     public function inscription($donnee_u)
     {

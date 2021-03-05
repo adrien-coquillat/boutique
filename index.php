@@ -3,7 +3,7 @@
 session_start();
 
 use controller\BackController;
-use controller\Controller;
+use controller\FrontController;
 use library\Display;
 use model\Model;
 
@@ -30,7 +30,7 @@ if ($page == 'backoffice') {
     $controller = new BackController();
     $method = isset($_GET['action']) ? $_GET['action'] : 'dashboard';
 } else {
-    $controller = new Controller();
+    $controller = new FrontController();
     $method = $page == '404' ?  $_GET['page'] : $page;
 }
 if (method_exists($controller, $method)) { //if method exist, use controller where method name like page 
