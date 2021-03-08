@@ -12,15 +12,13 @@
 <div class="container-fluid m-3">
     <!-- Tag used to display exception -->
     <?= (isset($msg)) ?  $msg : '' ?>
-
-
     <?php $price = isset($_POST['price']) ? (int) $_POST['price'] : 0 ?>
     <form class=" row justify-content-center" action="index.php?page=charge" method="post" id="payment-form">
         <fieldset class="col-md-8">
             <h2>Validation de votre commande</h2>
             <div class="mb-3">
                 <label for="disabledTextInput" class="form-label">Adresse de livraison: </label>
-                <input type="text" name="adresse_u" class="form-control" value="">
+                <input type="text" name="adresse_u" class="form-control" value="<?= strtolower($_SESSION['user']['nom_u']) . ' ' . ucfirst($_SESSION['user']['prenom_u']) . ', ' . $_SESSION['user']['adresse_u'] ?>">
             </div>
 
             <div class="col-12  form-row">
