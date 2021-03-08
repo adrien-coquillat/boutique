@@ -3,35 +3,36 @@ if (!isset($data)) :
     // GET data in case of Exception has been generated
     $data = $controller->dashboard();
 endif;
+
 ?>
-<div class="container-fluid p-5">
+<div class="container-fluid mt-5 p-5">
     <h1 class="mt-5 pt-5">Back office</h1>
 
     <!-- Tag used to display exception -->
     <?= (isset($msg)) ?  $msg : '' ?>
 
-    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-        <li class="nav-item" role="presentation">
+    <ul class="nav nav-pills mb-3 d-flex justify-content-center" id="pills-tab" role="tablist">
+        <li class="nav-item m-1" role="presentation">
             <button class="btn border nav-link <?= isset($_GET['pane']) && ($_GET['pane'] == 'image' || $_GET['pane'] == 'password' || $_GET['pane'] == 'producteditor' || $_GET['pane'] == 'homepageeditor') ? '' : 'active' ?>" id="pills-dashboard-tab" data-bs-toggle="pill" data-bs-target="#pills-dashboard" type="button" role="tab" aria-controls="pills-dashboard" aria-selected="true">
                 Dashboard
             </button>
         </li>
-        <li class="nav-item" role="presentation">
+        <li class="nav-item m-1" role="presentation">
             <button class="btn border nav-link <?= isset($_GET['pane']) && ($_GET['pane'] == 'image') ? 'active' : '' ?>" id="pills-upload-tab" data-bs-toggle="pill" data-bs-target="#pills-upload" type="button" role="tab" aria-controls="pills-upload" aria-selected="false">
                 Image handeler
             </button>
         </li>
-        <li class="nav-item" role="presentation">
+        <li class="nav-item m-1" role="presentation">
             <button class="btn border nav-link <?= isset($_GET['pane']) && ($_GET['pane'] == 'password') ? 'active' : '' ?>" id="pills-passwordtools-tab" data-bs-toggle="pill" data-bs-target="#pills-passwordtools" type="button" role="tab" aria-controls="pills-passwordtools" aria-selected="false">
                 Passwords tools
             </button>
         </li>
-        <li class="nav-item" role="presentation">
+        <li class="nav-item m-1" role="presentation">
             <button class="btn border nav-link <?= isset($_GET['pane']) && ($_GET['pane'] == 'producteditor') ? 'active' : '' ?>" id="pills-producteditor-tab" data-bs-toggle="pill" data-bs-target="#pills-producteditor" type="button" role="tab" aria-controls="pills-producteditor" aria-selected="false">
                 Product editor
             </button>
         </li>
-        <li class="nav-item" role="presentation">
+        <li class="nav-item m-1" role="presentation">
             <button class="btn border nav-link <?= isset($_GET['pane']) && ($_GET['pane'] == 'homepageeditor') ? 'active' : '' ?>" id="pills-homepageeditor-tab" data-bs-toggle="pill" data-bs-target="#pills-homepageeditor" type="button" role="tab" aria-controls="pills-homepageeditor" aria-selected="false">
                 Home page editor
             </button>

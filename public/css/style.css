@@ -301,7 +301,7 @@
 .img-custom-carousel {
     object-fit: cover;
     width: 100%;
-    max-height: 50vh;
+    max-height: 75vh;
     filter: saturate(30%) blur(2px);
 }
 
@@ -326,7 +326,7 @@
 
 .title-screen__title {
     position: absolute;
-    bottom: 17vh;
+    bottom: 5vh;
     right: 9.1vh;
 
     font-family: 'Montserrat', sans-serif;

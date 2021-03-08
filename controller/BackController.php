@@ -10,10 +10,7 @@ class BackController
 {
     public function dashboard()
     {
-        $access = TRUE;
-        if (!$access) {
-            header('Location: index.php?page=home&error=accessdenied');
-        }
+
 
         $model = new Model();
 
