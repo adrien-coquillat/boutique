@@ -62,7 +62,7 @@
         </div>
     </section>
 
-    <section class="new-products">
+    <section class="new-products mb-5">
         <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
 
             <div class="carousel-inner">
