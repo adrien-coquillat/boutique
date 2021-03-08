@@ -33,7 +33,7 @@
 
                         </a>
                     </li>
-                    <?php if (isset($_SESSION['user']['rang_u']) && ($_SESSION['user']['rang_u'] = 100)) : ?>
+                    <?php if (isset($_SESSION['user']['rang_u']) && ($_SESSION['user']['rang_u'] == 100)) : ?>
                         <li class="nav-item">
                             <a class="nav-link active text-center" aria-current="page" href="index.php?page=backoffice">
                                 <svg class="sticker-custom" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
