@@ -27,7 +27,7 @@ class FrontController
                 throw new Exception('Le login n\'est pas disponible');
             } else {
                 $utilisateurModel->add($user);
-                header('Location: index.php');
+                header('Location: index.php?error=successinscription');
             }
         } else {
             throw new Exception(implode('<br />', $msg));
@@ -82,6 +82,8 @@ class FrontController
                 $msg = 'Accés refusé.';
             } elseif ($_GET['error'] == 'connexionrequired') {
                 $msg = 'Merci de vous identifier ou de vous inscrire afin de poursuivre vos achats.';
+            } elseif ($_GET['error'] == 'successinscription') {
+                $msg = 'Inscription réussi, vous pouvez maintenant vous connecter.';
             }
             throw new Exception($msg);
         }
