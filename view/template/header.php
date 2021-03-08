@@ -9,6 +9,7 @@
             </button>
             <div class="collapse navbar-collapse " id="navbarSupportedContent">
                 <ul class="navbar-nav  mb-2 mb-lg-0 navbar-nav--custom">
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <svg class="sticker-custom" width="40" height="37" viewBox="0 0 40 37" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -32,6 +33,15 @@
 
                         </a>
                     </li>
+                    <?php if (isset($_SESSION['user']['rang_u']) && ($_SESSION['user']['rang_u'] = 100)) : ?>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.php?page=backoffice">
+                                <svg class="sticker-custom" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M34.8941 18.5412H38V21.5294H34.8706H33.9245C33.9749 21.0214 34 20.5106 34 20C34 19.504 33.9755 19.0175 33.9277 18.5412H34.8941ZM30.4826 29.4745C30.6523 29.2895 30.8156 29.1003 30.9727 28.907L31.5505 29.4848L33.7598 31.6941L31.6471 33.8069L29.4377 31.5976L28.8234 30.9833C29.4253 30.5283 29.9789 30.0235 30.4826 29.4745ZM21.5294 34.8706V38H18.4706V34.8706V33.6278C18.9632 33.6688 19.4692 33.6911 19.9883 33.6941C20.5152 33.6972 21.029 33.678 21.5294 33.6375V34.8706ZM9.64692 29.6126C10.108 30.1196 10.6124 30.5831 11.1589 31.001L10.5623 31.5976L8.35294 33.8069L6.19313 31.6471L8.40245 29.4378L9.00206 28.8382C9.2046 29.1042 9.41946 29.3626 9.64692 29.6126ZM5.12941 21.5294H2V18.5412H5.10588H6.36943C6.32705 19.0221 6.30588 19.5089 6.30588 20C6.30588 20.5138 6.32633 21.0243 6.36815 21.5294H5.12941ZM9.88062 10.3653C9.60723 10.6546 9.34961 10.9556 9.10773 11.2676L8.40245 10.5623L6.19313 8.35296L8.30588 6.24021L10.5152 8.44953L11.2152 9.14948C10.7398 9.52146 10.2945 9.92737 9.88062 10.3653ZM18.4706 5.12943V2.00002H21.5294V5.12943V6.43097C21.0254 6.37929 20.515 6.35296 20 6.35296C19.4784 6.35296 18.9684 6.37515 18.4706 6.41881V5.12943ZM30.8828 11.277C30.223 10.4952 29.4757 9.79393 28.6578 9.1824L29.4377 8.40247L31.6471 6.19315L33.8069 8.35296L31.5976 10.5623L30.8828 11.277Z" fill="#FB4D94" stroke="#FB4D94" stroke-width="4" />
+                                </svg>
+                            </a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
                 <form action="index.php?page=rechercher" method="POST" class="d-flex">
                     <div class="input-group">
