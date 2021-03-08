@@ -27,7 +27,7 @@ if (empty($_GET)) { //if GET is empty, $page became home -> index
 }
 
 if ($page == 'backoffice') {
-    if (!(isset($_SESSION['user']['rang_u']) && ($_SESSION['user']['rang_u'] == 100))) {
+    if (!isset($_SESSION['user']['rang_u']) || ($_SESSION['user']['rang_u'] != 100)) {
         header('Location: index.php?page=home&error=accessdenied');
         exit();
     }
