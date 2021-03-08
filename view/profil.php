@@ -3,10 +3,7 @@ $array = explode(', ', $_SESSION['user']['adresse_u'], 4);
 ?>
 
 <div class="container-fluid p-0">
-    <section class="inscription-screen">
-        <img class="inscription-screen__img" src="public/img/Rectangle 8.png">
-        <h1 class="inscription-screen__title">Profil</h1>
-    </section>
+
 
     <!-- Bloc Inscription -->
     <div class="conteneur-inscription">

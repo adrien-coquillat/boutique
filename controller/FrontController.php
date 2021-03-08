@@ -223,7 +223,14 @@ class FrontController
             $lignes = NULL;
         }
 
-        return compact('lignes', 'produits');
+        // Get Historique if user is identified
+        if (isset($_SESSION['user'])) {
+            $commandes = $this->historique();
+        } else {
+            $commandes = NULL;
+        }
+
+        return compact('lignes', 'produits', 'commandes');
     }
 
     public function profil($donnee_u)
@@ -231,7 +238,7 @@ class FrontController
         if (empty($donnee_u)) {
             return;
         }
-        if (isset($_SESSION['user'])) {
+        if (isset($_SESSION['user']) && isset($donnee_u['modification'])) {
             $user = new UtilisateurEntity($donnee_u);
 
             if (($msg = $user->checkData()) === TRUE) {
@@ -362,7 +369,7 @@ class FrontController
             foreach ($commandes as &$commande) {
                 $commande->lignes = $composerModel->getLignesWithProductDetails($commande->id_com);
             }
-            return compact('commandes');
+            return $commandes;
         }
     }
 }
