@@ -13,6 +13,9 @@
             <form class="welcome-screen__form" action="index.php" method="POST">
                 <?= $_SESSION['user']['login_u'] ?>
                 <input type="submit" value="DECONNEXION" name="deconnexion">
+                <p>
+                    <?= (isset($msg)) ?  $msg : '' ?>
+                </p>
             </form>
         <?php else : ?>
             <form class="welcome-screen__form" action="index.php?page=connexion" method="POST">
