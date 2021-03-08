@@ -2,22 +2,102 @@
 $array = explode(', ', $_SESSION['user']['adresse_u'], 4);
 ?>
 
-<div class="container-fluid p-5">
-    <h1 class="mt-5 pt-5">Profil</h1>
-    <?= (isset($msg)) ?  $msg : '' ?>
-    <form action="index.php?page=profil" method="post">
-        <input type="text" name="login_u" placeholder="Login" value="<?= $_SESSION['user']['login_u'] ?>">
-        <input type="text" name="nom_u" placeholder="Nom" value="<?= $_SESSION['user']['nom_u'] ?>">
-        <input type="text" name="prenom_u" placeholder="Prénom" value="<?= $_SESSION['user']['prenom_u'] ?>">
-        <input type="text" name="numero_rue_adresse_u" placeholder="N°" value="<?= $array[0] ?>">
-        <input type="text" name="nom_rue_adresse_u" placeholder="Nom de la rue" value="<?= $array[1] ?>">
-        <input type="text" name="ville_adresse_u" placeholder="Ville" value="<?= $array[2] ?>">
-        <input type="text" name="postal_adresse_u" placeholder="Code postal" value="<?= $array[3] ?>">
-        <input type="email" name="mail_u" placeholder="Email" value="<?= $_SESSION['user']['mail_u'] ?>">
-        <input type="tel" name="telephone_u" placeholder="Téléphone" value="<?= $_SESSION['user']['telephone_u'] ?>">
-        <input type="date" name="datedenaissance_u" placeholder="Date de naissance" value="<?= $_SESSION['user']['datedenaissance_u'] ?>">
-        <input type="password" name="motdepass_u" placeholder="Password" value="">
-        <input type="password" name="motdepass_u_conf" placeholder="Confirmation du password" value="">
-        <input type="submit" value="Profil" name="profil">
-    </form>
+<div class="container-fluid p-0">
+    <section class="inscription-screen">
+        <img class="inscription-screen__img" src="public/img/Rectangle 8.png">
+        <h1 class="inscription-screen__title">Profil</h1>
+    </section>
+
+    <!-- Bloc Inscription -->
+    <div class="conteneur-inscription">
+        <div class="conteneur-bg">
+            <div class="colgauche">
+                <h1 class="titreinscription">Modifie ton profil ici !</h1>
+                <?= (isset($msg)) ?  $msg : '' ?>
+                <form class="form-user" action="index.php?page=inscription" method="post">
+                    <div class="ligne">
+
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingLogin" placeholder="Login" name="login_u" value="<?= $_SESSION['user']['login_u'] ?>">
+                            <label for="floatingLogin">Login</label>
+                        </div>
+                    </div>
+                    <div class="ligne">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingNom" name="nom_u" placeholder="Nom" value="<?= $_SESSION['user']['nom_u'] ?>">
+                            <label for="floatingNom">Nom</label>
+                        </div>
+
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingPrenom" name="prenom_u" placeholder="Prénom" value="<?= $_SESSION['user']['prenom_u'] ?>">
+                            <label for="floatingPrenom">Prénom</label>
+                        </div>
+                    </div>
+                    <div class="ligne">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingN" name="numero_rue_adresse_u" placeholder="N°" value="<?= $array[0] ?>">
+                            <label for="floatingN">N°</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingNomrue" name="nom_rue_adresse_u" placeholder="Nom de la rue" value="<?= $array[1] ?>">
+                            <label for="floatingNomrue">Nom de la rue</label>
+                        </div>
+                    </div>
+                    <div class="ligne">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingVille" name="ville_adresse_u" placeholder="Ville" value="<?= $array[2] ?>">
+                            <label for=" floatingVille">Ville</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingCodepostal" name="postal_adresse_u" placeholder="Code postal" value="<?= $array[3] ?>">
+                            <label for="floatingCodepostal">Code postal</label>
+                        </div>
+                    </div>
+                    <div class="ligne">
+                        <div class="form-floating">
+                            <input type="email" class="form-control" id="floatingMail" name="mail_u" placeholder="Email" value="<?= $_SESSION['user']['mail_u'] ?>">
+                            <label for="floatingMail">Adresse mail</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="tel" class="form-control" id="floatingTel" name="telephone_u" placeholder="Téléphone" value="<?= $_SESSION['user']['telephone_u'] ?>">
+                            <label for=" floatingTel">Numéro de téléphone</label>
+                        </div>
+                    </div>
+
+                    <div class="ligne">
+                        <div class="form-floating">
+                            <input type="date" class="form-control" id="floatingNaissance" name="datedenaissance_u" placeholder="Date de naissance" value="<?= $_SESSION['user']['datedenaissance_u'] ?>">
+                            <label for="floatingNaissance">Date de naissance</label>
+                        </div>
+                    </div>
+                    <div class="ligne">
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="floatingPassword" name="motdepass_u" placeholder="Password" value="">
+                            <label for="floatingPassword">Mot de passe</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="floatingCpassword" name="motdepass_u_conf" placeholder="Confirmation du password" value="">
+                            <label for="floatingCpassword">Confirmation du mot de passe</label>
+                        </div>
+                    </div>
+                    <div class="ligneb">
+                        <input class="boutoninscription" type="submit" value="Modifier" name="modification">
+                    </div>
+                </form>
+            </div>
+            <div class="coldroite">
+                <p>
+                    Prenez bien le temps de compléter au mieux les informations relatives à votre personne, relisez, corrigez avant votre envoi.</br>
+                    Si, après envoi, vous souhaitez apporter une correction, contacter le Webmaster.</br>
+                    Le comité de lecture ainsi que les administrateurs du site, se réservent le droit de corriger, d'alléger ou de détailler les documents lors de leur publication, sans obligation d'en faire part au contributeur.
+                    Protection des données personnelles</br></br>
+
+                    Les informations vous concernant nous sont réservées et nous nous engageons à ne pas céder ces données à des tiers.</br>
+
+                    Vous disposez d’un droit d’accès, de rectification et de suppression des données vous concernant (articles 27 et 34 de la loi du 6 janvier 1978 Informatique et Libertés). Pour l’exercer, veuillez envoyer un e-mail avec le lien de contact situé en bas de chaque page
+                </p>
+            </div>
+        </div>
+    </div>
+
 </div>
