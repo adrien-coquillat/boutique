@@ -7,21 +7,21 @@
 <div class="container-fluid">
     <ul class="nav nav-tabs mt-1" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="panier-tab" data-bs-toggle="tab" data-bs-target="#panier" type="button" role="tab" aria-controls="panier" aria-selected="true">Panier</button>
+            <button class="nav-link active mx-1" id="panier-tab" data-bs-toggle="tab" data-bs-target="#panier" type="button" role="tab" aria-controls="panier" aria-selected="true">Panier</button>
         </li>
         <?php if (isset($_SESSION['user'])) : ?>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+                <button class="nav-link mx-1" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profil</button>
             </li>
 
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="historique-tab" data-bs-toggle="tab" data-bs-target="#historique" type="button" role="tab" aria-controls="historique" aria-selected="false">Historique</button>
+                <button class="nav-link mx-1" id="historique-tab" data-bs-toggle="tab" data-bs-target="#historique" type="button" role="tab" aria-controls="historique" aria-selected="false">Historique</button>
             </li>
         <?php endif; ?>
     </ul>
     <!-- Tag used to display exception -->
     <?= (isset($msg)) ?  $msg : '' ?>
-    <div class="tab-content m-1" id="myTabContent">
+    <div class="tab-content m-0" id="myTabContent">
         <div class="tab-pane fade show active" id="panier" role="tabpanel" aria-labelledby="panier-tab">
             <!-- Tag used to display exception -->
             <?= (isset($msg)) ?  $msg : '' ?>
