@@ -431,7 +431,18 @@ footer {
 /* Product Page */
 /* ------------------ */
 .btn-custom {
-    background: transparent;
+    background: #FFFFFF !important;
     box-sizing: border-box;
     border: 4px solid #FB4D94 !important;
+}
+
+
+/* ------------------ */
+/* Product Categorie */
+/* ------------------ */
+.product-gallerie {
+    background-color: rgba(196,196,196,0.21);
+}
+.margin-neg-bot{
+    margin-bottom: -40px;
 }

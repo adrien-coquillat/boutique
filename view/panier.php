@@ -5,7 +5,7 @@
     </section>
 </div>
 <div class="container-fluid">
-    <ul class="nav nav-tabs mt-1" role="tablist">
+    <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link active mx-1" id="panier-tab" data-bs-toggle="tab" data-bs-target="#panier" type="button" role="tab" aria-controls="panier" aria-selected="true">Panier</button>
         </li>

@@ -124,13 +124,15 @@ class FrontController
             $produits = $produitModel->BySous_categorie($id_sc);
             $sous_categorie = $model->getBy($id_sc, 'id_sc', 'Sous_categorie');
             $sous_categories = $model->getAllBy($sous_categorie->id_c, 'id_c', 'Sous_categorie');
+            $categorie = $model->getBy($sous_categorie->id_c, 'id_c', 'Categorie');
         } else {
             $id_c = isset($_GET['id_c']) ? (int) $_GET['id_c'] : 1;
             $produits = $produitModel->ByCategorie($id_c);
             $sous_categories = $model->getAllBy($id_c, 'id_c', 'Sous_categorie');
+            $categorie = $model->getBy($id_c, 'id_c', 'Categorie');
         }
 
-        return compact('produits', 'sous_categories');
+        return compact('produits', 'sous_categories', 'categorie');
     }
 
     public function produit($input)
