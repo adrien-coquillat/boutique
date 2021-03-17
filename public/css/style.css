@@ -1,448 +1,423 @@
 .logo__img {
-    width: 150px;
-    height: 150px;
+  width: 150px;
+  height: 150px;
 }
 
 .logo__text,
 .dropdown-menu--custom {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 3.7vh;
-    padding-left: 1vw;
-    color: #FB4D94;
+  font-family: "Montserrat", sans-serif;
+  font-size: 3.7vh;
+  padding-left: 1vw;
+  color: #fb4d94;
 }
 
-.dropdown-menu--custom>li>a {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2.7vh;
-    padding-left: 1vw;
-    color: #FB4D94;
+.dropdown-menu--custom > li > a {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.7vh;
+  padding-left: 1vw;
+  color: #fb4d94;
 }
 
 .navbar--custom,
 .dropdown-menu--custom {
-    background: rgba(0, 0, 0, 0.75) !important;
+  background: rgba(0, 0, 0, 0.75) !important;
 }
 
 .navbar-nav--custom {
-    margin-left: auto !important;
-    margin-right: 0 !important;
+  margin-left: auto !important;
+  margin-right: 0 !important;
 }
 
 .sticker-custom {
-    margin-left: 5vw;
+  margin-left: 5vw;
 }
 
 .search-bar-custom__button,
 .search-bar-custom__input {
-    height: 40px;
-    background: transparent;
-    box-sizing: border-box;
-    border: 4px solid #FB4D94;
-
+  height: 40px;
+  background: transparent;
+  box-sizing: border-box;
+  border: 4px solid #fb4d94;
 }
 
 .search-bar-custom__input {
-    margin-left: 7vw;
+  margin-left: 7vw;
 
-    border-right: 0px;
-    border-radius: 10px;
-    color: white;
-    font-family: 'Roboto', sans-serif;
-    padding-left: 1vw;
-    font-size: 1.8vh;
-
+  border-right: 0px;
+  border-radius: 10px;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  padding-left: 1vw;
+  font-size: 1.8vh;
 }
 
 .search-bar-custom__button {
-    border-left: 0px;
-    border-bottom-right-radius: 8px;
-    border-top-right-radius: 8px;
+  border-left: 0px;
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .search-bar-custom__input::placeholder {
-    color: rgba(255, 255, 255, 0.6);
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.8vh;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: "Roboto", sans-serif;
+  font-size: 1.8vh;
 }
-
-
 
 /*Home page*/
 /*welcome screen*/
 .welcome-screen {
-    position: relative;
+  position: relative;
 }
 
 .welcome-screen__img {
-    object-fit: cover;
-    height: 100vh;
-    width: 100%;
-    filter: saturate(10%) contrast(100%) brightness(40%);
+  object-fit: cover;
+  height: 100vh;
+  width: 100%;
+  filter: saturate(10%) contrast(100%) brightness(40%);
 }
 
 .welcome-screen__title {
-    position: absolute;
-    bottom: 40vh;
-    right: 9.1vh;
+  position: absolute;
+  bottom: 40vh;
+  right: 9.1vh;
 
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-size: 8vw;
-    text-align: right;
-    white-space: nowrap;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-size: 8vw;
+  text-align: right;
+  white-space: nowrap;
 
-
-    color: #FFFFFF;
+  color: #ffffff;
 }
 
 .welcome-screen__subtitle {
-    position: absolute;
-    top: 60vh;
-    right: 10vh;
+  position: absolute;
+  top: 60vh;
+  right: 10vh;
 
-    font-family: 'Roboto', sans-serif;
-    font-size: 5vw;
-    text-align: right;
+  font-family: "Roboto", sans-serif;
+  font-size: 5vw;
+  text-align: right;
 
-    color: #FB4D94;
+  color: #fb4d94;
 
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .welcome-screen__form {
-    text-align: right;
-    position: absolute;
-    top: 72vh;
-    right: 10vh;
+  text-align: right;
+  position: absolute;
+  top: 72vh;
+  right: 10vh;
 }
 
-.welcome-screen__form>input[type=text],
-.welcome-screen__form>input[type=password] {
-    background: rgba(255, 255, 255, 0.25);
-    border-radius: 8px;
-    width: 10vw;
-    min-width: 100px;
-    height: 4.8vh;
-    border: 0px;
-    padding-left: 1vw;
-    color: #FFFFFF;
-    font-family: 'Roboto', sans-serif;
-    font-size: 2vh;
-
+.welcome-screen__form > input[type="text"],
+.welcome-screen__form > input[type="password"] {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  width: 10vw;
+  min-width: 100px;
+  height: 4.8vh;
+  border: 0px;
+  padding-left: 1vw;
+  color: #ffffff;
+  font-family: "Roboto", sans-serif;
+  font-size: 2vh;
 }
 
-.welcome-screen__form>input[type=text]::placeholder,
-.welcome-screen__form>input[type=password]::placeholder {
-    color: #FFFFFF;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.8vh;
+.welcome-screen__form > input[type="text"]::placeholder,
+.welcome-screen__form > input[type="password"]::placeholder {
+  color: #ffffff;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.8vh;
 }
 
-.welcome-screen__form>input[type=submit] {
-    background: rgba(231, 66, 133, 0.21);
-    border: 2px solid #FB4D94;
-    box-sizing: border-box;
-    border-radius: 8px;
-    color: #FFFFFF;
-
+.welcome-screen__form > input[type="submit"] {
+  background: rgba(231, 66, 133, 0.21);
+  border: 2px solid #fb4d94;
+  box-sizing: border-box;
+  border-radius: 8px;
+  color: #ffffff;
 }
 
-
-
-.welcome-screen__form>p {
-    margin-top: 1vh;
-    color: #FFFFFF;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.9vh;
+.welcome-screen__form > p {
+  margin-top: 1vh;
+  color: #ffffff;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.9vh;
 }
 
 /*inscription*/
 
 .inscription-screen__title {
-    font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
-
 .titreinscription {
-    padding: 3vh 0 0 6vw;
-    font-family: 'Roboto', sans-serif;
-    color: #FFFFFF;
-    font-size: 50px;
-    width: 100%;
+  padding: 3vh 0 0 6vw;
+  font-family: "Roboto", sans-serif;
+  color: #ffffff;
+  font-size: 50px;
+  width: 100%;
 }
 
 .coldroite {
-    width: 30%;
-    padding: 8vh 0 0 0;
-    color: #FFFFFF;
+  width: 30%;
+  padding: 8vh 0 0 0;
+  color: #ffffff;
 }
 
-.coldroite>p {
-    font-size: large;
-    width: 80%;
-    text-align: justify;
+.coldroite > p {
+  font-size: large;
+  width: 80%;
+  text-align: justify;
 }
 
 .colgauche {
-    width: 70%;
-    align-items: center;
-    justify-content: center;
+  width: 70%;
+  align-items: center;
+  justify-content: center;
 }
 
 .conteneur-bg {
-    background-color: #fb4d93bb;
-    width: auto;
-    height: auto;
-    display: flex;
+  background-color: #fb4d93bb;
+  width: auto;
+  height: auto;
+  display: flex;
 
-    background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
+  background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
 }
 
 .boutoninscription {
-    background: rgba(231, 66, 133, 0.21);
-    border: 2px solid #eb2a77;
-    box-sizing: border-box;
-    border-radius: 8px;
-    color: #FFFFFF;
-    padding: 2vh;
-    margin-top: 2vh;
-
+  background: rgba(231, 66, 133, 0.21);
+  border: 2px solid #eb2a77;
+  box-sizing: border-box;
+  border-radius: 8px;
+  color: #ffffff;
+  padding: 2vh;
+  margin-top: 2vh;
 }
 
 .inscription {
-    width: 5vw;
-    height: 4vh;
+  width: 5vw;
+  height: 4vh;
 }
 
 .ligne {
-    display: flex !important;
-    width: 60vw;
-    margin: 2vh 0 0 0;
+  display: flex !important;
+  width: 60vw;
+  margin: 2vh 0 0 0;
 }
 
 .form-floating {
-    width: 100%;
-
+  width: 100%;
 }
 
 .ligneb {
-    display: flex;
-    width: 60vw;
-    flex-direction: row;
-    justify-content: center;
+  display: flex;
+  width: 60vw;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .form-user {
-    margin: 0 0 0 5vw;
-    display: flex;
-    flex-direction: column;
-    width: 10vw;
-    height: 70vh;
-
-
+  margin: 0 0 0 5vw;
+  display: flex;
+  flex-direction: column;
+  width: 10vw;
+  height: 70vh;
 }
 
-
 .inscription-screen {
-    position: relative;
+  position: relative;
 }
 
 .inscription-screen__img {
-    object-fit: cover;
-    height: 40vh;
-    width: 100%;
-
+  object-fit: cover;
+  height: 40vh;
+  width: 100%;
 }
 
-
 .inscription-screen__title {
-    position: absolute;
-    top: 24vh;
-    right: 9.1vh;
+  position: absolute;
+  top: 24vh;
+  right: 9.1vh;
 
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-size: 4vw;
-    text-align: right;
-    white-space: nowrap;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-size: 4vw;
+  text-align: right;
+  white-space: nowrap;
 
-
-    color: #FFFFFF;
+  color: #ffffff;
 }
 
 /*best sellers*/
 .best-sellers {
-    padding-top: 5vh;
-    padding-bottom: 5vh;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
 }
 
-
 .best-sellers__title {
-    padding-bottom: 5vh;
-    margin: 0;
+  padding-bottom: 5vh;
+  margin: 0;
 
-    font-family: 'Roboto', sans-serif;
-    font-size: 5vh;
-    text-align: center;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    font-feature-settings: 'cpsp'on;
+  font-family: "Roboto", sans-serif;
+  font-size: 5vh;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-feature-settings: "cpsp" on;
 
-    color: #E74285;
+  color: #e74285;
 }
 
 .img-card-custom {
-    object-fit: cover;
-    width: 100%;
-    max-height: 25vh;
-    filter: saturate(30%)
+  object-fit: cover;
+  width: 100%;
+  max-height: 25vh;
+  filter: saturate(30%);
 }
 
 .img-custom-carousel {
-    object-fit: cover;
-    width: 100%;
-    max-height: 75vh;
-    filter: saturate(30%) blur(2px);
+  object-fit: cover;
+  width: 100%;
+  max-height: 75vh;
+  filter: saturate(30%) blur(2px);
 }
 
 .img-thumbnail--custom {
-    object-fit: cover;
-    height: 15vh;
-    width: 100%;
-    filter: saturate(45%)
+  object-fit: cover;
+  height: 15vh;
+  width: 100%;
+  filter: saturate(45%);
 }
 
 /*Title screen*/
 .title-screen {
-    position: relative;
+  position: relative;
 }
 
 .title-screen__img {
-    object-fit: cover;
-    height: 50vh;
-    width: 100%;
-    filter: saturate(10%) contrast(100%) brightness(40%);
+  object-fit: cover;
+  height: 50vh;
+  width: 100%;
+  filter: saturate(10%) contrast(100%) brightness(40%);
 }
 
 .title-screen__title {
-    position: absolute;
-    bottom: 5vh;
-    right: 9.1vh;
+  position: absolute;
+  bottom: 5vh;
+  right: 9.1vh;
 
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-size: 8vw;
-    text-align: right;
-    white-space: nowrap;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-size: 8vw;
+  text-align: right;
+  white-space: nowrap;
 
-    color: #FFFFFF;
+  color: #ffffff;
 }
 
 /*new products*/
 
 .img-custom-fullwidth {
-    object-fit: cover;
-    height: 60vh;
-    width: 100vw;
-    filter: saturate(30%);
+  object-fit: cover;
+  height: 60vh;
+  width: 100vw;
+  filter: saturate(30%);
 }
 
 .container-user {
-    height: 100%;
-    width: 20vw;
-
+  height: 100%;
+  width: 20vw;
 }
-
-
 
 /* ------------------ */
 /* Back office page */
 /* ------------------ */
 
 .bo-input {
-    width: 100px;
+  width: 100px;
 }
 
 .vignette {
-    object-fit: cover;
-    width: 100%;
-    height: 100px;
+  object-fit: cover;
+  width: 100%;
+  height: 100px;
 }
 
 #myTab {
-    margin: 10% 0 0 10%;
+  margin: 10% 0 0 10%;
 }
 
 .tab-content {
-    margin: 5% 0 0 5%;
+  margin: 5% 0 0 5%;
 }
 
 image-inscription {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 /* footer */
 
 .logo {
-    background-image: url("../img/logofooter.png");
-    background-size: cover;
+  background-image: url("../img/logofooter.png");
+  background-size: cover;
 
-    height: 350px;
-    width: 350px;
+  height: 350px;
+  width: 350px;
 }
 
 footer {
-    display: flex;
-    font-family: 'Roboto', sans-serif;
+  display: flex;
+  font-family: "Roboto", sans-serif;
 
-
-    height: auto;
-    width: 100vw;
-    background-color: black;
+  height: auto;
+  width: 100vw;
+  background-color: black;
 }
 
 .searchbarfooter {
-    margin: 0;
+  margin: 0;
 }
 
-#caracterefooter>a {
-    font-size: 3vh;
-    color: #ffffff;
-
+#caracterefooter > a {
+  font-size: 3vh;
+  color: #ffffff;
 }
 
-#caracterelienfooter>a {
-    font-size: 3vh;
-    color: #FB4D94;
+#caracterelienfooter > a {
+  font-size: 3vh;
+  color: #fb4d94;
 }
 
 .padding {
-    padding: 5% 0 5% 0;
+  padding: 5% 0 5% 0;
 }
 
 #footercentrer {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 /* ------------------ */
 /* Product Page */
 /* ------------------ */
 .btn-custom {
-    background: #FFFFFF !important;
-    box-sizing: border-box;
-    border: 4px solid #FB4D94 !important;
+  background: #ffffff !important;
+  box-sizing: border-box;
+  border: 4px solid #fb4d94 !important;
 }
-
 
 /* ------------------ */
 /* Product Categorie */
 /* ------------------ */
 .product-gallerie {
-    background-color: rgba(196,196,196,0.21);
+  background-color: rgba(196, 196, 196, 0.21);
 }
-.margin-neg-bot{
-    margin-bottom: -40px;
+.margin-neg-bot {
+  margin-bottom: -40px;
 }

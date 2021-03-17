@@ -1,21 +1,21 @@
-<div class="container-fluid p-0">
+<div class="container-fluid p-0 margin-neg-bot">
     <section class="title-screen">
         <img class="title-screen__img" src="public/img/panier.jpg">
         <h1 class="title-screen__title">Espace membre</h1>
     </section>
 </div>
-<div class="container-fluid">
+<div class="container-fluid mb-3" style="position:relative; z-index:3">
     <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link active mx-1" id="panier-tab" data-bs-toggle="tab" data-bs-target="#panier" type="button" role="tab" aria-controls="panier" aria-selected="true">Panier</button>
+            <button class="nav-link active" id="panier-tab" data-bs-toggle="tab" data-bs-target="#panier" type="button" role="tab" aria-controls="panier" aria-selected="true">Panier</button>
         </li>
         <?php if (isset($_SESSION['user'])) : ?>
             <li class="nav-item" role="presentation">
-                <button class="nav-link mx-1" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profil</button>
+                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profil</button>
             </li>
 
             <li class="nav-item" role="presentation">
-                <button class="nav-link mx-1" id="historique-tab" data-bs-toggle="tab" data-bs-target="#historique" type="button" role="tab" aria-controls="historique" aria-selected="false">Historique</button>
+                <button class="nav-link" id="historique-tab" data-bs-toggle="tab" data-bs-target="#historique" type="button" role="tab" aria-controls="historique" aria-selected="false">Historique</button>
             </li>
         <?php endif; ?>
     </ul>
