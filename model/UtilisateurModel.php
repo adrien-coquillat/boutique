@@ -36,13 +36,21 @@ class UtilisateurModel extends Model
         return $result;
     }
 
+    public function getLogin($id)
+    {
+        $sth = $this->db->prepare("SELECT login_u FROM utilisateur WHERE id_u = :id_u");
+        $sth->bindParam(":id_u", $id);
+        $sth->execute();
+        $result = $sth->fetch();
+        return $result["id_u"];
+    }
+
     public function editProfil($user)
     {
         extract($user);
-        var_dump($user);
 
         $sql = "UPDATE `utilisateur` 
-                SET `adresse_u`= :adresse_u, `mail_u`= :mail_u, `nom_u`= :nom_u, `prenom_u`= :prenom_u, `telephone_u`= :telephone_u, `login_u`= :login_u, `motdepass_u`= :motdepass_u, `datedenaissance_u`= :datedenaissance_u 
+                SET `adresse_u`= :adresse_u, `mail_u`= :mail_u, `nom_u`= :nom_u, `prenom_u`= :prenom_u, `telephone_u`= :telephone_u, `motdepass_u`= :motdepass_u, `datedenaissance_u`= :datedenaissance_u 
                 WHERE id_u = :id_u";
         $sth = $this->db->prepare($sql);
         $sth->execute([
@@ -51,7 +59,6 @@ class UtilisateurModel extends Model
             ":nom_u"     => $nom_u,
             ":prenom_u"  => $prenom_u,
             ":telephone_u" => $telephone_u,
-            ":login_u"     => $login_u,
             ":motdepass_u" => $motdepass_u,
             ":datedenaissance_u" => $datedenaissance_u,
             ":id_u" => $id_u

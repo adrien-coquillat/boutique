@@ -112,7 +112,9 @@ class Model
         $sth = $this->db->prepare($SQL);
 
         foreach ($data as $key => &$value) {
-            if (preg_match('/^[\\d]{1,}$/', $value)) {
+            if (preg_match('/^0/', $value)) {
+                $value = $value;
+            } else if (preg_match('/^[\\d]{1,}$/', $value)) {
                 $value = intval($value, 10);
             }
             $sth->bindParam(":$key", $value);

@@ -27,7 +27,7 @@ class FrontController
                 throw new Exception('Le login n\'est pas disponible');
             } else {
                 $utilisateurModel->add($user);
-                header('Location: index.php?error=successinscription');
+                header('Location: index.php?page=home&error=successinscription');
             }
         } else {
             throw new Exception(implode('<br />', $msg));
@@ -200,7 +200,7 @@ class FrontController
         $commandeModel = new CommandeModel();
         $composerModel = new ComposerModel();
 
-        if (!empty($input) && $composerModel->isOwnerComposer($id_u, $input['id_comp'])) {
+        if (!empty($input) && (isset($input['delete']) || isset($input['edit'])) && $composerModel->isOwnerComposer($id_u, $input['id_comp'])) {
             if (isset($input["edit"])) {
                 $composerModel->edit([
                     "id_comp" => (int)$input["id_comp"],
@@ -232,6 +232,11 @@ class FrontController
             $commandes = NULL;
         }
 
+        //Upload profile if needed (profil page/ historique and panier are on the same page)
+        if (isset($_SESSION['user']) && isset($input['modification'])) {
+            $this->profil($input);
+        }
+
         return compact('lignes', 'produits', 'commandes');
     }
 
@@ -245,18 +250,11 @@ class FrontController
 
             if (($msg = $user->checkData()) === TRUE) {
                 $utilisateurModel = new UtilisateurModel();
-                $userData = $utilisateurModel->isInDb($donnee_u);
-
-                if ($userData !== false) {
-                    throw new Exception('Le login n\'est pas disponible');
-                } else {
-                    $donnee_u['adresse_u'] = $user->adresse_u;
-                    $donnee_u['id_u'] = $_SESSION['user']['id_u'];
-                    $donnee_u['motdepass_u'] = password_hash($donnee_u['motdepass_u'], PASSWORD_DEFAULT);
-                    $utilisateurModel->editProfil($donnee_u);
-                    $_SESSION['user'] = $donnee_u;
-                    header('Location: index.php');
-                }
+                $donnee_u['adresse_u'] = $user->adresse_u;
+                $donnee_u['id_u'] = $_SESSION['user']['id_u'];
+                $donnee_u['motdepass_u'] = password_hash($donnee_u['motdepass_u'], PASSWORD_DEFAULT);
+                $utilisateurModel->editProfil($donnee_u);
+                $_SESSION['user']['login_u'] = $utilisateurModel->getLogin($donnee_u["id_u"]);
             } else {
                 throw new Exception(implode('<br />', $msg));
             }

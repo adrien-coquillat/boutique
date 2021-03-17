@@ -7,15 +7,7 @@ $array = explode(', ', $_SESSION['user']['adresse_u'], 4);
 <div class="conteneur-bg">
     <div class="colgauche">
         <h1 class="titreinscription">Modifie ton profil ici !</h1>
-        <?= (isset($msg)) ?  $msg : '' ?>
-        <form class="form-user" action="index.php?page=inscription" method="post">
-            <div class="ligne">
-
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingLogin" placeholder="Login" name="login_u" value="<?= $_SESSION['user']['login_u'] ?>">
-                    <label for="floatingLogin">Login</label>
-                </div>
-            </div>
+        <form class="form-user" action="index.php?page=panier&pane=profile" method="post">
             <div class="ligne">
                 <div class="form-floating">
                     <input type="text" class="form-control" id="floatingNom" name="nom_u" placeholder="Nom" value="<?= $_SESSION['user']['nom_u'] ?>">
