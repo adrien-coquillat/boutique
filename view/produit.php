@@ -1,4 +1,4 @@
-<div class="container-fluid p-5">
+<div class="container-fluid mt-5 p-5">
 
     <!-- Tag used to display exception -->
     <?= (isset($msg)) ?  $msg : '' ?>

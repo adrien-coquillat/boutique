@@ -192,7 +192,7 @@ class FrontController
     public function panier($input)
     {
 
-        //check if user is connected and in all case return Id (temp or final)
+        //check if user is connected and in all cases return Id (temp or final)
         $utilisateurModel = new UtilisateurModel();
         $id_u = $utilisateurModel->getId();
 
@@ -200,6 +200,7 @@ class FrontController
         $commandeModel = new CommandeModel();
         $composerModel = new ComposerModel();
 
+        // Handle panier form
         if (!empty($input) && (isset($input['delete']) || isset($input['edit'])) && $composerModel->isOwnerComposer($id_u, $input['id_comp'])) {
             if (isset($input["edit"])) {
                 $composerModel->edit([
@@ -356,11 +357,6 @@ class FrontController
     {
         $utilisateurModel = new UtilisateurModel();
         $id_u = $utilisateurModel->getId();
-
-        if ($_SESSION['user']['login_u'] == session_id()) {
-            header('Location: index.php?page=home&error=connexionrequired');
-            exit();
-        }
 
         $commandeModel = new CommandeModel();
 
