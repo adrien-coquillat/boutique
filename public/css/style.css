@@ -11,7 +11,7 @@
   color: #fb4d94;
 }
 
-.dropdown-menu--custom > li > a {
+.dropdown-menu--custom>li>a {
   font-family: "Montserrat", sans-serif;
   font-size: 2.7vh;
   padding-left: 1vw;
@@ -65,6 +65,8 @@
 
 /*Home page*/
 /*welcome screen*/
+
+
 .welcome-screen {
   position: relative;
 }
@@ -111,8 +113,8 @@
   right: 10vh;
 }
 
-.welcome-screen__form > input[type="text"],
-.welcome-screen__form > input[type="password"] {
+.welcome-screen__form>input[type="text"],
+.welcome-screen__form>input[type="password"] {
   background: rgba(255, 255, 255, 0.25);
   border-radius: 8px;
   width: 10vw;
@@ -125,14 +127,14 @@
   font-size: 2vh;
 }
 
-.welcome-screen__form > input[type="text"]::placeholder,
-.welcome-screen__form > input[type="password"]::placeholder {
+.welcome-screen__form>input[type="text"]::placeholder,
+.welcome-screen__form>input[type="password"]::placeholder {
   color: #ffffff;
   font-family: "Roboto", sans-serif;
   font-size: 1.8vh;
 }
 
-.welcome-screen__form > input[type="submit"] {
+.welcome-screen__form>input[type="submit"] {
   background: rgba(231, 66, 133, 0.21);
   border: 2px solid #fb4d94;
   box-sizing: border-box;
@@ -140,7 +142,7 @@
   color: #ffffff;
 }
 
-.welcome-screen__form > p {
+.welcome-screen__form>p {
   margin-top: 1vh;
   color: #ffffff;
   font-family: "Roboto", sans-serif;
@@ -161,31 +163,30 @@
   width: 100%;
 }
 
-.coldroite {
-  width: 30%;
+
+.textprofil {
+  font-size: large;
+  width: 80%;
+  text-align: justify;
   padding: 8vh 0 0 0;
   color: #ffffff;
 }
 
-.coldroite > p {
-  font-size: large;
-  width: 80%;
+.description-produit {
   text-align: justify;
+  font-size: large;
+  margin: 4% 0 4% 0;
 }
 
-.colgauche {
-  width: 70%;
-  align-items: center;
-  justify-content: center;
-}
-
-.conteneur-bg {
+.bg-profil {
   background-color: #fb4d93bb;
   width: auto;
   height: auto;
   display: flex;
-
   background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
+  margin-top: 5%;
+  border-radius: 10px;
+  margin-bottom: 5%;
 }
 
 .boutoninscription {
@@ -195,7 +196,7 @@
   border-radius: 8px;
   color: #ffffff;
   padding: 2vh;
-  margin-top: 2vh;
+  margin: 2% 0 2% 0;
 }
 
 .inscription {
@@ -220,13 +221,6 @@
   justify-content: center;
 }
 
-.form-user {
-  margin: 0 0 0 5vw;
-  display: flex;
-  flex-direction: column;
-  width: 10vw;
-  height: 70vh;
-}
 
 .inscription-screen {
   position: relative;
@@ -267,7 +261,7 @@
   text-align: center;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  font-feature-settings: "cpsp" on;
+  font-feature-settings: "cpsp"on;
 
   color: #e74285;
 }
@@ -288,8 +282,8 @@
 
 .img-thumbnail--custom {
   object-fit: cover;
-  height: 15vh;
-  width: 100%;
+  height: 100%;
+  width: 60%;
   filter: saturate(45%);
 }
 
@@ -300,7 +294,7 @@
 
 .title-screen__img {
   object-fit: cover;
-  height: 50vh;
+  height: 60vh;
   width: 100%;
   filter: saturate(10%) contrast(100%) brightness(40%);
 }
@@ -328,9 +322,20 @@
   filter: saturate(30%);
 }
 
+.img-custom-fullwidth2 {
+  height: 70vh;
+  width: 100%;
+  filter: saturate(10%);
+}
+
 .container-user {
   height: 100%;
   width: 20vw;
+}
+
+#shadowproduct {
+  box-shadow: 0px 0px 1px 1px #fb4d94;
+
 }
 
 /* ------------------ */
@@ -383,12 +388,12 @@ footer {
   margin: 0;
 }
 
-#caracterefooter > a {
+#caracterefooter>a {
   font-size: 3vh;
   color: #ffffff;
 }
 
-#caracterelienfooter > a {
+#caracterelienfooter>a {
   font-size: 3vh;
   color: #fb4d94;
 }
@@ -412,12 +417,34 @@ footer {
   border: 4px solid #fb4d94 !important;
 }
 
+.btn-custom2 {
+  background: #ffffff !important;
+  box-sizing: border-box;
+  border: 2px solid #fb4d94 !important;
+}
+
+.btn-primary.custom {
+  background: #ffffff !important;
+  box-sizing: border-box;
+  border: 2px solid #fb4d94 !important;
+  color: black;
+}
+
+.btn-primary.custom2 {
+  background: #fb4d94 !important;
+  box-sizing: border-box;
+  border: 2px solid #fb4d94 !important;
+
+}
+
+
 /* ------------------ */
 /* Product Categorie */
 /* ------------------ */
 .product-gallerie {
   background-color: rgba(196, 196, 196, 0.21);
 }
+
 .margin-neg-bot {
   margin-bottom: -40px;
 }

@@ -11,7 +11,10 @@
         }
         if (isset($_SESSION['user']) && $_SESSION['user']['login_u'] != session_id()) : ?>
             <form class="welcome-screen__form" action="index.php" method="POST">
-                <?= $_SESSION['user']['login_u'] ?>
+                <h2 style="color:antiquewhite;">
+                    Bienvenue à toi,
+                    <?= $_SESSION['user']['login_u'] ?>!
+                </h2>
                 <input type="submit" value="DECONNEXION" name="deconnexion">
                 <p>
                     <?= (isset($msg)) ?  $msg : '' ?>
