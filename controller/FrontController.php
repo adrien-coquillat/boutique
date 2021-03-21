@@ -256,6 +256,7 @@ class FrontController
                 $donnee_u['motdepass_u'] = password_hash($donnee_u['motdepass_u'], PASSWORD_DEFAULT);
                 $utilisateurModel->editProfil($donnee_u);
                 $_SESSION['user']['login_u'] = $utilisateurModel->getLogin($donnee_u["id_u"]);
+                $_SESSION['user'] = $utilisateurModel->isInDb($_SESSION['user']);
             } else {
                 throw new Exception(implode('<br />', $msg));
             }

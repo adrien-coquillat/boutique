@@ -42,7 +42,7 @@ class UtilisateurModel extends Model
         $sth->bindParam(":id_u", $id);
         $sth->execute();
         $result = $sth->fetch();
-        return $result["id_u"];
+        return $result["login_u"];
     }
 
     public function editProfil($user)
