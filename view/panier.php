@@ -27,15 +27,15 @@
         <div class="tab-pane fade <?= isset($_GET['pane']) && ($_GET['pane'] == 'profile' || $_GET['pane'] == 'historique') ? '' : 'show active' ?>" id="panier" role="tabpanel" aria-labelledby="panier-tab">
             <!-- Tag used to display exception -->
             <?= (isset($msg)) ?  $msg : '' ?>
-            <?= $lignes == NULL ? ' <div class="position-relative"> <img class="img-custom-fullwidth2" src="public/img/pannier.jpg" alt="ddd"> <div class="position-absolute top-20 start-20" style="color:white">Votre pannier est VIDE !</div></div>' : $display->cart($lignes, $produits) ?>
+            <?= $lignes == NULL ? ' <div class="container-fluid m-6 bg-profil col-11"><h2>Votre pannier est VIDE !</h2></div> <img class="img-custom-fullwidth2  " src="public/img/pannier vide.jpg" alt="ddd"> ' : $display->cart($lignes, $produits) ?>
         </div>
         <?php if (isset($_SESSION['user'])) : ?>
             <div class="tab-pane fade <?= isset($_GET['pane']) && ($_GET['pane'] == 'profile') ? 'show active' : '' ?>" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                 <?php require('view/profil.php') ?>
             </div>
             <div class="tab-pane fade <?= isset($_GET['pane']) && ($_GET['pane'] == 'historique') ? 'show active' : '' ?>" id="historique" role="tabpanel" aria-labelledby="historique-tab">
-                <?= $commandes != NULL ? $display->orders($commandes) : 'Vous n\'avez pas encore passez de commande'; ?>
-                <img src="public/img/pannier.jpg" alt="ddd">
+                <?= $commandes != NULL ? $display->orders($commandes) : '<div class="container-fluid m-6 bg-profil col-11"><h2> Vous n\'avez pas encore passez de commande </h2></div>'; ?>
+
             </div>
         <?php endif; ?>
     </div>
