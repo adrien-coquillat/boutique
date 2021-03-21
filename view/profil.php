@@ -1,13 +1,8 @@
-<?php
-$array = explode(', ', $_SESSION['user']['adresse_u'], 4);
-?>
-
-<!-- Bloc Inscription -->
-
 <div class="container-fluid m-6 bg-profil col-11">
-    <?php if ($_SESSION['user']['nom_u'] == "temp" &&  $_SESSION['user']['prenom_u'] == "temp") : ?>
+    <?php if ((!isset($_SESSION['user'])) || ($_SESSION['user']['nom_u'] == "temp" &&  $_SESSION['user']['prenom_u'] == "temp")) : ?>
         <h2>Veuillez vous inscrire ou vous connnecter pour pouvoir modifier votre profil.</h2>
     <?php else : ?>
+        <?php $array = explode(', ', $_SESSION['user']['adresse_u'], 4); ?>
         <div class="col-8">
             <h1 class="titreinscription">Modifie ton profil ici !</h1>
             <form class="form-user" action="index.php?page=panier&pane=profile" method="post">

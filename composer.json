@@ -11,9 +11,6 @@
             "App\\": "entity/"
         }
     },
-    "require-dev": {
-        "phpunit/phpunit": "^9.5"
-    },
     "require": {
         "stripe/stripe-php": "^7.75"
     }

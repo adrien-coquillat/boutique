@@ -93,7 +93,7 @@ class FrontController
 
     public function rechercher()
     {
-        $keywords = htmlspecialchars($_POST['keywords']);
+        $keywords = !isset($_POST['keywords']) ? 'bite' : htmlspecialchars($_POST['keywords']);
         $keywords = explode(' ', $keywords);
 
         $produitModel = new ProduitModel();
@@ -281,6 +281,11 @@ class FrontController
 
     public function charge($dataOrder)
     {
+        if (empty($donnee_u)) {
+            header('Location: index.php?page=home&error=connexionrequired');
+            exit();
+        }
+
         // Set your secret key. Remember to switch to your live secret key in production.
         // See your keys here: https://dashboard.stripe.com/account/apikeys
         \Stripe\Stripe::setApiKey('sk_test_51IQ8goHUJcyL6Whzt27aM6cbzstkkHEn6M9i8ClTozQ6lCiHiEvvfl7pqNes3xuNNkoZmQ4Q8qxTpSVVKF8zuSY500ukea1prg');
