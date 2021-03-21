@@ -151,7 +151,7 @@ class Display
                     $stotal = (int) $ligne->qt_article * (int) $produit->prix_ht_p;
                     $total += $stotal; ?>
                     <div class="container-fluid">
-                        <form action='index.php?page=panier' method='post' class="row border rounded pb-3 mb-4">
+                        <form action='index.php?page=panier' method='post' class="border rounded pb-3 mb-4">
                             <input type="hidden" name="id_comp" value="<?= $ligne->id_comp ?>">
                             <div class="modal-header">
                                 <h5 class="modal-title text-center fw-bold fs-4" style="font-family: 'Ubuntu', sans-serif;"><?= $produit->nom_p ?></h5>
@@ -175,7 +175,7 @@ class Display
 
 
         ?>
-        <div class="row mt-5">
+        <div class="d-flex mt-5">
             <h2 class="col-6 text-center fw-bold fs-4" style="font-family: 'Ubuntu', sans-serif;">
                 Prix total: <?= $total ?>,00€
             </h2>
@@ -197,16 +197,16 @@ class Display
         foreach ($orders as $order) : ?>
             <div class="card w-80">
                 <div class="card-header">
-                    <h5 class="card-title text-center">Order n° <?= $order->id_com ?> from <?= $order->date_com ?></h5>
+                    <h5 class="card-title text-center">Commande n° <?= $order->id_com ?> du <?= $order->date_com ?></h5>
                 </div>
                 <div class="card-body">
 
-                    <p class="card-text">Details of your order:</p>
+                    <p class="card-text">Detail de la commande:</p>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         <div class="row">
-                            <div class="col-2 ">Réf</div>
+                            <div class="col-2">Réf</div>
                             <div class="col-4">Nom</div>
                             <div class="col-2">Quantité</div>
                             <div class="col-2">Prix</div>
@@ -227,7 +227,7 @@ class Display
                     <?php endforeach; ?>
                     <li class="list-group-item">
                         <div class="row">
-                            <div class="col-2 offset-10"><?= ((int)$order->prix_ttc_com) / 100 ?>,00€</div>
+                            <div class="col-2 offset-10">Prix total : <?= ((int)$order->prix_ttc_com) / 100 ?>,00€</div>
                         </div>
                     </li>
                 </ul>

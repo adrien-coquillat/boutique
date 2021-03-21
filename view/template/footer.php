@@ -10,17 +10,15 @@
             <div class="col d-flex justify-content-around">
                 <ul class="list-group " id="caracterefooter">
                     <a class="text-left text-decoration-none" href="index.php">Accueil</a>
-                    <a class="text-left text-decoration-none" href="index.php?page=panier">Panier</a>
-                    <a class="text-left text-decoration-none" href="index.php?page=profil">Espace membre</a>
+                    <a class="text-left text-decoration-none" href="index.php?page=panier">Espace membre</a>
                     <a class="text-left text-decoration-none" href="index.php?page=inscription">Inscription</a>
                 </ul>
             </div>
             <div class="col d-flex justify-content-around">
                 <ul class="list-group" id="caracterelienfooter">
-                    <a class="text-left text-decoration-none" href="">Jouets Connectés</a>
-                    <a class="text-left text-decoration-none" href="">Consommable</a>
-                    <a class="text-left text-decoration-none" href="">Accessoire</a>
-
+                    <?php foreach ($categories as $categorie) : ?>
+                        <a class="text-left text-decoration-none" href="index.php?page=categorie&id_c=<?= $categorie->id_c ?>"><?= $categorie->nom_c ?></a>
+                    <?php endforeach; ?>
                 </ul>
             </div>
         </div>
