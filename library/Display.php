@@ -83,7 +83,7 @@ class Display
                     <div class="row">
                         <input type="hidden" name="path" value="<?= $path ?>">
                         <input type="hidden" name="oldFile" value="<?= $file ?>">
-                        <input class="form-control form-control-sm type=" text" name="file" value="<?= $file ?>">
+                        <input class="form-control form-control-sm" type="text" name="file" value="<?= $file ?>">
                         <input type="submit" name="submit" value="edit" class="form-control col-3 btn btn-warning">
                     </div>
                     <div class="row">
@@ -100,19 +100,28 @@ class Display
      */
     public function productCard(object $produit, $width = 21, $height = 55, $textlength = 200)
     { ?>
-        <div class="col-sm d-flex justify-content-center mb-4">
-            <a href="index.php?page=produit&id_p=<?= $produit->id_p ?>" class="card text-decoration-none text-body" style="width: <?= $width ?>rem;">
+        <div class="col-sm d-flex justify-content-center mb-4 ">
+            <div class="card text-decoration-none text-body" style="width: <?= $width ?>rem;" id="shadowproduct">
                 <img style="height: <?= $height ?>vh;" class="img-card-custom border-img-top" src="public/img/<?= $produit->nom_image_p ?>" alt="...">
-                <div class="card-body" method="POST" action="index.php?page=produit&id_p=<?= $produit->id_p ?>">
-                    <h5 class="card-title"><?= $produit->nom_p ?></h5>
-                    <p class="card-text"><?= $produit->troncateText($produit->description_p, $textlength) ?></p>
-                    <form method="POST" action="index.php?page=produit&id_p=<?= $produit->id_p ?>">
+                <div class="card-body d-flex flex-column justify-content-between " method="POST" action="index.php?page=produit&id_p=<?= $produit->id_p ?>">
+                    <div class="d-flex col-12">
+                        <div class="col-9">
+                            <h5 class="card-title"><?= $produit->nom_p ?></h5>
+                        </div>
+                        <div class="col-3 fs-6 fw-bold" style="font-family:Montserrat, sans-serif;"><?= $produit->prix_ht_p ?>,00€</div>
+                    </div>
+                    <p class=" card-text description-produit"><?= $produit->troncateText($produit->description_p, $textlength) ?></p>
+
+                    <form class="d-flex justify-content-between mt-4" method="POST" action="index.php?page=produit&id_p=<?= $produit->id_p ?>">
                         <input type="hidden" name="fromPage" value="<?= $_SERVER["QUERY_STRING"] ?>">
-                        <input class="btn btn-primary" type="submit" name="add" value="Ajouter Panier">
-                        <input class="btn btn-primary" type="submit" name="show" value="Voir +">
+
+                        <input class="btn btn-primary custom2 fw-bold fs-5" style="font-family: 'Ubuntu', sans-serif;" type="submit" name="add" value="Ajouter Panier">
+                        <input class="btn btn-primary custom2 fw-bold fs-5" style="font-family: 'Ubuntu', sans-serif;" type="submit" name="show" value="Voir +" href="index.php?page=produit&id_p=<?= $produit->id_p ?>">
+
                     </form>
+
                 </div>
-            </a>
+            </div>
         </div>
         <?php
     }
@@ -123,9 +132,9 @@ class Display
     public function subCategorieNavbar(array $sous_categories)
     {
         foreach ($sous_categories as $sous_categorie) : ?>
-            <a class="btn btn-custom p-3 col-3 m-2" href="index.php?page=categorie&id_sc=<?= $sous_categorie->id_sc ?>"><?= $sous_categorie->nom_sc ?></a>
+            <a class="btn btn-custom p-3 col-3 m-2 fs-2 fw-bold" style="font-family:Montserrat, sans-serif;" href="index.php?page=categorie&id_sc=<?= $sous_categorie->id_sc ?>"><?= $sous_categorie->nom_sc ?></a>
 
-            <?php endforeach;
+        <?php endforeach;
     }
 
     /**
@@ -133,43 +142,47 @@ class Display
      */
     public function cart($lignes, $produits)
     {
-        $total = 0;
-        foreach ($lignes as $ligne) {
+        $total = 0; ?>
+
+        <h1 class="m-4">Votre Pannier :</h1>
+        <?php foreach ($lignes as $ligne) {
             foreach ($produits as $produit) {
                 if ($produit->id_p == $ligne->id_p) :
                     $stotal = (int) $ligne->qt_article * (int) $produit->prix_ht_p;
                     $total += $stotal; ?>
-                    <form action='index.php?page=panier' method='post' class="row border rounded pb-3 mb-4">
-                        <input type="hidden" name="id_comp" value="<?= $ligne->id_comp ?>">
-                        <div class="modal-header">
-                            <h5 class="modal-title text-center"><?= $produit->nom_p ?></h5>
-                            <input class="btn-close" type="submit" name="delete" value="">
-                        </div>
-                        <div class="modal-body row">
-                            <div class="col-3"><img class="img-thumbnail--custom" src="public/img/<?= $produit->nom_image_p ?>" alt="..."></div>
-                            <div class="col-9 row align-items-center">
-                                <div class="col-3">Prix: <?= $produit->prix_ht_p ?>,00€</div>
-                                <div class="col-6 text-center align-content-center">quantité: <input style="display:inline ; width : 3rem" type="text" name="qt_article" value="<?= $ligne->qt_article ?>"> <input class="btn btn-primary" type="submit" name="edit" value="Editer"></div>
-                                <div class="col-3">
-                                    Total: <?= $stotal ?>,00€
+                    <div class="container-fluid">
+                        <form action='index.php?page=panier' method='post' class="row border rounded pb-3 mb-4">
+                            <input type="hidden" name="id_comp" value="<?= $ligne->id_comp ?>">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-center fw-bold fs-4" style="font-family: 'Ubuntu', sans-serif;"><?= $produit->nom_p ?></h5>
+                                <input class="btn-close" type="submit" name="delete" value="">
+                            </div>
+                            <div class="modal-body row">
+                                <div class="col-3"><img class="img-thumbnail--custom" src="public/img/<?= $produit->nom_image_p ?>" alt="..."></div>
+                                <div class="col-9 row align-items-center">
+                                    <div class="col-3 fw-bold fs-4" style="font-family: 'Ubuntu', sans-serif;">Prix: <?= $produit->prix_ht_p ?>,00€</div>
+                                    <div class="col-6 text-center align-content-center fw-bold fs-4" style="font-family: 'Ubuntu', sans-serif;">Quantité : <input class=" btn btn-custom" style="display:inline ; width : 5rem" type="text" name="qt_article" value="<?= $ligne->qt_article ?>"> <input class="btn btn-primary custom2" type="submit" name="edit" value="Editer"></div>
+                                    <div class="col-3 fw-bold fs-4" style="font-family: 'Ubuntu', sans-serif;">
+                                        Total: <?= $stotal ?>,00€
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
         <?php endif;
             }
         }
 
 
         ?>
-        <div class="row">
-            <div class="col-6 text-center">
+        <div class="row mt-5">
+            <h2 class="col-6 text-center fw-bold fs-4" style="font-family: 'Ubuntu', sans-serif;">
                 Prix total: <?= $total ?>,00€
-            </div>
+            </h2>
             <div class="col-6 text-center">
                 <form action="index.php?page=paiement" method="post">
                     <input type="hidden" value="<?= $total ?>" name="price">
-                    <input class="btn btn-custom" type="submit" value="Acheter">
+                    <input class="btn btn-primary custom2 fw-bold fs-4" style="font-family: 'Ubuntu', sans-serif;" type="submit" value="Valider votre pannier !">
                 </form>
             </div>
         </div>
