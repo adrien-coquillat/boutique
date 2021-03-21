@@ -99,7 +99,9 @@ class Display
      * Return Html code for displaying a product card
      */
     public function productCard(object $produit, $width = 21, $height = 55, $textlength = 200)
-    { ?>
+    {
+    ?>
+
         <div class="col-sm d-flex justify-content-center mb-4 ">
             <div class="card text-decoration-none text-body" style="width: <?= $width ?>rem;" id="shadowproduct">
                 <img style="height: <?= $height ?>vh;" class="img-card-custom border-img-top" src="public/img/<?= $produit->nom_image_p ?>" alt="...">
@@ -115,8 +117,14 @@ class Display
                     <form class="d-flex justify-content-between mt-4" method="POST" action="index.php?page=produit&id_p=<?= $produit->id_p ?>">
                         <input type="hidden" name="fromPage" value="<?= $_SERVER["QUERY_STRING"] ?>">
 
-                        <input class="btn btn-primary custom2 fw-bold fs-5" style="font-family: 'Ubuntu', sans-serif;" type="submit" name="add" value="Ajouter Panier">
-                        <input class="btn btn-primary custom2 fw-bold fs-5" style="font-family: 'Ubuntu', sans-serif;" type="submit" name="show" value="Voir +" href="index.php?page=produit&id_p=<?= $produit->id_p ?>">
+                        <button class="btn btn-primary custom2 fw-bold fs-5" style="font-family: 'Ubuntu', sans-serif; " type="submit" name="add">
+                            <svg width=" 44" height="40" viewBox="0 0 44 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16.5457 37.65C17.5499 37.65 18.3639 36.8862 18.3639 35.944C18.3639 35.0019 17.5499 34.2381 16.5457 34.2381C15.5416 34.2381 14.7275 35.0019 14.7275 35.944C14.7275 36.8862 15.5416 37.65 16.5457 37.65Z" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M36.5457 37.65C37.5499 37.65 38.3639 36.8862 38.3639 35.944C38.3639 35.0019 37.5499 34.2381 36.5457 34.2381C35.5416 34.2381 34.7275 35.0019 34.7275 35.944C34.7275 36.8862 35.5416 37.65 36.5457 37.65Z" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M2 2H9.27273L14.1455 24.3161C14.3117 25.0834 14.7671 25.7727 15.4319 26.2632C16.0967 26.7538 16.9285 27.0144 17.7818 26.9994H35.4545C36.3078 27.0144 37.1397 26.7538 37.8045 26.2632C38.4693 25.7727 38.9246 25.0834 39.0909 24.3161L42 10.3331H11.0909" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <input class="btn btn-primary custom2 fw-bold fs-5" style="font-family: 'Ubuntu', sans-serif;" type="submit" name="show" value="INFO" href="index.php?page=produit&id_p=<?= $produit->id_p ?>">
 
                     </form>
 
