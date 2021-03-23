@@ -281,7 +281,7 @@ class FrontController
 
     public function charge($dataOrder)
     {
-        if (empty($donnee_u)) {
+        if (empty($dataOrder)) {
             header('Location: index.php?page=home&error=connexionrequired');
             exit();
         }
