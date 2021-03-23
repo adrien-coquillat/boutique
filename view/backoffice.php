@@ -154,7 +154,7 @@ endif;
             </form>
             <form action="index.php?page=backoffice&action=producteditor" method="POST">
                 <textarea name="description_p">
-                <?= isset($_POST['id_p']) ? $data["produit"][((int) $_POST['id_p']) - 1]->description_p : 'Select one product to edit description' ?>
+                <?= isset($_POST['id_p']) ? $data["produit"][$data["produit"][0]->getIndexinArrayWithId($data["produit"], ($_POST['id_p']))]->description_p : 'Select one product to edit description' ?>
                 </textarea>
                 <input type="hidden" name="id_p" value="<?= isset($_POST['id_p']) ? $_POST['id_p'] : '' ?>">
                 <input class="btn btn-primary" type="submit" value="Enregistrer">
