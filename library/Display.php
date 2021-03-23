@@ -169,7 +169,7 @@ class Display
                                 <div class="col-3"><img class="img-thumbnail--custom" src="public/img/<?= $produit->nom_image_p ?>" alt="..."></div>
                                 <div class="col-9 row align-items-center">
                                     <div class="col-3 fw-bold fs-4" style="font-family: 'Ubuntu', sans-serif;">Prix: <?= $produit->prix_ht_p ?>,00€</div>
-                                    <div class="col-6 text-center align-content-center fw-bold fs-4" style="font-family: 'Ubuntu', sans-serif;">Quantité : <input class=" btn btn-custom" style="display:inline ; width : 5rem" type="text" name="qt_article" value="<?= $ligne->qt_article ?>"> <input class="btn btn-primary custom2" type="submit" name="edit" value="Editer"></div>
+                                    <div class="col-6 text-center align-content-center fw-bold fs-4" style="font-family: 'Ubuntu', sans-serif;">Quantité : <input style="display:inline; width:5rem; border:none;" type="text" name="qt_article" value="<?= $ligne->qt_article ?>"> <input class="btn btn-primary custom2" type="submit" name="edit" value="Editer"></div>
                                     <div class="col-3 fw-bold fs-4" style="font-family: 'Ubuntu', sans-serif;">
                                         Total: <?= $stotal ?>,00€
                                     </div>
