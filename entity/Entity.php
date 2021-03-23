@@ -17,4 +17,16 @@ class Entity
         }
         return $output;
     }
+
+    public function getIndexinArrayWithId(array $products, $id)
+    {
+        $i = 0;
+        foreach ($products as $product) {
+            if ($product->id_p == $id) {
+                return $i;
+            }
+            $i++;
+        }
+        return FALSE;
+    }
 }

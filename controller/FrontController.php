@@ -87,7 +87,6 @@ class FrontController
             }
             throw new Exception($msg);
         }
-
         return $this->categorie();
     }
 
@@ -126,12 +125,11 @@ class FrontController
             $sous_categories = $model->getAllBy($sous_categorie->id_c, 'id_c', 'Sous_categorie');
             $categorie = $model->getBy($sous_categorie->id_c, 'id_c', 'Categorie');
         } else {
-            $id_c = isset($_GET['id_c']) ? (int) $_GET['id_c'] : 1;
-            $produits = $produitModel->ByCategorie($id_c);
+            $id_c = isset($_GET['id_c']) ? (int) $_GET['id_c'] : 0;
+            $produits = $id_c == 0 ? $produitModel->getAll() : $produitModel->ByCategorie($id_c);
             $sous_categories = $model->getAllBy($id_c, 'id_c', 'Sous_categorie');
             $categorie = $model->getBy($id_c, 'id_c', 'Categorie');
         }
-
         return compact('produits', 'sous_categories', 'categorie');
     }
 
