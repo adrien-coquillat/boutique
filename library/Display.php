@@ -209,7 +209,7 @@ class Display
                 </div>
                 <div class="card-body">
 
-                    <p class="card-text">Detail de la commande:</p>
+                    <p class="card-text">Détail de la commande:</p>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
