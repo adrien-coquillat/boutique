@@ -236,13 +236,11 @@
   position: absolute;
   top: 24vh;
   right: 9.1vh;
-
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-size: 4vw;
   text-align: right;
   white-space: nowrap;
-
   color: #ffffff;
 }
 
@@ -255,14 +253,12 @@
 .best-sellers__title {
   padding-bottom: 5vh;
   margin: 0;
-
   font-family: "Roboto", sans-serif;
   font-size: 5vh;
   text-align: center;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   font-feature-settings: "cpsp"on;
-
   color: #e74285;
 }
 
