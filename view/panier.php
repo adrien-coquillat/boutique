@@ -27,7 +27,7 @@
         <div class="tab-pane fade <?= isset($_GET['pane']) && ($_GET['pane'] == 'profile' || $_GET['pane'] == 'historique') ? '' : 'show active' ?>" id="panier" role="tabpanel" aria-labelledby="panier-tab">
             <!-- Tag used to display exception -->
             <?= (isset($msg)) ?  $msg : '' ?>
-            <?= $lignes == NULL ? ' <div class="container-fluid m-6 bg-profil col-11"><h2>Votre pannier est VIDE !</h2></div> <img class="img-custom-fullwidth2  " src="public/img/pannier_vide.jpg"> ' : $display->cart($lignes, $produits) ?>
+            <?= $lignes == NULL ? ' <div class="container-fluid m-6 bg-profil col-11"><h2>Votre pannier est VIDE !</h2></div>' : $display->cart($lignes, $produits) ?>
         </div>
         <?php if (isset($_SESSION['user'])) : ?>
             <div class="tab-pane fade <?= isset($_GET['pane']) && ($_GET['pane'] == 'profile') ? 'show active' : '' ?>" id="profile" role="tabpanel" aria-labelledby="profile-tab">
