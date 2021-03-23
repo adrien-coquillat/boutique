@@ -10,6 +10,6 @@
     <div class="alert alert-success" role="alert">
     Votre paiement est un succés, Joujou en chemin ! 
     Envie de <a href="index.php?page=categorie">flanner</a>? 
-    Espace membre ? C\'est par <a href="index.php?page=membre&pane=historique">là</a>.  
+    Espace membre ? C\'est par <a href="index.php?page=panier&pane=historique">là</a>.  
     </div>' ?>
 </div>
