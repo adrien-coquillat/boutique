@@ -16,7 +16,7 @@
             <p class="lead"><?= $produit->description_p ?></p>
             <p class="row justify-content-center fw-bold" style="font-size: 3vh;font-family: Montserrat, sans-serif;">
                 Quantité :
-                <input class="btn btn-custom fw-bold ms-5" style="display:inline ; width : 4rem" class="col-1" type="text" name="qt_article" id="" value="1">
+                <input style="display:inline; width:4rem; border:none;" class="col-1" type="text" name="qt_article" id="" value="1">
             </p>
             <div class="row justify-content-center">
                 <input class="btn btn-custom p-3 fw-bold" style="width: 20vw; font-size: 4vh;font-family: Montserrat, sans-serif;" type="submit" name="add" value="Ajouter au panier">
