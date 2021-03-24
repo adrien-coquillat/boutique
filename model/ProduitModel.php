@@ -22,6 +22,7 @@ class ProduitModel extends Model
 
     public function searchKeyWord(string $keyword)
     {
+        $keyword = htmlspecialchars($keyword);
         $SQL = "SELECT * FROM Produit WHERE LOCATE('$keyword', `description_p`) OR LOCATE('$keyword', `nom_p`)";
         return $this->fetchAll($SQL);
     }
