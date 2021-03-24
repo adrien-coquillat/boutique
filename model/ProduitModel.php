@@ -2,6 +2,9 @@
 
 namespace model;
 
+use entity\Entity;
+use PDO;
+
 class ProduitModel extends Model
 {
     public function ByCategorie($id_c)
@@ -23,7 +26,10 @@ class ProduitModel extends Model
     public function searchKeyWord(string $keyword)
     {
         $keyword = htmlspecialchars($keyword);
-        $SQL = "SELECT * FROM Produit WHERE LOCATE('$keyword', `description_p`) OR LOCATE('$keyword', `nom_p`)";
-        return $this->fetchAll($SQL);
+        $sth = $this->db->prepare("SELECT * FROM Produit WHERE LOCATE(:keyword, `description_p`) OR LOCATE(:keyword, `nom_p`)");
+        $sth->bindParam(":keyword", $keyword);
+        $sth->execute();
+        $sth->setFetchMode(PDO::FETCH_CLASS, Entity::class);
+        return  $sth->fetchAll();
     }
 }
